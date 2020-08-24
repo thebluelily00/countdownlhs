@@ -1,0 +1,304 @@
+@import url("https://use.typekit.net/uch6bxq.css");
+
+html, body{
+  margin:0px;
+  padding:0px;
+}
+
+::-moz-selection {
+  background-color: #CEEAF2;
+  color: #181514;
+}
+
+::selection {
+  background-color: #CEEAF2;
+  color: #181514;
+}
+
+*{
+  font-family: source-code-pro, monospace;
+  font-weight: 200;
+}
+
+.tcontainer{
+  width:100%;
+  overflow: hidden;
+  background: black;
+  color:white;
+}
+
+.tcontainer a{
+  color:white;
+}
+
+.ticker-wrap {
+  width: 100%;
+  padding-left: 100%;
+}
+
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+.ticker-move {
+  /* Basically move items from right side of screen to left in infinite loop */
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: ticker;
+  animation-duration: 35s;
+}
+.ticker-move:hover{
+  animation-play-state: paused; /* Pause scroll on mouse hover */
+}
+
+/* ITEMS */
+.ticker-item{
+  display: inline-block; /* Lay items in a horizontal line */
+  padding: 0 8rem;
+}
+
+#header{
+  text-align: center;
+  display: block;
+}
+
+.hh{
+  display: inline-block;
+  height:90%;
+  vertical-align: middle;
+  padding:0px 20px 0px 20px;
+  margin-top:10px;
+}
+
+.hh2{
+  text-align: left;
+}
+
+.hh3{
+}
+
+#cd{
+  font-size: 5em;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+#logo{
+  width:100px;
+}
+
+.mm1 textarea, .iconss{
+  display:inline-block;
+  vertical-align:text-bottom;
+}
+
+.iconss img, .iconss i, .iconss p{
+  display: block;
+  line-height: 100%;
+  margin:8px 10px 8px 0px;
+}
+
+a{
+  color:black;
+  text-decoration: none;
+}
+
+.mm1 textarea{
+  width:23vw;
+  height:69px;
+  margin-top:15px;
+  resize:none;
+}
+
+.mm{
+  display: inline-block;
+  vertical-align: top;
+    margin:20px;
+}
+
+.mm1{
+  /* background-color: #FFC8B2; */
+  text-align: center;
+  width:30vw;
+}
+
+.mm2{
+  /*  background: #FFD9FD; */
+  text-align: center;
+  width:450.15px;
+}
+
+.mm2 table{
+  margin: auto;
+  border-spacing: 5px;
+}
+
+#s1, #s2{
+  display: inline-block;
+  vertical-align: top;
+  margin:5px;
+}
+
+.mm3{
+  /* background:#D1BAE8; */
+  width:300px;
+  max-height: 609px;
+  overflow:scroll;
+}
+
+#resources{
+  text-align: left;
+  margin:0px;
+  line-height: 250%;
+  list-style-type: none;
+  text-indent:0px;
+  padding:0px;
+}
+
+#customize, #sched-input, #gclas-input, #meet-input{
+  list-style: none;
+  padding:0px;
+  line-height: 150%;
+}
+
+#sched-input li, #gclas-input li, #meet-input li{
+  display: inline-block;
+}
+
+#main{
+  text-align: center;
+  display: block;
+}
+
+.red{
+  color:green;
+  font-style: italic;
+}
+
+.bb:hover{
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+i .fa-times-circle{
+  display: block;
+  margin-bottom:5px;
+}
+
+@media screen and (max-width: 772px) { /*smallest for phones*/
+  #header{
+    height:100%;
+  }
+
+  #logo{
+    width:50%;
+  }
+
+  .hh2{
+    text-align: center;
+  }
+
+  #s1, #s2{
+    display: block;
+  }
+
+  .mm2{
+    width:100vw;
+    margin:0px;
+    padding:0px;
+    background: black;
+    color:white;
+  }
+
+  .hh3{
+    width:100%;
+    margin:0px;
+    padding:0px;
+  }
+
+  .mm1{
+      width:100vw;
+      margin:0px;
+      text-align: center;
+  }
+
+  .mm1 textarea{
+      width:90vw;
+      height:90px;
+  }
+
+  .iconss{
+    display: block;
+    height:30px;
+  }
+
+  .iconss p, .iconss a, .iconss i, .iconss img{
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .textdiv{
+    padding-bottom:15px;
+  }
+}
+
+@media screen and (min-width:773px) and (max-width:1000px){
+  #header{
+    height:100%;
+  }
+  #logo{
+    width:10%;
+  }
+  .hh{
+    width:auto;
+  }
+  .hh1{
+    width:inherit;
+    display: block;
+  }
+
+  .mm1{
+    width:100vw;
+    margin:0px;
+    text-align: center;
+  }
+
+  .mm1 textarea{
+    width:90vw;
+    height:90px;
+  }
+
+  .mm3{
+
+  }
+  .mm3 a{
+  }
+
+  .mm2{
+    background: black;
+    color:white;
+    width:100vw;
+    margin:0px;
+
+  }
+}
+@media screen and (min-width:1000px) and (max-width:1271px){
+    .mm1{
+      width:100vw;
+      margin:0px;
+      text-align: center;
+    }
+
+    .textdiv{
+      width:45vw;
+      display: inline-block;
+    }
+
+    .mm1 textarea{
+      width:40vw;
+      height:90px;
+    }
+}

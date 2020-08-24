@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title id="heyo"></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="shortcut icon" href="daily_icons/2.png" id="fav">
+  </head>
+  <body onload="startTime(), refreshEverything()">
+    <div class="tcontainer" id="crawler">
+      <div class="ticker-wrap">
+        <div class="ticker-move">
+          <div class="ticker-item">welcome to the new countdown!</div>
+          <div class="ticker-item">input your schedule, class links, and more!</div>
+          <div class="ticker-item">any questions or ideas? <a href="mailto: mc22219@student.lisle202.org">email me!</a></div>
+        </div>
+      </div>
+    </div>
+    <div id="header">
+      <div class="hh hh1">
+        <img src="images/logo-dark.png" id="logo">
+      </div>
+      <div class="hh hh2">
+        <h2 id="date"></h2>
+        <h2 id="time"></h2>
+      </div>
+      <div class="hh hh3">
+        <h1 id="cd"></h1>
+      </div>
+    </div>
+    <div id="main">
+
+    <div class="mm mm3">
+      <h1>Resources</h1>
+      <ul id="resources">
+        <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t">School calendar</a></li>
+        <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span> Finals calculator</div>
+          <ul id="finalss" style="margin-left:0px; padding-left:0px;">
+            <form id="grades">
+              <input type="number" placeholder="have" min='0' max="110" id="act">
+              <input type="number" placeholder="want" min="0" max="110" id="goal">
+              <br>
+              <input type="submit" value="Calculate" id="sub">
+              <button type="button" name="button" id="mas" style="display:block;">More info</button>
+            </form>
+            <i class="far fa-times-circle" id="cf"></i>
+          </ul>
+        </li>
+        <li><i class="fas fa-sliders-h"></i> <span id="cb">Customize</span>
+          <ul id="customize">
+            <li class="red"><br>use this to keep track of all your classes!</li><br>
+            <li><span class="bb" id="ba">Input my schedule</span>
+              <div id="schh">
+                <ul id="sched-input">
+                  <li><button id="sched-1" class="ci">1</button></li>
+                  <li><button id="sched-2" class="ci">2</button></li>
+                  <li><button id="sched-3" class="ci">3</button></li>
+                  <li><button id="sched-4" class="ci">4</button></li>
+                  <li><button id="sched-5" class="ci">5</button></li>
+                  <li><button id="sched-6" class="ci">6</button></li>
+                  <li><button id="sched-7" class="ci">7</button></li>
+                </ul>
+                <i class="far fa-times-circle" id="csc"></i>
+              </div>
+            </li>
+            <li><span class="bb" id="bbb">Input my Google Classroom URLs</span>
+              <ul id="gclas-input">
+                <li><button id="gclas-1" class="gc">1</button></li>
+                <li><button id="gclas-2" class="gc">2</button></li>
+                <li><button id="gclas-3" class="gc">3</button></li>
+                <li><button id="gclas-4" class="gc">4</button></li>
+                <li><button id="gclas-5" class="gc">5</button></li>
+                <li><button id="gclas-6" class="gc">6</button></li>
+                <li><button id="gclas-7" class="gc">7</button></li><br>
+                <i class="far fa-times-circle" id="cgc"></i>
+              </ul>
+            </li>
+            <li><span class='bb' id="bc">Input my Google Meet URLs</span>
+              <ul id="meet-input">
+                <li><button id="meet-1" class="meet">1</button></li>
+                <li><button id="meet-2" class="meet">2</button></li>
+                <li><button id="meet-3" class="meet">3</button></li>
+                <li><button id="meet-4" class="meet">4</button></li>
+                <li><button id="meet-5" class="meet">5</button></li>
+                <li><button id="meet-6" class="meet">6</button></li>
+                <li><button id="meet-7" class="meet">7</button></li><br>
+                <i class="far fa-times-circle" id="cgm"></i>
+              </ul>
+            </li><!--
+            <li><span class="bb" id="bd">Have a study hall?</span>
+                <form id="studyhallform">
+                  <select id="yeeet" onchange="this.form.submit()">
+                    <option id="sh1" value="1">1</option>
+                    <option id="sh2" value="2">2</option>
+                    <option id="sh3" value="3">3</option>
+                    <option id="sh4" value="4">4</option>
+                    <option id="sh5" value="5">5</option>
+                    <option id="sh6" value="6">6</option>
+                    <option id="sh7" value="7">7</option>
+                  </select>
+                  <button type="button" id="cshf">close</button>
+                </form>
+            </li>-->
+            <br><i class="far fa-times-circle" id="cc"></i>
+          </ul>
+        </li>
+        <!--<li>Help</li>-->
+      </ul>
+    </div>
+      <div class="mm mm2">
+        <h1>Schedule</h1>
+        <div id="schedules">
+          <div id="s1">
+            <p>Not Wednesdays</p>
+            <table id="mttf">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>M/Th</th>
+                  <th>T/F</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>9:00 - 10:00</td>
+                  <td>1</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>10:15 - 11:15</td>
+                  <td>2</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>11:45 - 12:45</td>
+                  <td>3</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>1:00 - 2:00</td>
+                  <td>4</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><em>lunch is from<br>11:15 - 11:45</em></p>
+          </div>
+          <div id="s2">
+            <p>Wednesdays</p>
+            <table id="weds">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Period</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>8:00 - 8:25</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>8:30 - 8:55</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>9:00 - 9:25</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>9:30 - 9:55</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>10:00 - 10:25</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>10:30 - 10:55</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>11:00 - 11:25</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>11:30 - 11:55</td>
+                  <td>7</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="mm mm1">
+          <div id="p1" class='textdiv'>
+            <textarea id="t1"></textarea>
+            <div class="iconss">
+              <p>1</p>
+              <a id="vid1" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla1" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p2" class='textdiv'>
+            <textarea id="t2"></textarea>
+            <div class="iconss">
+              <p>2</p>
+              <a id="vid2" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla2" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p3" class='textdiv'>
+            <textarea id="t3"></textarea>
+            <div class="iconss">
+              <p>3</p>
+              <a id="vid3" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla3" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p4" class='textdiv'>
+            <textarea id="t4"></textarea>
+            <div class="iconss">
+              <p>4</p>
+              <a id="vid4" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla4" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p5" class='textdiv'>
+            <textarea id="t5"></textarea>
+            <div class="iconss">
+              <p>5</p>
+              <a id="vid5" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla5" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p6" class='textdiv'>
+            <textarea id="t6"></textarea>
+            <div class="iconss">
+              <p>6</p>
+              <a id="vid6" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla6" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+          <div id="p7" class='textdiv'>
+            <textarea id="t7"></textarea>
+            <div class="iconss">
+              <p>7</p>
+              <a id="vid7" target="_blank"><i class="fas fa-video"></i></a>
+              <a id="cla7" target="_blank"><img src="images/gc.png" width="20px"></a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/yeet.js"></script>
+  </body>
+</html>
