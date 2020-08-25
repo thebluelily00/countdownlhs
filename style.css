@@ -146,7 +146,7 @@ a{
   /* background:#D1BAE8; */
   width:300px;
   max-height: 609px;
-  overflow:scroll;
+  overflow:hidden;
 }
 
 #resources{
