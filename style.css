@@ -181,6 +181,7 @@ a{
 .bb:hover{
   font-weight: normal;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 i .fa-times-circle{
