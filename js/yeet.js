@@ -110,11 +110,11 @@ $('.ci').click(function(){
 
 $('.gc').click(function(){
   var answer = prompt("What's the URL for this period's Google Classroom?");
-  if(answer.includes("https://www.")||answer.includes("http://www.")){
+  if(answer.includes("https://")||answer.includes("http://"||answer.includes("https//")||answer.includes("http//"))){
     localStorage.setItem($(this).attr("id"),answer);
   }
   else{
-    answer = "https://www."+answer;
+    answer = "https://"+answer;
     console.log('the url for this google classroom is now '+answer);
     localStorage.setItem($(this).attr("id"),answer);
   }
@@ -123,11 +123,11 @@ $('.gc').click(function(){
 
 $('.meet').click(function(){
   var answer = prompt("What's the Google Meet URL for this class?");
-  if(answer.includes("https://www.")||answer.includes("http://www.")){
+  if(answer.includes("https://")||answer.includes("http://"||answer.includes("https//")||answer.includes("http//"))){
     localStorage.setItem($(this).attr("id"),answer);
   }
   else{
-    answer = "https://www."+answer;
+    answer = "https://"+answer;
     console.log('the url for this meet is now '+answer);
     localStorage.setItem($(this).attr("id"),answer);
   }

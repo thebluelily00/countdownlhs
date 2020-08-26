@@ -184,6 +184,10 @@ a{
   cursor: pointer;
 }
 
+.pointb:hover{
+  cursor:pointer;
+}
+
 i .fa-times-circle{
   display: block;
   margin-bottom:5px;
