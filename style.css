@@ -193,6 +193,12 @@ i .fa-times-circle{
   margin-bottom:5px;
 }
 
+#underline{
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: white;
+}
+
 @media screen and (max-width: 772px) { /*smallest for phones*/
   #header{
     height:100%;

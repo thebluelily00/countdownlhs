@@ -247,15 +247,23 @@ function countDown(day, month, year, hour, minute, second){
   var minutes = Math.floor(t%(1000*60*60)/(1000*60));
   var seconds = Math.floor(t%(1000*60)/1000);
 
+  if(seconds<0&&minutes<0&&hours<0){
+    location.reload();
+    console.log('the page SHOULD be reloading rn');
+  }
+
   if(hours<10){
     hours = "0"+hours;
   }
   if(minutes<10){
     minutes = "0"+minutes;
+    console.log('added a 0 before the minute');
   }
   if(seconds<10){
     seconds = "0"+seconds;
+    console.log('added a 0 before the second');
   }
+
 
   if(hours==='00'){
     var dif = minutes+":"+seconds;
