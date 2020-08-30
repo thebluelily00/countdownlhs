@@ -1,5 +1,5 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform').hide();
+$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images').hide();
 
 //date display
 var dd = new Date();
@@ -52,7 +52,7 @@ function makeNormal(i){
 }
 
 // make the favicon show the number for the date on the calendar
-$("#fav").attr('href','daily_icons/'+n+'.png');
+$("#fav").attr('href','images/daily_icons/'+n+'.png');
 
 //finals calculator
 
@@ -137,20 +137,21 @@ $('.meet').click(function(){
 function refreshEverything(){
   let p = 1;
   while(p<8){
-    if(localStorage.getItem('sched-'+p)){
+    if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
       $("#t"+p).attr("placeholder",localStorage.getItem('sched-'+p)+" notes");
     }
 
-    if(localStorage.getItem('gclas-'+p)){
+    if(localStorage.getItem('gclas-'+p)){ // if google classroom links have been added, put them as the href for the a's
       console.log('there IS gclas-'+p);
       $("#cla"+p).attr("href", localStorage.getItem('gclas-'+p));
     }
 
-    if(localStorage.getItem('meet-'+p)){
+    if(localStorage.getItem('meet-'+p)){ // if the google meet links have been added, use them
       console.log('there IS meet-'+p);
       $("#vid"+p).attr("href", localStorage.getItem('meet-'+p));
     }
-    if(localStorage.getItem('t'+p)){
+
+    if(localStorage.getItem('t'+p)){ // if there are notes written, put them in the textareas
       console.log('there are notes for period '+p);
       $("#t"+p).val(localStorage.getItem('t'+p));
     }
@@ -214,8 +215,125 @@ $("#cshf").click(function(){
   $("#studyhallform").slideUp();
 });
 
-$("#cb").click(function(){$("#customize").slideDown();});
+$("#cb").click(function(){
+  $("#customize").slideDown();
+  $("#cs_images").slideUp();
+});
+
 $("#cc").click(function(){ $("#customize").slideUp(); });
+
+$("#o_cs").click(function(){
+  $("#cs_images").slideDown();
+  $("#customize").slideUp();
+});
+
+$("#cscc").click(function(){
+  $("#cs_images").slideUp();
+});
+
+// color scheme setup
+// c = color, b = background, tc = table color, ml = make light, ac = accent color
+
+function changeCSS(c,b,tc,ml,ac){
+  $("body").css("background",b);
+  $("#header, #main, #main a").css("color",c);
+
+  if(window.innerWidth<=1000){ // if it's in a certain css mode
+    if(ml){
+      $('.mm2').css("background",tc);
+      $('.mm2').css('color',ac);
+    }
+    else{ // normal
+      $('.mm2').css("background",c);
+      $('.mm2').css('color',b);
+    }
+  }
+  else{ // normal
+    $('.mm2').css("background","none");
+    $('.mm2').css('color',c);
+  }
+
+
+  if(ml){ // if the news crawler should be light & the logo should be white
+    $(".tcontainer").css("background","white");
+    $(".tcontainer, .tcontainer a").css("color",ac);
+
+    $("#logo").attr("src","images/logo-light.png");
+    $(".textdiv textarea").css('border','2px solid white');
+  }
+  else{
+    $(".tcontainer").css("background","black");
+    $(".tcontainer, .tcontainer a").css("color","white");
+
+    $("#logo").attr("src","images/logo-dark.png");
+  }
+
+  if(localStorage.getItem("cs")==="_mi"){
+    $(".textdiv textarea").css('background','black');
+    $(".textdiv textarea").css('color','white');
+    $(".textdiv textarea").css('border','2px solid white');
+
+  }
+  else if(localStorage.getItem("cs")==="_ne"){
+    $(".textdiv textarea").css('border','2px solid #e8d2c8');
+    $(".textdiv textarea").css('background','white');
+    $(".textdiv textarea").css('color','black');
+
+  }
+  else if(localStorage.getItem("cs")==="_oy"){
+    $("#logo").css("background",c);
+    $('.tcontainer').css('background',c);
+    $('.tcontainer, .tcontainer a').css('color',b);
+    $(".textdiv textarea").css('border','2px solid '+c);
+    $(".textdiv textarea").css('background','white');
+  }
+  else{
+    $("#logo").css("background",'none');
+    $(".textdiv textarea").css('background','white');
+    $(".textdiv textarea").css('color','black');
+  }
+
+  if(localStorage.getItem("cs")==="_oc"){
+    $("#logo").attr("src","images/white-logo.png");
+
+    $('.tcontainer').css('background',"none");
+    $('.tcontainer').css("border-bottom","1px solid white");
+    $('.tcontainer, .tcontainer a').css('color',c);
+  }
+}
+
+function refreshCSS(){
+  // order : color, background, table color, light(boolean)
+  var choices = {
+    _mi:["white","black","white",false,""],
+    _og:["black","white","black",false,"black"],
+    _ne:["#2a211d","#faf6f4","#937465",false,"#937465"],
+    _oc:["white","linear-gradient(#a0cee5,#5b96b4)","white",true,"#5b96b4"],
+    _oy:["#004060","white","#004060",true,'white'],
+    _pl:["white","linear-gradient(#Ffce9f,#ff849c)","white",true,"#ff849c"]
+  };
+
+  if(localStorage.getItem("cs")){ // if a color scheme has been set, use it
+    var tcs = localStorage.getItem("cs");
+    console.log("right now the color scheme is "+tcs);
+    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4]);
+    console.log("the css *should* have changed");
+  }
+}
+
+$("#cs_images img").click(function(){
+  localStorage.setItem("cs",$(this).attr("id"));
+  console.log(localStorage.getItem("cs"));
+  refreshCSS();
+  console.log('refreshCSS should be triggered');
+});
+
+window.addEventListener("resize", function () {
+    refreshCSS();
+});
+
+
+
 
 //                                  |
 //                                  |
@@ -277,8 +395,18 @@ function countDown(day, month, year, hour, minute, second){
 }
 
 function displayCount(num){
-  $("#cd").text(num);
-  $("#heyo").text("CountdownLHS  |  "+num);
+  if(num===""){
+    $("#heyo").text("CountdownLHS");
+  }
+
+  else{
+    $("#cd").text(num);
+    $("#heyo").text("CountdownLHS  |  "+num);
+  }
+}
+
+if(d===0||d===6){
+  console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
 }
 
 var countDownTime = setInterval(function(){
@@ -321,7 +449,7 @@ var countDownTime = setInterval(function(){
     }
   }
 
-  else{ // mondays + thursdays
+  else{ // not wednesdays
     if(hour<9){//countdown to 9/1st hour DONE
       displayCount(countDown(n,m,2020,9,0,0));
     }
@@ -354,16 +482,14 @@ var countDownTime = setInterval(function(){
             displayCount(countDown(n,m,2020,12,45,0)); // countdown to end of 3rd
           }
           else{
-            console.log('should be counting to 1');
             displayCount(countDown(n,m,2020,13,00,00));// countdown to start of 4th
           }
         }
         else if(hour===13){
-          console.log("yeet");
           displayCount(countDown(n,m,2020,14,0,0)); //countdown to end of 4th
         }
-        else{
-          if(day===1||day===4){//countdown to tomorrow @ 9
+        else{ // after school!
+          if(day===1||day===4){// for mondays, thursdays countdown to tomorrow @ 9
             if(n+1<=daysin[m]){
               displayCount(countDown(n+1,m,2020,9,0,0));
             }
@@ -371,13 +497,16 @@ var countDownTime = setInterval(function(){
               displayCount(countDown(1,m+1,2020,9,0,0));
             }
           }
-          if(day===2){ //countdown to wed morning
+          else if(day===2){ //for tuesdays, countdown to wed morning
             if(n+1<=daysin[m]){
               displayCount(countDown(n+1,m,2020,8,0,0));
             }
             else{
               displayCount(countDown(1,m+1,2020,8,0,0));
             }
+          }
+          else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
+            displayCount("");
           }
         }
       }

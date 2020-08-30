@@ -17,12 +17,12 @@
       gtag('config', 'G-9NMK5KK9J8');
     </script>
   </head>
-  <body onload="startTime(), refreshEverything()">
+  <body onload="startTime(), refreshEverything(), refreshCSS()">
     <div class="tcontainer" id="crawler">
       <div class="ticker-wrap">
         <div class="ticker-move">
           <div class="ticker-item">welcome to the new countdown!</div>
-          <div class="ticker-item">input your schedule, class links, and more!</div>
+          <div class="ticker-item">new : teacher schedule link + color customization</div>
           <div class="ticker-item">any questions or ideas? <a href="mailto: mc22219@student.lisle202.org" id="underline">email me!</a></div>
         </div>
       </div>
@@ -44,7 +44,8 @@
     <div class="mm mm3">
       <h1>Resources</h1>
       <ul id="resources">
-        <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t">School calendar</a></li>
+        <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t" target="_blank">School calendar</a></li>
+        <li><span class="fas fa-calendar-week"></span> <a href="https://docs.google.com/spreadsheets/d/1Wi-FDVezAzwosp1Za6VuqO42vUNuhYxNJiiFqIVkkeU/edit?usp=sharing" target="_blank">Teacher schedules</a></li>
         <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
           <ul id="finalss" style="margin-left:0px; padding-left:0px;">
             <form id="grades">
@@ -57,7 +58,10 @@
             <i class="far fa-times-circle" id="cf"></i>
           </ul>
         </li>
-        <li><i class="fas fa-sliders-h"></i> <span id="cb" class="pointb">Customize</span>
+      </ul>
+      <h1>Settings</h1>
+      <ul id="settings">
+        <li><i class="fas fa-sliders-h"></i> <span id="cb" class="pointb">Your info</span>
           <ul id="customize">
             <li class="red"><br>use this to keep track of all your classes!</li><br>
             <li><span class="bb" id="ba">Input my schedule</span>
@@ -97,25 +101,21 @@
                 <li><button id="meet-7" class="meet">7</button></li><br>
                 <i class="far fa-times-circle" id="cgm"></i>
               </ul>
-            </li><!--
-            <li><span class="bb" id="bd">Have a study hall?</span>
-                <form id="studyhallform">
-                  <select id="yeeet" onchange="this.form.submit()">
-                    <option id="sh1" value="1">1</option>
-                    <option id="sh2" value="2">2</option>
-                    <option id="sh3" value="3">3</option>
-                    <option id="sh4" value="4">4</option>
-                    <option id="sh5" value="5">5</option>
-                    <option id="sh6" value="6">6</option>
-                    <option id="sh7" value="7">7</option>
-                  </select>
-                  <button type="button" id="cshf">close</button>
-                </form>
-            </li>-->
-            <br><i class="far fa-times-circle" id="cc"></i>
+            </li>
+            <br><i class="far fa-times-circle" id="cc"></i><br><br>
           </ul>
         </li>
-        <!--<li>Help</li>-->
+        <li id="cs_change"><span class="fas fa-palette"></span> <span class="pointb" id="o_cs">Colors</span><br>
+          <div id="cs_images">
+            <img src="images/color_schemes/cd_cs_OG.png" id="_og">
+            <img src="images/color_schemes/cd_cs_ONYELIONS.png" id="_oy">
+            <img src="images/color_schemes/cd_cs_NEUTRAL.png" id="_ne">
+            <img src="images/color_schemes/cd_cs_MIDNIGHT.png" id="_mi">
+            <img src="images/color_schemes/cd_cs_OCEAN.png" id="_oc">
+            <img src="images/color_schemes/cd_cs_PINKLEMONADE.png" id="_pl">
+            <br><i class="far fa-times-circle" id="cscc"></i><br>
+          </div>
+        </li>
       </ul>
     </div>
       <div class="mm mm2">
@@ -262,7 +262,11 @@
           </div>
       </div>
     </div>
-
+    <!--
+    features to add :
+      • add link to the teacher schedule stuff DONE
+      • fix title when it's friday thru sunday DONE
+    -->
     <script type="text/javascript" src="js/yeet.js"></script>
   </body>
 </html>

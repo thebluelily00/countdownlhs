@@ -149,7 +149,7 @@ a{
   overflow:hidden;
 }
 
-#resources{
+#resources, #settings{
   text-align: left;
   margin:0px;
   line-height: 250%;
@@ -199,6 +199,11 @@ i .fa-times-circle{
   text-decoration-color: white;
 }
 
+#cs_change img{
+  width:90px;
+  display: inline-block;
+}
+
 @media screen and (max-width: 772px) { /*smallest for phones*/
   #header{
     height:100%;
@@ -237,7 +242,7 @@ i .fa-times-circle{
   }
 
   .mm1 textarea{
-      width:90vw;
+      width:85vw;
       height:90px;
   }
 
@@ -278,7 +283,7 @@ i .fa-times-circle{
   }
 
   .mm1 textarea{
-    width:90vw;
+    width:85vw;
     height:90px;
   }
 
