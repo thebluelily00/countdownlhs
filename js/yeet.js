@@ -1,5 +1,5 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images').hide();
+$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp').hide();
 
 //date display
 var dd = new Date();
@@ -258,14 +258,14 @@ function changeCSS(c,b,tc,ml,ac){
     $(".tcontainer").css("background","white");
     $(".tcontainer, .tcontainer a").css("color",ac);
 
-    $("#logo").attr("src","images/logo-light.png");
+    $("#logo").attr("src","images/logos/logo-light.png");
     $(".textdiv textarea").css('border','2px solid white');
   }
   else{
     $(".tcontainer").css("background","black");
     $(".tcontainer, .tcontainer a").css("color","white");
 
-    $("#logo").attr("src","images/logo-dark.png");
+    $("#logo").attr("src","images/logos/logo-dark.png");
   }
 
   if(localStorage.getItem("cs")==="_mi"){
@@ -294,7 +294,7 @@ function changeCSS(c,b,tc,ml,ac){
   }
 
   if(localStorage.getItem("cs")==="_oc"){
-    $("#logo").attr("src","images/white-logo.png");
+    $("#logo").attr("src","images/logos/white-logo.png");
 
     $('.tcontainer').css('background',"none");
     $('.tcontainer').css("border-bottom","1px solid white");
@@ -328,12 +328,37 @@ $("#cs_images img").click(function(){
   console.log('refreshCSS should be triggered');
 });
 
+/*
+$("#wallpapers img").click(function(){
+  localStorage.setItem("wallpaper_url",$(this).attr("src"));
+  console.log(localStorage.getItem("wallpaper_url"));
+  $("body").css("background","url("+localStorage.getItem("wallpaper_url")+")");
+  $("body").css("background-position","top");
+  $("body").css("background-size","cover");
+  $("body").css("background-attachment", "fixed");
+  $("body").css("background-repeat","repeat-x");
+});
+*/
+
 window.addEventListener("resize", function () {
     refreshCSS();
 });
 
+$("#exp").click(function(){
+  $("#main, #exp").hide();
+  $("#cd").css("font-size","11em");
+  $(".hh3").css("display","block");
+  $(".ehh, #comp").css("display","block");
+  $("#comp").show();
+});
 
-
+$("#comp").click(function(){
+  $("#main, #exp").show();
+  $("#cd").css("font-size","5em");
+  $(".hh3").css("display","inline-block");
+  $(".ehh, #comp").css("display","inline-block");
+  $("#comp").hide();
+});
 
 //                                  |
 //                                  |
@@ -342,6 +367,7 @@ window.addEventListener("resize", function () {
 //                                \   /
 //                                 \ /
 //                                  ˇ
+
 
 function countDown(day, month, year, hour, minute, second){
   var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];

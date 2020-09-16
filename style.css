@@ -48,8 +48,9 @@ html, body{
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-name: ticker;
-  animation-duration: 35s;
+  animation-duration: 55s;
 }
+
 .ticker-move:hover{
   animation-play-state: paused; /* Pause scroll on mouse hover */
 }
@@ -84,6 +85,15 @@ html, body{
   font-size: 5em;
   margin-top:0px;
   margin-bottom:0px;
+  display: inline-block;
+}
+
+
+
+.ehh{
+  display: inline-block;
+  padding:10px;
+  margin:10px;
 }
 
 #logo{
@@ -146,7 +156,7 @@ a{
   /* background:#D1BAE8; */
   width:300px;
   max-height: 609px;
-  overflow:hidden;
+  overflow:scroll;
 }
 
 #resources, #settings{
@@ -202,6 +212,32 @@ i .fa-times-circle{
 #cs_change img{
   width:90px;
   display: inline-block;
+}
+
+#horizontal img{
+  width: 140px;
+  margin:auto;
+}
+
+
+
+#wallpapers{
+  text-align: center;
+}
+
+body{
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+#vertical img{
+  width:90px;
+}
+
+#wallpapers{
+  overflow: scroll;
 }
 
 @media screen and (max-width: 772px) { /*smallest for phones*/
