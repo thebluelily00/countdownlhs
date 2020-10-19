@@ -257,14 +257,12 @@ function changeCSS(c,b,tc,ml,ac){
   if(ml){ // if the news crawler should be light & the logo should be white
     $(".tcontainer").css("background","white");
     $(".tcontainer, .tcontainer a").css("color",ac);
-
     $("#logo").attr("src","images/logos/logo-light.png");
     $(".textdiv textarea").css('border','2px solid white');
   }
   else{
     $(".tcontainer").css("background","black");
     $(".tcontainer, .tcontainer a").css("color","white");
-
     $("#logo").attr("src","images/logos/logo-dark.png");
   }
 
@@ -272,13 +270,11 @@ function changeCSS(c,b,tc,ml,ac){
     $(".textdiv textarea").css('background','black');
     $(".textdiv textarea").css('color','white');
     $(".textdiv textarea").css('border','2px solid white');
-
   }
   else if(localStorage.getItem("cs")==="_ne"){
     $(".textdiv textarea").css('border','2px solid #e8d2c8');
     $(".textdiv textarea").css('background','white');
     $(".textdiv textarea").css('color','black');
-
   }
   else if(localStorage.getItem("cs")==="_oy"){
     $("#logo").css("background",c);
@@ -401,13 +397,10 @@ function countDown(day, month, year, hour, minute, second){
   }
   if(minutes<10){
     minutes = "0"+minutes;
-    console.log('added a 0 before the minute');
   }
   if(seconds<10){
     seconds = "0"+seconds;
-    console.log('added a 0 before the second');
   }
-
 
   if(hours==='00'){
     var dif = minutes+":"+seconds;
@@ -435,12 +428,28 @@ if(d===0||d===6){
   console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
 }
 
+var yee = {'8':[30],'9':[30,38],'10':[38,46],'11':[46,54],'12':[54]};
+
 var countDownTime = setInterval(function(){
   var day = d;
   var hour = dd.getHours();
   var minutes = dd.getMinutes();
   var seconds = dd.getSeconds();
   var daysin = [31,28,31,30,31,30,31,31,30,31,30,31]; // how many days are in each month. don't forget like april did - https://www.youtube.com/watch?v=jpwelTxlcQs
+
+  var tings = function(){
+    if(day!=5){// for everyday except friday, countdown to tomorrow @ 8:30
+      if(n+1<=daysin[m]){
+        displayCount(countDown(n+1,m,2020,8,30,0));
+      }
+      else{
+        displayCount(countDown(1,m+1,2020,8,30,0));
+      }
+    }
+    else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
+      displayCount("");
+    }
+  }
 
   if(day===0||day===6){ //sunday & saturday
     displayCount("");
@@ -475,69 +484,43 @@ var countDownTime = setInterval(function(){
     }
   }
 
-  else{ // not wednesdays
-    if(hour<9){//countdown to 9/1st hour DONE
-      displayCount(countDown(n,m,2020,9,0,0));
+  // future idea: make an array or object holding all the times, so it can iterate thru instead of this. so messy ugh
+
+  else{ // not wednesdays (this ALL changes)
+    if(yee[hour]){ // is it from 8-12:59?
+      if(hour===8){ //right before school
+        if(minutes<30){
+          displayCount(countDown(n,m,2020,8,30,0));
+        }
+        else{
+          displayCount(countDown(n,m,2020,9,30,0));
+        }
+      }
+      else if(yee[hour].length===2){
+        if(minutes<yee[hour][0]){
+          displayCount(countDown(n,m,2020,hour,yee[hour][0],0)); // if it's the first countdown of the hr
+        }
+        else if(minutes>=yee[hour][0]&&minutes<yee[hour][1]){ // count to passing period
+          displayCount(countDown(n,m,2020,hour,yee[hour][1],0));
+        }
+        else{
+          displayCount(countDown(n,m,2020,hour+1,yee[hour+1][0],0)); // count to first item of next array
+        }
+      }
+      else{
+        if(hour===12&&minutes<54){
+          displayCount(countDown(n,m,2020,12,54,0)); // count to first item of next array
+        }
+        else{
+          tings();
+        }
+      }
     }
-    else if(hour>=9){
-      if(hour<10){ // count to end of 1st
-        displayCount(countDown(n,m,2020,10,0,0));
-      }
-      else{ // later than 10
-        if(hour===10){
-          if(minutes<15){
-            displayCount(countDown(n,m,2020,10,15,0)); //countdown to 2nd hour start
-          }
-          else if(minutes>=15){
-            displayCount(countDown(n,m,2020,11,15,0)); // countdown to end of 2nd
-          }
-        }
-        else if(hour===11){
-          if(minutes<15){
-            displayCount(countDown(n,m,2020,11,15,0)); // countdown to end of 2nd
-          }
-          else if(minutes>=15&&minutes<45){
-            displayCount(countDown(n,m,2020,11,45,0)); // countdown to end of lunch, beginning of 3rd
-          }
-          else{
-            displayCount(countDown(n,m,2020,12,45,0)); // countdown to end of 3rd
-          }
-        }
-        else if(hour===12){
-          if(minutes<45){
-            displayCount(countDown(n,m,2020,12,45,0)); // countdown to end of 3rd
-          }
-          else{
-            displayCount(countDown(n,m,2020,13,00,00));// countdown to start of 4th
-          }
-        }
-        else if(hour===13){
-          displayCount(countDown(n,m,2020,14,0,0)); //countdown to end of 4th
-        }
-        else{ // after school!
-          if(day===1||day===4){// for mondays, thursdays countdown to tomorrow @ 9
-            if(n+1<=daysin[m]){
-              displayCount(countDown(n+1,m,2020,9,0,0));
-            }
-            else{
-              displayCount(countDown(1,m+1,2020,9,0,0));
-            }
-          }
-          else if(day===2){ //for tuesdays, countdown to wed morning
-            if(n+1<=daysin[m]){
-              displayCount(countDown(n+1,m,2020,8,0,0));
-            }
-            else{
-              displayCount(countDown(1,m+1,2020,8,0,0));
-            }
-          }
-          else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
-            displayCount("");
-          }
-        }
-      }
+    else{ // after school!
+      tings();
     }
   }
-}, 1000);
 
-// 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
+  // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
+
+}, 1000);
