@@ -1,5 +1,5 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp').hide();
+$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #ghost, .cobwebs').hide();
 
 //date display
 var dd = new Date();
@@ -38,8 +38,11 @@ function startTime() {
   h = makeNormal(h);
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('time').innerHTML =
-  h + ":" + m + ":" + s;
+
+  var finalt = h + ":" + m + ":" + s;
+  $("#time").html(finalt + "<span id='ghost'> 👻</span>");
+  $('#ghost').hide();
+
   var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
@@ -139,15 +142,18 @@ function refreshEverything(){
   while(p<8){
     if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
       $("#t"+p).attr("placeholder",localStorage.getItem('sched-'+p)+" notes");
+
+      if((localStorage.getItem('sched-'+p)+" notes").includes("study hall")){
+        console.log("there's a study hall period "+ p +" so no notes here");
+        $("#p"+p).hide();
+      }
     }
 
     if(localStorage.getItem('gclas-'+p)){ // if google classroom links have been added, put them as the href for the a's
-      console.log('there IS gclas-'+p);
       $("#cla"+p).attr("href", localStorage.getItem('gclas-'+p));
     }
 
     if(localStorage.getItem('meet-'+p)){ // if the google meet links have been added, use them
-      console.log('there IS meet-'+p);
       $("#vid"+p).attr("href", localStorage.getItem('meet-'+p));
     }
 
@@ -232,87 +238,74 @@ $("#cscc").click(function(){
 });
 
 // color scheme setup
-// c = color, b = background, tc = table color, ml = make light, ac = accent color
+// this needs to be improved bc it's really ineficient rn
 
-function changeCSS(c,b,tc,ml,ac){
+function spookify(){
+  $("#time").mouseenter(function(){
+    $("#ghost").fadeIn(1000);
+  });
+  $("#time").mouseleave(function(){
+    $("#ghost").fadeOut(1000);
+  });
+  $(".cobwebs").fadeIn(1000);
+  //$("#set_header").text("🕸️ "+$("#set_header").text()+" 🕸️");
+  $('body').css('cursor', 'images/yeet.png');
+}
+
+function changeCSS(a,b,c,d,e,f){
+  $("textarea").css("border","none");
+  $("textarea").css("color",'black');
+  $("#header, #main, #main a").css("color",a);
   $("body").css("background",b);
-  $("#header, #main, #main a").css("color",c);
-
-  if(window.innerWidth<=1000){ // if it's in a certain css mode
-    if(ml){
-      $('.mm2').css("background",tc);
-      $('.mm2').css('color',ac);
+  $(".tcontainer").css("background",c);
+  $("textarea").css("background",d);
+  $("#logo").attr("src","images/logos/"+e+".png");
+  console.log(f);
+  if(e==="transparent"){
+    if(f==='True'){
+      $("#logo").css("background",a);
+      console.log("needy transparent background");
     }
-    else{ // normal
-      $('.mm2').css("background",c);
-      $('.mm2').css('color',b);
+    else{
+      $("#logo").css("background",b);
     }
   }
-  else{ // normal
-    $('.mm2').css("background","none");
-    $('.mm2').css('color',c);
-  }
-
-
-  if(ml){ // if the news crawler should be light & the logo should be white
-    $(".tcontainer").css("background","white");
-    $(".tcontainer, .tcontainer a").css("color",ac);
-    $("#logo").attr("src","images/logos/logo-light.png");
-    $(".textdiv textarea").css('border','2px solid white');
-  }
-  else{
-    $(".tcontainer").css("background","black");
-    $(".tcontainer, .tcontainer a").css("color","white");
-    $("#logo").attr("src","images/logos/logo-dark.png");
-  }
-
-  if(localStorage.getItem("cs")==="_mi"){
-    $(".textdiv textarea").css('background','black');
-    $(".textdiv textarea").css('color','white');
-    $(".textdiv textarea").css('border','2px solid white');
-  }
-  else if(localStorage.getItem("cs")==="_ne"){
-    $(".textdiv textarea").css('border','2px solid #e8d2c8');
-    $(".textdiv textarea").css('background','white');
-    $(".textdiv textarea").css('color','black');
+  if(localStorage.getItem("cs")==="_og"){
+    $("textarea").css("background",'white');
+    $("textarea").css("border","1px solid black");
   }
   else if(localStorage.getItem("cs")==="_oy"){
-    $("#logo").css("background",c);
-    $('.tcontainer').css('background',c);
-    $('.tcontainer, .tcontainer a').css('color',b);
-    $(".textdiv textarea").css('border','2px solid '+c);
-    $(".textdiv textarea").css('background','white');
+    $("textarea").css("color",'white');
+  }
+  else if(localStorage.getItem("cs")==="_fi"){
+    spookify();
   }
   else{
-    $("#logo").css("background",'none');
-    $(".textdiv textarea").css('background','white');
-    $(".textdiv textarea").css('color','black');
-  }
-
-  if(localStorage.getItem("cs")==="_oc"){
-    $("#logo").attr("src","images/logos/white-logo.png");
-
-    $('.tcontainer').css('background',"none");
-    $('.tcontainer').css("border-bottom","1px solid white");
-    $('.tcontainer, .tcontainer a').css('color',c);
+    $(".cobwebs").fadeOut();
   }
 }
 
 function refreshCSS(){
-  // order : color, background, table color, light(boolean)
+  // text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background
+  var wh = "white";
+  var bl = "black";
+
   var choices = {
-    _mi:["white","black","white",false,""],
-    _og:["black","white","black",false,"black"],
-    _ne:["#2a211d","#faf6f4","#937465",false,"#937465"],
-    _oc:["white","linear-gradient(#a0cee5,#5b96b4)","white",true,"#5b96b4"],
-    _oy:["#004060","white","#004060",true,'white'],
-    _pl:["white","linear-gradient(#Ffce9f,#ff849c)","white",true,"#ff849c"]
+    _mi:[wh,bl,bl,wh,bl],
+    _og:[bl,wh,bl,bl,bl],
+    _ne:["#2a211d","#faf6f4","#937465",wh,'transparent', 'True'],
+    _oc:[wh,"linear-gradient(#a0cee5,#5b96b4)",'rgba(0,0,0,0)',wh, "transparent"],
+    _oy:["#004060","white","#004060","#004060","transparent",'True'],
+    _pl:[wh,"linear-gradient(#Ffce9f,#ff849c)","rgba(0,0,0,0)",wh,"transparent"],
+    _hl:[wh,"linear-gradient(#b8564b,#6c307c)",'rgba(0,0,0,0)',wh,"transparent"],
+    _bl:[wh,"linear-gradient(#9f4f0c,#f2c59f)","rgba(0,0,0,0)",wh,"transparent"],
+    _fi:[wh,"linear-gradient(#a88678,black)","rgba(0,0,0,0)", wh, 'transparent'],
   };
 
   if(localStorage.getItem("cs")){ // if a color scheme has been set, use it
     var tcs = localStorage.getItem("cs");
     console.log("right now the color scheme is "+tcs);
-    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4]);
+    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5]);
     console.log("the css *should* have changed");
   }
 }

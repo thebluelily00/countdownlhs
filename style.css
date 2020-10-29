@@ -3,6 +3,7 @@
 html, body{
   margin:0px;
   padding:0px;
+  min-height: 100%;
 }
 
 ::-moz-selection {
@@ -102,6 +103,7 @@ html, body{
 
 .mm1 textarea, .iconss{
   display:inline-block;
+  border:none;
   vertical-align:text-bottom;
 }
 
@@ -144,6 +146,7 @@ a{
 .mm2 table{
   margin: auto;
   border-spacing: 5px;
+  font-size: 0.9em;
 }
 
 #s1, #s2{
