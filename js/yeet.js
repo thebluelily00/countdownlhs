@@ -249,7 +249,6 @@ function spookify(){
   });
   $(".cobwebs").fadeIn(1000);
   //$("#set_header").text("🕸️ "+$("#set_header").text()+" 🕸️");
-  $('body').css('cursor', 'images/yeet.png');
 }
 
 function changeCSS(a,b,c,d,e,f){
