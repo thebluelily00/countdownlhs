@@ -146,7 +146,6 @@ a{
 .mm2 table{
   margin: auto;
   border-spacing: 5px;
-  font-size: 0.9em;
 }
 
 #s1, #s2{
@@ -213,7 +212,7 @@ i .fa-times-circle{
 }
 
 #cs_change img{
-  width:90px;
+  width:65px;
   display: inline-block;
 }
 
