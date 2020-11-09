@@ -412,7 +412,7 @@ function displayCount(num){
 
   else{
     $("#cd").text(num);
-    $("#heyo").text("CountdownLHS  |  "+num);
+    $("#heyo").text("CDLHS  |  "+num);
   }
 }
 
