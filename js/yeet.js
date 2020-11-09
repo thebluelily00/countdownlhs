@@ -418,6 +418,7 @@ function displayCount(num){
 
 if(d===0||d===6){
   console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
+  $("#exp").hide();
 }
 
 var yee = {'8':[30],'9':[30,38],'10':[38,46],'11':[46,54],'12':[54]};
