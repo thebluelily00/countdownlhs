@@ -242,6 +242,10 @@ body{
   overflow: scroll;
 }
 
+.shrink{
+  font-size:0.95em;
+}
+
 @media screen and (max-width: 772px) { /*smallest for phones*/
   #header{
     height:100%;
@@ -298,6 +302,7 @@ body{
     padding-bottom:15px;
   }
 }
+
 
 @media screen and (min-width:773px) and (max-width:1000px){
   #header{

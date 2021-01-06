@@ -1,5 +1,5 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #ghost, .cobwebs').hide();
+$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #wallpapers, #exp').hide();
 
 //date display
 var dd = new Date();
@@ -40,11 +40,12 @@ function startTime() {
   s = checkTime(s);
 
   var finalt = h + ":" + m + ":" + s;
-  $("#time").html(finalt + "<span id='ghost'> 👻</span>");
-  $('#ghost').hide();
+  $("#time").html(finalt);
 
   var t = setTimeout(startTime, 500);
 }
+
+
 function checkTime(i) {
   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
   return i;
@@ -131,7 +132,7 @@ $('.meet').click(function(){
   }
   else{
     answer = "https://"+answer;
-    console.log('the url for this meet is now '+answer);
+    console.log('the url for '+ $(this).attr("id") +' is now '+answer);
     localStorage.setItem($(this).attr("id"),answer);
   }
   refreshEverything();
@@ -231,102 +232,119 @@ $("#cc").click(function(){ $("#customize").slideUp(); });
 $("#o_cs").click(function(){
   $("#cs_images").slideDown();
   $("#customize").slideUp();
+  $("#wallpapers").slideUp();
 });
 
 $("#cscc").click(function(){
   $("#cs_images").slideUp();
 });
 
-// color scheme setup
-// this needs to be improved bc it's really ineficient rn
+$("#o_cw").click(function(){
+  $("#wallpapers").slideDown();
+  $("#customize").slideUp();
+  $("#cs_images").slideUp();
+});
 
-function spookify(){
-  $("#time").mouseenter(function(){
-    $("#ghost").fadeIn(1000);
-  });
-  $("#time").mouseleave(function(){
-    $("#ghost").fadeOut(1000);
-  });
-  $(".cobwebs").fadeIn(1000);
-  //$("#set_header").text("🕸️ "+$("#set_header").text()+" 🕸️");
-}
+$("#c_cw").click(function(){
+  $("#wallpapers").slideUp();
+});
 
-function changeCSS(a,b,c,d,e,f){
-  $("textarea").css("border","none");
-  $("textarea").css("color",'black');
-  $("#header, #main, #main a").css("color",a);
-  $("body").css("background",b);
-  $(".tcontainer").css("background",c);
-  $("textarea").css("background",d);
-  $("#logo").attr("src","images/logos/"+e+".png");
-  console.log(f);
-  if(e==="transparent"){
-    if(f==='True'){
-      $("#logo").css("background",a);
-      console.log("needy transparent background");
+function changeCSS(a,b,c,d,e,f,g){
+  if(localStorage.getItem("designType")==="colors"){
+    $("textarea").css("border","none");
+    $("textarea").css("color",'black');
+    $("#header, #main, #main a").css("color",a);
+    $("body").css("background",b);
+    $(".tcontainer").css("background",c);
+    $("textarea").css("background",d);
+    $("#logo").attr("src","images/logos/"+e+".png");
+    $(".tcontainer, .tcontainer a").css("color",g);
+    $(".tcontainer, .tcontainer a").css("text-decoration-color",g);
+    if(e==="transparent"){
+      if(f==='True'){
+        $("#logo").css("background",a);
+        console.log("needy transparent background");
+      }
+      else{
+        $("#logo").css("background",b);
+      }
+    }
+    var tema = localStorage.getItem("cs");
+    if(tema==="_og"){
+      $("textarea").css("background",'white');
+      $("textarea").css("border","1px solid black");
+    }
+    else if(tema==="_oy"){
+      $("textarea").css("color",'white');
+    }
+    if(tema==="_xm"){
+      $("textarea").css("color",'white');
+      console.log("should trigger takeOff() now 🎄");
+      takeOff();
     }
     else{
-      $("#logo").css("background",b);
+      packUp();
     }
+    console.log("the designType === colors");
   }
-  if(localStorage.getItem("cs")==="_og"){
-    $("textarea").css("background",'white');
-    $("textarea").css("border","1px solid black");
-  }
-  else if(localStorage.getItem("cs")==="_oy"){
-    $("textarea").css("color",'white');
-  }
-  else if(localStorage.getItem("cs")==="_fi"){
-    spookify();
-  }
-  else{
-    $(".cobwebs").fadeOut();
+  else if(localStorage.getItem("designType"==="image")){
+    console.log('yeet');
+    $("body").css("background","url("+localStorage.getItem("wu")+")");
+    $("body").css("background-position","center");
+    $("body").css("background-size","cover");
+    $("body").css("background-attachment", "fixed");
   }
 }
 
 function refreshCSS(){
-  // text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background
+// text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background, scroll bar color
   var wh = "white";
   var bl = "black";
 
+  // gradients + color themes
   var choices = {
-    _mi:[wh,bl,bl,wh,bl],
-    _og:[bl,wh,bl,bl,bl],
-    _ne:["#2a211d","#faf6f4","#937465",wh,'transparent', 'True'],
-    _oc:[wh,"linear-gradient(#a0cee5,#5b96b4)",'rgba(0,0,0,0)',wh, "transparent"],
-    _oy:["#004060","white","#004060","#004060","transparent",'True'],
-    _pl:[wh,"linear-gradient(#Ffce9f,#ff849c)","rgba(0,0,0,0)",wh,"transparent"],
-    _hl:[wh,"linear-gradient(#b8564b,#6c307c)",'rgba(0,0,0,0)',wh,"transparent"],
-    _bl:[wh,"linear-gradient(#9f4f0c,#f2c59f)","rgba(0,0,0,0)",wh,"transparent"],
-    _fi:[wh,"linear-gradient(#a88678,black)","rgba(0,0,0,0)", wh, 'transparent'],
+    _mi:[wh,bl,bl,wh,bl,'false',wh],
+    _og:[bl,wh,bl,bl,bl,'false',wh],
+    _ne:["#2a211d","#faf6f4","#937465",wh,'transparent', 'True',wh],
+    _oc:[wh,"linear-gradient(#a0cee5,#5b96b4)",'rgba(0,0,0,0)','rgba(255,255,255,0.85)', "transparent",'false',wh],
+    _oy:["#004060","white","#004060","#004060","transparent",'True',wh],
+    _pl:[wh,"linear-gradient(#Ffce9f,#ff849c)","rgba(0,0,0,0)",'rgba(255,255,255,0.8)',"transparent",'false',wh],
+    _hl:[wh,"linear-gradient(#b8564b,#6c307c)",'rgba(0,0,0,0)','rgba(255,255,255,0.8)',"transparent",'false',wh],
+    _bl:[wh,"linear-gradient(#9f4f0c,#f2c59f)","rgba(0,0,0,0)",'rgba(255,255,255,0.6)',"transparent",'false',wh],
+    _fi:[wh,"linear-gradient(#a88678,black)","rgba(0,0,0,0)", wh, 'transparent','false',wh],
+    _xm:[bl,,"rgba(0,0,0,0)","#924040",'transparent', 'True','#b4452d'],
+    _ny:[bl,"url(https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1)"],
+    // image wallpapers below this
+    _wi:[bl,"url(images/wallpapers/adam-chang-IWenq-4JHqo-unsplash.jpg)",'rgba(0,0,0,0)','rgba(255,255,255,0.8)']
   };
 
-  if(localStorage.getItem("cs")){ // if a color scheme has been set, use it
+  if(localStorage.getItem("cs")&&localStorage.getItem("designType"==="colors")){ // if a color scheme has been set, use it
     var tcs = localStorage.getItem("cs");
     console.log("right now the color scheme is "+tcs);
-    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5]);
+    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5],choices[tcs][6]);
     console.log("the css *should* have changed");
   }
 }
 
 $("#cs_images img").click(function(){
+  localStorage.setItem("designType","colors");
   localStorage.setItem("cs",$(this).attr("id"));
   console.log(localStorage.getItem("cs"));
   refreshCSS();
-  console.log('refreshCSS should be triggered');
 });
 
-/*
 $("#wallpapers img").click(function(){
-  localStorage.setItem("wallpaper_url",$(this).attr("src"));
-  console.log(localStorage.getItem("wallpaper_url"));
-  $("body").css("background","url("+localStorage.getItem("wallpaper_url")+")");
-  $("body").css("background-position","top");
-  $("body").css("background-size","cover");
-  $("body").css("background-attachment", "fixed");
-  $("body").css("background-repeat","repeat-x");
+  console.log("an image was clicked.");
+  localStorage.setItem("designType","image");
+  console.log("the designType is now " + localStorage.getItem("designType"));
+  localStorage.setItem("wu",$(this).attr("src"));
+  console.log("the background url is now" + localStorage.getItem("wu"));
+  localStorage.setItem("wc",$(this).attr("class"));
+  console.log("the color thing is now " + localStorage.getItem('wc'));
+  changeCSS();
+  console.log("the css???");
 });
-*/
+
 
 window.addEventListener("resize", function () {
     refreshCSS();
@@ -355,7 +373,6 @@ $("#comp").click(function(){
 //                                \   /
 //                                 \ /
 //                                  ˇ
-
 
 function countDown(day, month, year, hour, minute, second){
   var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
@@ -405,19 +422,21 @@ function countDown(day, month, year, hour, minute, second){
   return dif;
 }
 
-function displayCount(num){
+/*function displayCount(num){
   if(num===""){
     $("#heyo").text("CountdownLHS");
+    $("#exp").hide();
   }
-
   else{
+    $("#exp").show();
     $("#cd").text(num);
-    $("#heyo").text("CDLHS  |  "+num);
+    $("#heyo").text(num + "  |  CDLHS");
   }
 }
-
+*/
 if(d===0||d===6){
   console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
+  $("#exp, .hh3").hide();
 }
 
 var yee = {'8':[30],'9':[30,38],'10':[38,46],'11':[46,54],'12':[54]};
@@ -516,3 +535,11 @@ var countDownTime = setInterval(function(){
   // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
 
 }, 1000);
+
+var maint = function(a){
+  $("body").hide();
+  $("#heyo").text("come back on " + a);
+  $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
+}
+
+maint("1/7");

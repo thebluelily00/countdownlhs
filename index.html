@@ -32,7 +32,7 @@
       </div>
       <div class="hh hh2">
         <h2 id="date"></h2>
-        <h2 id="time"></h2>
+        <h2 id="time_h"><span id="time"></span></h2>
       </div>
       <div class="hh hh3">
         <h1 id="cd"></h1>
@@ -45,6 +45,9 @@
     <div class="mm mm3">
       <h1>Resources</h1>
       <ul id="resources">
+        <!--<li><span class="fas fa-video"></span><a href="javascript:
+          document.body.appendChild(document.createElement('script')).src ='/Users/mlc/Desktop/thebluelily00.github.io/js/plugin.js';
+          " title="Drag this to your bookmarks, then click on it once you're on a google meet."> Google Meet Plugin</a></li>-->
         <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t" target="_blank">School calendar</a></li>
         <li><span class="fas fa-calendar-week"></span> <a href="https://docs.google.com/spreadsheets/d/1Wi-FDVezAzwosp1Za6VuqO42vUNuhYxNJiiFqIVkkeU/edit?usp=sharing" target="_blank">Teacher schedules</a></li>
         <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
@@ -60,7 +63,7 @@
           </ul>
         </li>
       </ul>
-      <h1 id="set_header"><span class="cobwebs">🕸️</span> Settings <span class="cobwebs">🕸️</span></h1>
+      <h1 id="set_header">Settings</h1>
       <ul id="settings">
         <li><i class="fas fa-sliders-h"></i> <span id="cb" class="pointb">Your info</span>
           <ul id="customize">
@@ -109,8 +112,6 @@
         <li id="cs_change"><span class="fas fa-palette"></span> <span class="pointb" id="o_cs">Colors</span><br>
           <div id="cs_images">
             <img src="images/color_schemes/cd_cs_MIDNIGHT.png" id="_mi">
-            <!--<img src="images/color_schemes/cd_cs_FI.png" id="_fi" alt="">-->
-            <img src="images/color_schemes/cd_cs_PUMPKIN.png" id="_bl" alt="">
             <img src="images/color_schemes/cd_cs_OCEAN.png" id="_oc">
             <img src="images/color_schemes/cd_cs_PINKLEMONADE.png" id="_pl">
             <img src="images/color_schemes/cd_cs_MAJESTICAL.png" id="_hl" alt="">
@@ -119,26 +120,23 @@
             <img src="images/color_schemes/cd_cs_NEUTRAL.png" id="_ne">
             <br><i class="far fa-times-circle" id="cscc"></i><br>
           </div>
-        </li><!--
-        <li id="cwa"><span class="fas fa-image"></span><span class="pointb" id=""> Wallpaper</span><br>
+        </li>
+        <li id="cwa"><span class="fas fa-image"></span><span class="pointb" id="o_cw"> Wallpaper</span><br>
         <div id="wallpapers">
           <div id="horizontal">
+            <img src="images/wallpapers/adam-chang-IWenq-4JHqo-unsplash.jpg" id="_w1" class="light">
+            <img src="images/wallpapers/sharon-mccutcheon-62vi3TG5EDg-unsplash-1.jpg" id="_w2" class="dark" alt="">
             <img src="images/wallpapers/mountains/greece_mountain_anna.JPG" class="mountains">
             <img src="images/wallpapers/flowers/succulents_izzo.JPG" class="flowers succulents green">
-            <img src="images/wallpapers/greece_city_anna.JPG" class="greece" alt="">
             <img src="images/wallpapers/cities/nyc_mlc.jpg" class="urban">
             <img src="images/wallpapers/clouds/clouds_mlc.jpg" class="clouds">
             <img src="images/wallpapers/sunsets/ski_megan.jpg" class="sunsets winter">
             <img src="images/wallpapers/green/penn_mlc.jpg" class="green">
             <img src="images/wallpapers/sunsets/sunset_on_water_megan copy.jpg" class="sunsets">
             <img src="images/wallpapers/green/ferns_mlc.jpg" class="green">
-            <img src="images/wallpapers/flowers/flower_mlc.jpg" class="flowers">
             <img src="images/wallpapers/tropics/palmframe_mlc.jpg" class="palms tropical">
-            <img src="images/wallpapers/tropics/cornerpalm_mlc.jpg" class="palms tropical">
-            <!--<img src="images/wallpapers/clouds/vegas_mlc.jpg" class="clouds">
-            <img src="images/wallpapers/fall/zengarden_anna.JPG" class="fall">
+            <img src="images/wallpapers/clouds/vegas_mlc.jpg" class="clouds">
             <img src="images/wallpapers/green/happytree_mlc.jpg" class="green">
-            <img src="images/wallpapers/fall/creepytree_mlc.jpg" class="fall">
           </div>
           <div id="vertical">
             <img src="images/wallpapers/green/hill_anna.JPG" class="green">
@@ -150,25 +148,13 @@
             <img src="images/wallpapers/sunsets/sunset_behind_raindrops_megan.jpg" class="sunsets winter"><br>
             <img src="images/wallpapers/green/grass_megan.jpg" class="green">
             <img src="images/wallpapers/fall/trees_anna.JPG" class="fall">
-              <img src="images/wallpapers/green/trees_from_bridge_anna.JPG" class="green">
-              <img src="images/wallpapers/fall/bwtrees_anna.jpg" class="fall">
-          <br>
+            <img src="images/wallpapers/green/trees_from_bridge_anna.JPG" class="green">
+            <img src="images/wallpapers/fall/bwtrees_anna.jpg" class="fall">
             <img src="images/wallpapers/fall/falltree_megan.jpg" class="fall">
           </div>
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
-          <img src="" class="">
+          <i class="far fa-times-circle" id="c_cw"></i><br>
         </div>
-        </li>-->
+        </li>
       </ul>
     </div>
       <div class="mm mm2">
@@ -186,27 +172,55 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>8:30 - 9:30</td>
+                  <td>8:00 - 9:20</td>
                   <td>1</td>
                   <td>5</td>
                 </tr>
                 <tr>
-                  <td>9:38 - 10:38</td>
+                  <td>9:26 - 10:46</td>
                   <td>2</td>
                   <td>6</td>
                 </tr>
                 <tr>
-                  <td>10:46 - 11:46</td>
+                  <td>10:52 - 12:43</td>
                   <td>3</td>
                   <td>7</td>
                 </tr>
+                <tr class="shrink">
+                  <td>10:52 - 11:17</td>
+                  <td>lunch</td>
+                  <td>a</td>
+                </tr>
                 <tr>
-                  <td>11:54 - 12:54</td>
+                  <td>12:49 - 2:09</td>
                   <td>4</td>
                   <td>0</td>
                 </tr>
               </tbody>
             </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>a/b</th>
+                  <th>lunch</th>
+                  <th>class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>a</td>
+                  <td>10:52-11:17</td>
+                  <td>11:23-12:43</td>
+                </tr>
+                <tr>
+                  <td>b</td>
+                  <td>12:18-12:43</td>
+                  <td>10:52-12:12</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><em style="display:block; line-height:200%;">3rd period - lunch a:</em> lunch from 10:52-11:17 <br> class from 11:23-12:43</p>
+            <p><em style="display:block; line-height:200%;">3rd period - lunch b:</em> lunch from 12:18-12:43 <br> class from 10:52-12:12</p>
           </div>
           <div id="s2">
             <p>Wednesdays</p>
@@ -219,36 +233,40 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>8:00 - 8:25</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>8:30 - 8:55</td>
+                  <td>8:00 - 8:40</td>
                   <td>1</td>
                 </tr>
                 <tr>
-                  <td>9:00 - 9:25</td>
+                  <td>8:45 - 9:25</td>
                   <td>2</td>
                 </tr>
                 <tr>
-                  <td>9:30 - 9:55</td>
+                  <td>9:30 - 10:10</td>
                   <td>3</td>
                 </tr>
                 <tr>
-                  <td>10:00 - 10:25</td>
+                  <td>10:15 - 10:55</td>
                   <td>4</td>
                 </tr>
                 <tr>
-                  <td>10:30 - 10:55</td>
+                  <td>11:00 - 11:30</td>
+                  <td>LUNCH</td>
+                </tr>
+                <tr>
+                  <td>11:35 - 12:15</td>
                   <td>5</td>
                 </tr>
                 <tr>
-                  <td>11:00 - 11:25</td>
+                  <td>12:20 - 1:00</td>
                   <td>6</td>
                 </tr>
                 <tr>
-                  <td>11:30 - 11:55</td>
+                  <td>1:05 - 1:45</td>
                   <td>7</td>
+                </tr>
+                <tr>
+                  <td>1:50 - 2:30</td>
+                  <td>0</td>
                 </tr>
               </tbody>
             </table>
