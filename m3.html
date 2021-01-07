@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CDWHS</title>
+    <link rel="stylesheet" href="m3/m3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="js/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <div class="temp">
+      <h1>coming soon</h1>
+      <form class="enterr">
+        <input type="password" name="password" id="password" value="">
+        <input type="submit" id="sub" value="🔒"> <!-- if someone is reading this, ik you can find the password easily it's just *temporary* measures -->
+      </form>
+    </div>
+    <div class="cont">
+    <h1>countdown - weber edition</h1>
+    <h2>04:18</h2>
+    <div class="settings">
+      <h2>Settings</h2>
+        <table>
+          <tr>
+            <td>Show time?</td>
+            <td><input type="checkbox" id="st" name="st"></td>
+          </tr>
+          <tr>
+            <td>Military time?</td>
+            <td><input type="checkbox" id="mt" name="mt"></td>
+          </tr>
+          <tr>
+            <td>Show seconds?</td>
+            <td><input type="checkbox" id="ss" name="ss"></td>
+          </tr>
+          <tr>
+            <td>Font</td>
+            <td>
+              <select id="fc" name="fc">
+                <option value="sans" style="font-family:sans-serif;">Sans serif</option>
+                <option value="seri" style="font-family:serif;">Serif</option>
+                <option value="mono" style="font-family:monospace;">Monospace</option>
+                <option value="curs" style="font-family:cursive;">Cursive</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Theme</td>
+            <td>
+              <select id="tc" name="tc">
+                <option value="color_theme">Color</option>
+                <option value="wallpaper">Wallpaper</option>
+                <option value="custom_gradient">Custom gradient</option>
+                <option value="custom_color">Custom colors</option>
+                <option value="custom_wallpaper">Custom wallpaper</option>
+              </select>
+            </td>
+            <td id="themes">
+              <select id="cc" name="cc">
+                <option value=""></option>
+              </select>
+            </td>
+            <td id="wallpapers">
+              <select id="wc" name="wc">
+                <option value=""></option>
+              </select>
+            </td>
+            <td id="custom_gradient" class="c_s">
+              <label for="gn" id="num_info"># of colors: </label>
+              <input type="range" min="2" max="5" name="gn" id="gn" value="2">
+            </td>
+            <td id="custom_theme" class="c_s">
+              <input type="color" name="text_color" title="text color">
+              <input type="color" name="background_color" title="background color">
+            </td>
+            <td id="custom_wallpaper" class="c_s">
+              <input type="file" name="background_image" style="width:200px;">
+              <input type="color" name="text_color_comp">
+            </td>
+          </tr>
+          <tr>
+            <td>Bulletpoint</td>
+            <td>
+              <select id="bc" name="bc">
+                <option value="preset">Preset</option>
+                <option value="custom">Custom</option>
+              </select>
+            </td>
+            <td id="custom_bulletpoint">
+              <input type="text" name="" value="" maxlength="1" style="width:30px;">
+            </td>
+            <td id="bulletpoints">
+              <select class="" name="">
+                <option value=""></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+    <div class="links">
+      <h2>Links</h2>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    </div>
+    <script src="m3/ginger.js"></script>
+  </body>
+</html>

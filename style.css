@@ -79,17 +79,12 @@ html, body{
   text-align: left;
 }
 
-.hh3{
-}
-
 #cd{
   font-size: 5em;
   margin-top:0px;
   margin-bottom:0px;
   display: inline-block;
 }
-
-
 
 .ehh{
   display: inline-block;
@@ -132,26 +127,23 @@ a{
 }
 
 .mm1{
-  /* background-color: #FFC8B2; */
   text-align: center;
   width:30vw;
 }
 
 .mm2{
-  /*  background: #FFD9FD; */
   text-align: center;
-  width:450.15px;
 }
 
-.mm2 table{
-  margin: auto;
-  border-spacing: 5px;
+#lunches{
+  display: none;
+  visibility: hidden;
 }
 
 #s1, #s2{
   display: inline-block;
   vertical-align: top;
-  margin:5px;
+  margin:0px;
 }
 
 .mm3{
@@ -221,12 +213,6 @@ i .fa-times-circle{
   margin:auto;
 }
 
-
-
-#wallpapers{
-  text-align: center;
-}
-
 body{
   background-position: center;
   background-size: cover;
@@ -236,14 +222,6 @@ body{
 
 #vertical img{
   width:90px;
-}
-
-#wallpapers{
-  overflow: scroll;
-}
-
-.shrink{
-  font-size:0.95em;
 }
 
 @media screen and (max-width: 772px) { /*smallest for phones*/
@@ -257,10 +235,6 @@ body{
 
   .hh2{
     text-align: center;
-  }
-
-  #s1, #s2{
-    display: block;
   }
 
   .mm2{

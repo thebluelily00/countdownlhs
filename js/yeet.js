@@ -1,11 +1,12 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #wallpapers, #exp').hide();
+$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #wallpapers').hide();
 
 //date display
 var dd = new Date();
 var d = dd.getDay();
 var m = dd.getMonth();
 var n = dd.getDate();
+var y = dd.getFullYear();
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -138,7 +139,7 @@ $('.meet').click(function(){
   refreshEverything();
 });
 
-function refreshEverything(){
+function refreshEverything(){ //keep all the data ppl have put in actually visible
   let p = 1;
   while(p<8){
     if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
@@ -188,7 +189,6 @@ $("#t7").on('change keyup paste', function(){
   localStorage.setItem('t7',$(this).val());
 });
 
-
 $("#bbb").click(function(){
   $('#gclas-input').slideDown();
   $('#meet-input').slideUp();
@@ -196,14 +196,12 @@ $("#bbb").click(function(){
 });
 $("#cgc").click(function(){$('#gclas-input').slideUp();});
 
-
 $("#bc").click(function(){
   $('#meet-input').slideDown();
   $('#gclas-input').slideUp();
   $("#schh").slideUp();
 });
 $("#cgm").click(function(){$('#meet-input').slideUp();});
-
 
 $("#ba").click(function(){
   $("#schh").slideDown();
@@ -226,7 +224,6 @@ $("#cb").click(function(){
   $("#customize").slideDown();
   $("#cs_images").slideUp();
 });
-
 $("#cc").click(function(){ $("#customize").slideUp(); });
 
 $("#o_cs").click(function(){
@@ -234,19 +231,8 @@ $("#o_cs").click(function(){
   $("#customize").slideUp();
   $("#wallpapers").slideUp();
 });
-
 $("#cscc").click(function(){
   $("#cs_images").slideUp();
-});
-
-$("#o_cw").click(function(){
-  $("#wallpapers").slideDown();
-  $("#customize").slideUp();
-  $("#cs_images").slideUp();
-});
-
-$("#c_cw").click(function(){
-  $("#wallpapers").slideUp();
 });
 
 function changeCSS(a,b,c,d,e,f,g){
@@ -282,10 +268,6 @@ function changeCSS(a,b,c,d,e,f,g){
       console.log("should trigger takeOff() now 🎄");
       takeOff();
     }
-    else{
-      packUp();
-    }
-    console.log("the designType === colors");
   }
   else if(localStorage.getItem("designType"==="image")){
     console.log('yeet');
@@ -318,33 +300,16 @@ function refreshCSS(){
     _wi:[bl,"url(images/wallpapers/adam-chang-IWenq-4JHqo-unsplash.jpg)",'rgba(0,0,0,0)','rgba(255,255,255,0.8)']
   };
 
-  if(localStorage.getItem("cs")&&localStorage.getItem("designType"==="colors")){ // if a color scheme has been set, use it
-    var tcs = localStorage.getItem("cs");
-    console.log("right now the color scheme is "+tcs);
-    changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5],choices[tcs][6]);
-    console.log("the css *should* have changed");
-  }
+  var tcs = localStorage.getItem("cs");
+  changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5],choices[tcs][6]);
 }
 
 $("#cs_images img").click(function(){
-  localStorage.setItem("designType","colors");
+  //localStorage.setItem("designType","colors");
   localStorage.setItem("cs",$(this).attr("id"));
   console.log(localStorage.getItem("cs"));
   refreshCSS();
 });
-
-$("#wallpapers img").click(function(){
-  console.log("an image was clicked.");
-  localStorage.setItem("designType","image");
-  console.log("the designType is now " + localStorage.getItem("designType"));
-  localStorage.setItem("wu",$(this).attr("src"));
-  console.log("the background url is now" + localStorage.getItem("wu"));
-  localStorage.setItem("wc",$(this).attr("class"));
-  console.log("the color thing is now " + localStorage.getItem('wc'));
-  changeCSS();
-  console.log("the css???");
-});
-
 
 window.addEventListener("resize", function () {
     refreshCSS();
@@ -398,7 +363,6 @@ function countDown(day, month, year, hour, minute, second){
 
   if(seconds<0&&minutes<0&&hours<0){
     location.reload();
-    console.log('the page SHOULD be reloading rn');
   }
 
   if(hours<10){
@@ -422,24 +386,24 @@ function countDown(day, month, year, hour, minute, second){
   return dif;
 }
 
-/*function displayCount(num){
+function displayCount(num){
   if(num===""){
     $("#heyo").text("CountdownLHS");
     $("#exp").hide();
   }
   else{
-    $("#exp").show();
     $("#cd").text(num);
     $("#heyo").text(num + "  |  CDLHS");
   }
 }
-*/
+
 if(d===0||d===6){
   console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
   $("#exp, .hh3").hide();
 }
 
-var yee = {'8':[30],'9':[30,38],'10':[38,46],'11':[46,54],'12':[54]};
+var yee = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[43,49],'13':[],'14':[9]};
+var yee2 = {'8':[00,40,45],'9':[25,30],'10':[10,15,55],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]};
 
 var countDownTime = setInterval(function(){
   var day = d;
@@ -449,16 +413,17 @@ var countDownTime = setInterval(function(){
   var daysin = [31,28,31,30,31,30,31,31,30,31,30,31]; // how many days are in each month. don't forget like april did - https://www.youtube.com/watch?v=jpwelTxlcQs
 
   var tings = function(){
-    if(day!=5){// for everyday except friday, countdown to tomorrow @ 8:30
+    if(day!=5){// for everyday except friday, countdown to tomorrow @ 8:00
       if(n+1<=daysin[m]){
-        displayCount(countDown(n+1,m,2020,8,30,0));
+        displayCount(countDown(n+1,m,y,8,00,0));
       }
       else{
-        displayCount(countDown(1,m+1,2020,8,30,0));
+        displayCount(countDown(1,m+1,y,8,00,0));
       }
     }
     else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
       displayCount("");
+      $("#exp").hide();
     }
   }
 
@@ -467,60 +432,85 @@ var countDownTime = setInterval(function(){
   }
 
   else if(day===3){ //wednesdays
+    console.log("it's wednesday my dude!!")
+
     if(hour<8){//countdown to 8/zero hour DONE
-      displayCount(countDown(n,m,2020,8,0,0));
+      displayCount(countDown(n,m,y,8,0,0));
+      console.log('layer 1');
     }
-    else if(hour>=8&&hour<12){
-      if(minutes<25){
-        displayCount(countDown(n,m,2020,hour,25,0));
-      }
-      else if(minutes>=25&&minutes<30){
-        displayCount(countDown(n,m,2020,hour,30,0));
-      }
-      else if(minutes>=30&&minutes<55){
-        displayCount(countDown(n,m,2020,hour,55,0));
-      }
-      else if(minutes>=55){
-        displayCount(countDown(n,m,2020,hour+1,0,0));
-      }
-    }
-    //else if for each period
-    else{ // after hours, cd to next morning's classes
-      if(n+1<=daysin[m]){
-        displayCount(countDown(n+1,m,2020,9,0,0));
+    else if(hour >= 8 && hour < 15){
+      if(minutes < yee2[hour][0]){
+        displayCount(countDown(n,m,y,hour,yee2[hour][0],0));
+        console.log('layer 2');
       }
       else{
-        displayCount(countDown(1,m+1,2020,9,0,0));
+        if(minutes<yee2[hour][1]){
+          displayCount(countDown(n,m,y,hour,yee2[hour][1],0));
+          console.log('layer 3');
+        }
+        else{
+          if(minutes<yee2[hour][2]){
+            displayCount(countDown(n,m,y,hour,yee2[hour][2],0));
+            console.log('layer 4');
+          }
+          else{
+            if(minutes<yee2[hour][3]){
+              displayCount(countDown(n,m,y,hour,yee2[hour][3],0));
+              console.log('layer 5');
+            }
+            else if(yee2.hasOwnProperty(hour+1)){
+            console.log('layer 6');
+              displayCount(countDown(n,m,y,hour+1,yee2[hour+1][0],0));
+            }
+            else{
+              console.log('last layer');
+              if(n+1<=daysin[m]){
+                displayCount(countDown(n+1,m,y,8,0,0));
+              }
+              else{
+                displayCount(countDown(1,m+1,y,8,0,0));
+              }
+            }
+          }
+        }
       }
     }
   }
 
-  // future idea: make an array or object holding all the times, so it can iterate thru instead of this. so messy ugh
-
-  else{ // not wednesdays (this ALL changes)
-    if(yee[hour]){ // is it from 8-12:59?
-      if(hour===8){ //right before school
-        if(minutes<30){
-          displayCount(countDown(n,m,2020,8,30,0));
-        }
-        else{
-          displayCount(countDown(n,m,2020,9,30,0));
-        }
+  else{ // not wednesdays
+    if(yee[hour]){
+      if(hour<8){ //right before school
+        displayCount(countDown(n,m,y,8,00,0));
+      }
+      else if(hour===8){
+        displayCount(countDown(n,m,y,9,20,0));
+      }
+      else if(hour===11){
+        displayCount(countDown(n,m,y,12,43,0));
+      }
+      else if(hour===12&&minutes>=49){
+        displayCount(countDown(n,m,y,14,09,0));
       }
       else if(yee[hour].length===2){
         if(minutes<yee[hour][0]){
-          displayCount(countDown(n,m,2020,hour,yee[hour][0],0)); // if it's the first countdown of the hr
+          displayCount(countDown(n,m,y,hour,yee[hour][0],0)); // if it's the first countdown of the hr
         }
         else if(minutes>=yee[hour][0]&&minutes<yee[hour][1]){ // count to passing period
-          displayCount(countDown(n,m,2020,hour,yee[hour][1],0));
+          displayCount(countDown(n,m,y,hour,yee[hour][1],0));
+        }
+        else if(hour===10&&minutes>=52){
+          displayCount(countDown(n,m,y,12,yee[hour][0],0));
         }
         else{
-          displayCount(countDown(n,m,2020,hour+1,yee[hour+1][0],0)); // count to first item of next array
+          displayCount(countDown(n,m,y,hour+1,yee[hour + 1][0],0)); // count to first item of next array
         }
       }
       else{
-        if(hour===12&&minutes<54){
-          displayCount(countDown(n,m,2020,12,54,0)); // count to first item of next array
+        if(hour===14&&minutes<9){
+          displayCount(countDown(n,m,y,2,09,0));
+        }
+        if(hour===13){
+          displayCount(countDown(n,m,y,2,09,0));
         }
         else{
           tings();
@@ -529,6 +519,7 @@ var countDownTime = setInterval(function(){
     }
     else{ // after school!
       tings();
+      console.log('school is DONE for the day')
     }
   }
 
@@ -542,4 +533,4 @@ var maint = function(a){
   $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
 }
 
-maint("1/7");
+//maint("1/7");
