@@ -507,10 +507,10 @@ var countDownTime = setInterval(function(){
       }
       else{
         if(hour===14&&minutes<9){
-          displayCount(countDown(n,m,y,2,09,0));
+          displayCount(countDown(n,m,y,14,09,0));
         }
         if(hour===13){
-          displayCount(countDown(n,m,y,2,09,0));
+          displayCount(countDown(n,m,y,14,09,0));
         }
         else{
           tings();
