@@ -136,8 +136,8 @@ a{
 }
 
 #lunches{
-  display: none;
-  visibility: hidden;
+  font-size: 0.8em;
+  margin-top:10px;
 }
 
 #s1, #s2{
