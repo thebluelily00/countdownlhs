@@ -264,7 +264,8 @@ function refreshCSS(){
 // text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background, scroll bar color
   var wh = "white";
   var bl = "black";
-
+  
+  $("#lcc").width($("#mttf").width()+"px");
   // gradients + color themes
   var choices = {
     _mi:[wh,bl,bl,wh,bl,'false',wh],
