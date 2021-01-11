@@ -139,6 +139,9 @@ a{
   font-size: 0.8em;
   margin-top:10px;
 }
+.sm{
+  font-size: 0.6em;
+}
 
 #s1, #s2{
   display: inline-block;
@@ -201,6 +204,9 @@ i .fa-times-circle{
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: white;
+}
+#cs_change{
+  display: none;
 }
 
 #cs_change img{
