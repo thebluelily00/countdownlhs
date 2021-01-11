@@ -167,26 +167,8 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
   }
 }
 
-$("#t1").on('change keyup paste', function(){
-  localStorage.setItem('t1',$(this).val());
-});
-$("#t2").on('change keyup paste', function(){
-  localStorage.setItem('t2',$(this).val());
-});
-$("#t3").on('change keyup paste', function(){
-  localStorage.setItem('t3',$(this).val());
-});
-$("#t4").on('change keyup paste', function(){
-  localStorage.setItem('t4',$(this).val());
-});
-$("#t5").on('change keyup paste', function(){
-  localStorage.setItem('t5',$(this).val());
-});
-$("#t6").on('change keyup paste', function(){
-  localStorage.setItem('t6',$(this).val());
-});
-$("#t7").on('change keyup paste', function(){
-  localStorage.setItem('t7',$(this).val());
+$('.notes').on('change keyup paste', function(){
+  localStorage.setItem($(this).attr('id'),$(this).val());
 });
 
 $("#bbb").click(function(){
@@ -522,9 +504,7 @@ var countDownTime = setInterval(function(){
       console.log('school is DONE for the day')
     }
   }
-
   // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
-
 }, 1000);
 
 var maint = function(a){
@@ -532,5 +512,3 @@ var maint = function(a){
   $("#heyo").text("come back on " + a);
   $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
 }
-
-//maint("1/7");

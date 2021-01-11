@@ -1,42 +1,29 @@
-$("#themes, #wallpapers, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints").hide();
-
+$("#color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .ov,.nag_g, .th_ch").hide();
+$(".settings").hide();
 console.log('this is going thru');
 
-$("#tc").change(function(){
-  if($(this).val()==='color_theme'){
-    $("#themes").show();
-    $("#wallpapers").hide();
-    $("#custom_theme").hide();
-    $("#custom_wallpaper").hide();
-  }
-  else if($(this).val()==='wallpaper'){
-    $("#wallpapers").show();
-    $("#themes").hide();
-    $("#custom_theme").hide();
-    $("#custom_wallpaper").hide();
-    $("#custom_gradient").hide();
-  }
-  else if($(this).val()==='custom_gradient'){
-    $("#custom_gradient").show();
-    $("#wallpapers").hide();
-    $("#themes").hide();
-    $("#custom_theme").hide();
-    $("#custom_wallpaper").hide();
-  }
-  else if($(this).val()==='custom_color'){
-    $("#custom_theme").show();
-    $("#wallpapers").hide();
-    $("#themes").hide();
-    $("#custom_wallpaper").hide();
-    $("#custom_gradient").hide();
-  }
-  else{
-    $("#custom_wallpaper").show();
-    $("#custom_theme").hide();
-    $("#wallpapers").hide();
-    $("#themes").hide();
-    $("#custom_gradient").hide();
-  }
+function rU(a){
+  return neww = a.replace("_", " ");
+}
+
+$("#open-settings").click(function(){
+  $(".cont").hide();
+  $(".settings").fadeIn();
+});
+$("#close-settings").click(function(){
+  $(".settings").hide();
+  $(".cont").fadeIn();
+});
+
+$("#tc, #tcc").change(function(){
+  $(".ov").slideDown();
+  $("#ov_label").text("change "+rU($(this).val()));
+  $("#"+$(this).val()).show();
+  $(".c_s:not(#"+$(this).val()+")").hide();
+});
+
+$("#ov_close").click(function(){
+  $(".ov").slideUp();
 });
 
 $("#gn").change(function(){
@@ -49,6 +36,14 @@ $("#gn").change(function(){
   }
 });
 
+$(".nav_g li").click(function(){
+  console.log($(this).text());
+  console.log($("#color_gradient img ."+$(this).text()));
+  console.log($("#color_gradient img:not(."+$(this).text()+")"));
+  $("#color_gradient img ."+$(this).text()).show();
+});
+
+// password stuff
 $(".enterr").submit(function(event){
   event.preventDefault();
   if($("#password").val()==="rocktea"){

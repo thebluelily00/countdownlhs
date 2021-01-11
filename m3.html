@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>CDWHS</title>
-    <link rel="stylesheet" href="m3/m3.css">
+    <link rel="stylesheet" href="m3/allie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="js/jquery-3.4.1.min.js"></script>
   </head>
@@ -15,77 +15,118 @@
         <input type="submit" id="sub" value="🔒"> <!-- if someone is reading this, ik you can find the password easily it's just *temporary* measures -->
       </form>
     </div>
-    <div class="cont">
-    <h1>countdown - weber edition</h1>
-    <h2>04:18</h2>
     <div class="settings">
-      <h2>Settings</h2>
-        <table>
-          <tr>
-            <td>Show time?</td>
-            <td><input type="checkbox" id="st" name="st"></td>
-          </tr>
-          <tr>
-            <td>Military time?</td>
-            <td><input type="checkbox" id="mt" name="mt"></td>
-          </tr>
-          <tr>
-            <td>Show seconds?</td>
-            <td><input type="checkbox" id="ss" name="ss"></td>
-          </tr>
-          <tr>
-            <td>Font</td>
-            <td>
-              <select id="fc" name="fc">
-                <option value="sans" style="font-family:sans-serif;">Sans serif</option>
-                <option value="seri" style="font-family:serif;">Serif</option>
-                <option value="mono" style="font-family:monospace;">Monospace</option>
-                <option value="curs" style="font-family:cursive;">Cursive</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Theme</td>
-            <td>
-              <select id="tc" name="tc">
-                <option value="color_theme">Color</option>
-                <option value="wallpaper">Wallpaper</option>
-                <option value="custom_gradient">Custom gradient</option>
-                <option value="custom_color">Custom colors</option>
-                <option value="custom_wallpaper">Custom wallpaper</option>
-              </select>
-            </td>
-            <td id="themes">
-              <select id="cc" name="cc">
+      <h1>Settings</h1>
+        <div class="cent">
+          <div id="st_cont" class="contt">
+            <table id="set_time">
+              <tr>
+                <td>Show date?</td>
+                <td><input type="checkbox" id="sd" name="sd"></td>
+              </tr>
+              <tr>
+                <td>Show time?</td>
+                <td><input type="checkbox" id="st" name="st"></td>
+              </tr>
+              <tr>
+                <td>Military time?</td>
+                <td><input type="checkbox" id="mt" name="mt"></td>
+              </tr>
+              <tr>
+                <td>Show seconds?</td>
+                <td><input type="checkbox" id="ss" name="ss"></td>
+              </tr>
+            </table>
+          </div>
+          <div id="sv_cont" class="contt">
+            <table id="set_visu">
+              <tr>
+                <td>Font</td>
+                <td>
+                  <select id="fc" name="fc">
+                    <option value="sans" style="font-family:sans-serif;">Sans serif</option>
+                    <option value="seri" style="font-family:serif;">Serif</option>
+                    <option value="mono" style="font-family:monospace;">Monospace</option>
+                    <option value="curs" style="font-family:cursive;">Cursive</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Theme <span class="sm">(preset)</span></td>
+                <td>
+                  <select id="tc" name="tc">
+                    <option value="color_theme">Color</option>
+                    <option value="wallpaper">Wallpaper</option>
+                    <option value="color_gradient">Color gradient</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Theme <span class="sm">(customized)</span></td>
+                <td>
+                  <select id="tcc" name="tcc">
+                    <option value="custom_gradient">Custom gradient</option>
+                    <option value="custom_color">Custom colors</option>
+                    <option value="custom_wallpaper">Custom wallpaper</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="ov">
+          <h2 id="ov_label"></h2>
+          <div class="all_theme">
+            <div id="color_theme" class="c_s">
+              <select id="cc" name="cc" class="c_s">
                 <option value=""></option>
+                heyo
               </select>
-            </td>
-            <td id="wallpapers">
+            </div>
+            <div id="color_gradient" class="c_s">
+              <ul class="nav_g th_ch">
+                <li>pink</li>
+                <li>red</li>
+                <li>orange</li>
+                <li>yellow</li>
+                <li>green</li>
+                <li>blue</li>
+                <li>purple</li>
+              </ul>
+              <img src="m3/images/themes/e8cbc0_636fa4.png" class="blue peach" id="">
+              <img src="m3/images/themes/ffafbd_ffc3a0.png" class="pink peach" id="">
+            </div>
+            <div id="wallpaper" class="c_s">
               <select id="wc" name="wc">
                 <option value=""></option>
               </select>
-            </td>
-            <td id="custom_gradient" class="c_s">
+            </div>
+            <div id="custom_gradient" class="c_s">
               <label for="gn" id="num_info"># of colors: </label>
               <input type="range" min="2" max="5" name="gn" id="gn" value="2">
-            </td>
-            <td id="custom_theme" class="c_s">
-              <input type="color" name="text_color" title="text color">
-              <input type="color" name="background_color" title="background color">
-            </td>
-            <td id="custom_wallpaper" class="c_s">
+            </div>
+            <div id="custom_color" class="c_s">
+              <div class="cc1">
+                <label for="text_color">Text color</label>
+                <input type="color" name="text_color" id="text_color" title="text color">
+              </div>
+              <div class="cc2">
+                <label for="background_color">Text color</label>
+                <input type="color" name="background_color" id="background_color" title="background color">
+              </div>
+            </div>
+            <div id="custom_wallpaper" class="c_s">
               <input type="file" name="background_image" style="width:200px;">
               <input type="color" name="text_color_comp">
-            </td>
-          </tr>
+            </div>
+          </div>
+          <div class="all_bulletpoint">
+
+          </div>
+          <p id="ov_close"><strong>done</strong></p>
+        </div>
+        <table>
           <tr>
-            <td>Bulletpoint</td>
-            <td>
-              <select id="bc" name="bc">
-                <option value="preset">Preset</option>
-                <option value="custom">Custom</option>
-              </select>
-            </td>
             <td id="custom_bulletpoint">
               <input type="text" name="" value="" maxlength="1" style="width:30px;">
             </td>
@@ -100,13 +141,41 @@
             <td></td>
           </tr>
         </table>
+        <div id="os_cont" class="">
+          <label for="spotify_info" id="csl">Customize Spotify Widget</label>
+          <div id="spot-opt">
+            <em class="sm"><label for="show_spotify">Show the widget?</label>
+            <input type="checkbox" name="show_spotify"></em>
+          </div>
+          <input type="text" id="spotify_info" name="spotify_info" value="" placeholder="paste the playlist URL here.">
+        </div>
+
+        <i class="far fa-times-circle" id="close-settings"></i>
+    </div>
+    <div class="cont">
+    <div class="header">
+      <div class="">
+        <img src="m3/images/logos/lightlogo_empty.png" id="logo">
+      </div>
+      <div class="">
+        <h2 id="date"></h2>
+        <h2 id="time_h"><span id="time"></span></h2>
+      </div>
+      <div class="">
+        <h1 id="cd"></h1>
+        <i class="fas fa-expand-arrows-alt" id="exp" class=""></i>
+        <i class="fas fa-compress-arrows-alt" id="comp" class=""></i>
+      </div>
+    </div>
+    <div class="">
+      <h2><i class="fas fa-cogs" id="open-settings"></i></h2>
     </div>
     <div class="links">
       <h2>Links</h2>
       <ul>
-        <li></li>
       </ul>
     </div>
+    <iframe src="https://open.spotify.com/embed/playlist/7ajgjjP9ygkTQIoU4Yg0Ms" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
     <script src="m3/ginger.js"></script>
   </body>

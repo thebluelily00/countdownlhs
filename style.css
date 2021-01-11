@@ -224,11 +224,10 @@ body{
   width:90px;
 }
 
-@media screen and (max-width: 772px) { /*smallest for phones*/
+@media screen and (max-width: 772px) and (orientation:portrait){ /*smallest for phones*/
   #header{
     height:100%;
   }
-
   #logo{
     width:50%;
   }
@@ -275,22 +274,35 @@ body{
   .textdiv{
     padding-bottom:15px;
   }
+
+  #exp{
+    display: none;
+  }
+
+  #cd{
+    font-size: 3em;
+  }
 }
 
-
 @media screen and (min-width:773px) and (max-width:1000px){
+  #crawler{
+    font-size: 2em;
+    margin-bottom:20px;
+  }
   #header{
     height:100%;
+    font-size: 2em;
   }
   #logo{
-    width:10%;
+    width:100%;
   }
-  .hh{
-    width:auto;
+  .hh1, .hh2{
+    display: inline-block;
+    margin:5px;
+    padding:0px;
   }
   .hh1{
-    width:inherit;
-    display: block;
+    width:15%;
   }
 
   .mm1{
@@ -305,7 +317,8 @@ body{
   }
 
   .mm3{
-
+    font-size: 1.5em;
+    width:80%;
   }
   .mm3 a{
   }
@@ -314,8 +327,23 @@ body{
     background: black;
     color:white;
     width:100vw;
-    margin:0px;
+    margin:10px 0px 20px 0px;
+    font-size: 1.7em;
+  }
+  #sched_header{
+    margin-bottom: 0px;
+  }
 
+  .textdiv textarea{
+    font-size:1.5em;
+    height:150px;
+  }
+
+  #exp{
+    display: none;
+  }
+  #cs_images img{
+    width:130px;
   }
 }
 @media screen and (min-width:1000px) and (max-width:1271px){
