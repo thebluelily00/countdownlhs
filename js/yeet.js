@@ -1,16 +1,6 @@
 //hide things
 $('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #wallpapers').hide();
 
-//date display
-var dd = new Date();
-var d = dd.getDay();
-var m = dd.getMonth();
-var n = dd.getDate();
-var y = dd.getFullYear();
-
-var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
 function ending(datee){ //make it like english + not like a robot
   if(datee===1||datee===21){
     return "st";
@@ -25,6 +15,16 @@ function ending(datee){ //make it like english + not like a robot
     return "th";
   }
 }
+
+//date display
+var dd = new Date();
+var d = dd.getDay();
+var m = dd.getMonth();
+var n = dd.getDate();
+var y = dd.getFullYear();
+
+var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 var today = days[d] + ", " + months[m] + " " + n + ending(n); // the text that actually shows for the date
 
@@ -264,7 +264,7 @@ function refreshCSS(){
 // text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background, scroll bar color
   var wh = "white";
   var bl = "black";
-  
+
   $("#lcc").width($("#mttf").width()+"px");
   // gradients + color themes
   var choices = {

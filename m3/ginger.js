@@ -1,5 +1,6 @@
 $("#color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .ov,.nag_g, .th_ch").hide();
-$(".settings").hide();
+$(".settings, #exp, #comp").hide();
+
 console.log('this is going thru');
 
 function rU(a){

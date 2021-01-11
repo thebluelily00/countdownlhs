@@ -16,18 +16,12 @@
 }
 
 h1, h2{
-  text-align: center;
   font-weight: lighter;
 }
 
 body, html{
   margin:0px;
   padding:0px;
-}
-
-.settings{
-  padding:20px;
-  display: none;
 }
 
 html{
@@ -71,8 +65,10 @@ html{
 }
 
 .settings{
+  display: none;
+  margin:20vh auto 0px auto;
+  max-width: 500px;
   background:rgba(255,255,255,0.15);
-  margin:100px;
   padding:45px;
   line-height: 160%;
   font-weight: lighter;
@@ -90,7 +86,7 @@ html{
 
 .cent{
   margin: auto;
-  max-width:400px;
+  max-width:430px;
 }
 
 #settings table{
@@ -119,7 +115,12 @@ html{
 }
 
 #os_cont{
-  margin-bottom:10px;
+  margin: 0px auto 15px auto;
+  max-width:430px;
+}
+
+.settings h1{
+  text-align: center;
 }
 
 #spot-opt, #csl{
@@ -156,16 +157,62 @@ html{
 
 
 #logo{
-  width:200px;
+  width:150px;
   text-align: center;
   margin:auto;
   display: block;
 }
 
-@media screen and (max-width:500px), screen and (max-device-width:500px){
-  .settings{
+.hc h1, .hc h2{
+  text-align: left;
+}
+
+.hc{
+  display: inline-block;
+  vertical-align: middle;
+  text-align:left;
+  padding:10px;
+}
+
+.header{
+  text-align: center;
+}
+
+#cd{
+  font-size: 4em;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.schedule table{
+  text-align: center;
+  margin:auto;
+}
+
+.schedule table td{
+  padding:5px;
+}
+
+.inl{
+  display: inline-block;
+  vertical-align: top;
+  margin:20px;
+}
+
+/* put left align stuff here */
+
+.inl-cont{
+  text-align: center;
+}
+
+@media screen and (max-width:550px), screen and (max-device-width:550px){
+  /*.settings{
     margin:60px;
     font-size: 2.5em;
+  }*/
+
+  .settings{
+    margin:20px;
   }
   .settings table, .settings div, .cent{
     text-align: left;

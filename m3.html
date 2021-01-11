@@ -5,7 +5,7 @@
     <title>CDWHS</title>
     <link rel="stylesheet" href="m3/allie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   </head>
   <body>
     <div class="temp">
@@ -153,29 +153,73 @@
         <i class="far fa-times-circle" id="close-settings"></i>
     </div>
     <div class="cont">
-    <div class="header">
-      <div class="">
-        <img src="m3/images/logos/lightlogo_empty.png" id="logo">
+      <div class="header">
+        <div class="c1 hc">
+          <img src="m3/images/logos/lightlogo_empty.png" id="logo">
+        </div>
+        <div class="c2 hc">
+          <h2 id="date">Tuesday, January 12th</h2>
+          <h2 id="time_h"><span id="time">11:00:00</span> <i class="fas fa-cogs" id="open-settings"></i></h2>
+          <h3></h3>
+        </div>
+        <div class="c3 hc">
+          <h1 id="cd">12:00</h1>
+          <i class="fas fa-expand-arrows-alt" id="exp" class=""></i>
+          <i class="fas fa-compress-arrows-alt" id="comp" class=""></i>
+        </div>
       </div>
-      <div class="">
-        <h2 id="date"></h2>
-        <h2 id="time_h"><span id="time"></span></h2>
+      <div class="inl-cont">
+        <div class="links inl">
+          <h2>Links</h2>
+          <ul>
+          </ul>
+        </div>
+        <div class="schedule inl">
+          <h2>Schedule</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7:40 - 9:00</td>
+                <td>1st / 5th</td>
+              </tr>
+              <tr>
+                <td>9:05 - 10:25</td>
+                <td>1st / 5th</td>
+              </tr>
+              <tr>
+                <td>10:25 - 11:00</td>
+                <td>1st lunch</td>
+              </tr>
+              <tr>
+                <td>11:05 - 12:25</td>
+                <td>3rd / 7th</td>
+              </tr>
+              <tr>
+                <td>10:30 - 11:50</td>
+                <td>3rd / 7th</td>
+              </tr>
+              <tr>
+                <td>11:50 - 12:25</td>
+                <td>2nd lunch</td>
+              </tr>
+              <tr>
+                <td>12:30 - 1:50</td>
+                <td>4th / 8th</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="spotify inl">
+          <h2>Music</h2>
+          <iframe src="https://open.spotify.com/embed/playlist/7ajgjjP9ygkTQIoU4Yg0Ms" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
       </div>
-      <div class="">
-        <h1 id="cd"></h1>
-        <i class="fas fa-expand-arrows-alt" id="exp" class=""></i>
-        <i class="fas fa-compress-arrows-alt" id="comp" class=""></i>
-      </div>
-    </div>
-    <div class="">
-      <h2><i class="fas fa-cogs" id="open-settings"></i></h2>
-    </div>
-    <div class="links">
-      <h2>Links</h2>
-      <ul>
-      </ul>
-    </div>
-    <iframe src="https://open.spotify.com/embed/playlist/7ajgjjP9ygkTQIoU4Yg0Ms" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
     <script src="m3/ginger.js"></script>
   </body>
