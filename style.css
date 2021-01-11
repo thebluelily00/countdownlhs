@@ -231,6 +231,9 @@ body{
 }
 
 @media screen and (max-width: 772px) and (orientation:portrait){ /*smallest for phones*/
+  .mm1{
+    display: none;
+  }
   #header{
     height:100%;
   }
@@ -288,9 +291,21 @@ body{
   #cd{
     font-size: 3em;
   }
+  #s1, #s2{
+    display: block;
+    text-align: center;
+    margin-bottom:20px;
+  }
+  #schedules table, #schedules p{
+    margin:10px auto 10px auto;
+    font-size: 1.1em;
+  }
 }
 
 @media screen and (min-width:773px) and (max-width:1000px){
+  .mm1{
+    display: none;
+  }
   #crawler{
     font-size: 2em;
     margin-bottom:20px;
@@ -350,6 +365,14 @@ body{
   }
   #cs_images img{
     width:130px;
+  }
+  #s1, #s2{
+    display: block;
+    text-align: center;
+    margin-bottom:20px;
+  }
+  #schedules table, #schedules p{
+    margin:10px auto 10px auto;
   }
 }
 @media screen and (min-width:1000px) and (max-width:1271px){
