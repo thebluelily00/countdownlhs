@@ -2,9 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>CDWHS</title>
+    <meta name=”robots” content=”noindex, nofollow”>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title id="tab">CDWHS</title>
+
     <link rel="stylesheet" href="m3/allie.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   </head>
   <body>
@@ -16,58 +21,69 @@
       </form>
     </div>
     <div class="settings">
-      <h1>Settings</h1>
+      <h1 id="settings_header">Settings</h1>
         <div class="cent">
           <div id="st_cont" class="contt">
+            <h2><i class="far fa-clock"></i></h2>
             <table id="set_time">
               <tr>
                 <td>Show date?</td>
-                <td><input type="checkbox" id="sd" name="sd"></td>
+                <td><input type="checkbox" id="show_date" name="sd"></td>
               </tr>
               <tr>
                 <td>Show time?</td>
-                <td><input type="checkbox" id="st" name="st"></td>
+                <td><input type="checkbox" id="show_time" name="st"></td>
               </tr>
               <tr>
                 <td>Military time?</td>
-                <td><input type="checkbox" id="mt" name="mt"></td>
+                <td><input type="checkbox" id="show_mtime" name="mt"></td>
               </tr>
               <tr>
                 <td>Show seconds?</td>
-                <td><input type="checkbox" id="ss" name="ss"></td>
+                <td><input type="checkbox" id="show_seconds" name="ss"></td>
               </tr>
             </table>
           </div>
           <div id="sv_cont" class="contt">
+            <h2><i class="fas fa-palette"></i></h2>
             <table id="set_visu">
-              <tr>
+              <tr class='included'>
                 <td>Font</td>
                 <td>
-                  <select id="fc" name="fc">
-                    <option value="sans" style="font-family:sans-serif;">Sans serif</option>
-                    <option value="seri" style="font-family:serif;">Serif</option>
-                    <option value="mono" style="font-family:monospace;">Monospace</option>
-                    <option value="curs" style="font-family:cursive;">Cursive</option>
+                  <select id="font" name="fc">
+                    <option value="sans-serif" style="font-family:sans-serif;">Sans serif</option>
+                    <option value="serif"  style="font-family:playfair-display;">Serif</option>
+                    <option value="monospace" style="font-family:source-code-pro;">Monospace</option>
+                    <option value="papyrus" style="font-family:papyrus;">Papyrus</option>
                   </select>
                 </td>
               </tr>
-              <tr>
-                <td>Theme <span class="sm">(preset)</span></td>
+              <tr class='included'>
+                <td>Theme</td>
+                <td>
+                  <select id="theme" name="cpc">
+                    <option value="t-cus" id="t-cus">Custom</option>
+                  <!--  <option value="t-pre" id="t-pre">Preset</option>-->
+                  </select>
+                </td>
+              </tr>
+              <tr id="pre-op" class="t_ops">
+                <td>Options</td>
                 <td>
                   <select id="tc" name="tc">
                     <option value="color_theme">Color</option>
-                    <option value="wallpaper">Wallpaper</option>
+                    <!--<option value="wallpaper">Wallpaper</option>-->
                     <option value="color_gradient">Color gradient</option>
                   </select>
                 </td>
               </tr>
-              <tr>
-                <td>Theme <span class="sm">(customized)</span></td>
+              <tr id="cus-op" class="t_ops">
+                <td>Options</td>
                 <td>
                   <select id="tcc" name="tcc">
                     <option value="custom_gradient">Custom gradient</option>
                     <option value="custom_color">Custom colors</option>
-                    <option value="custom_wallpaper">Custom wallpaper</option>
+                    <!--<option value="custom_wallpaper">Custom wallpaper</option>-->
                   </select>
                 </td>
               </tr>
@@ -76,6 +92,9 @@
         </div>
         <div class="ov">
           <h2 id="ov_label"></h2>
+          <div class="test_theme">
+            <p>testing</p>
+          </div>
           <div class="all_theme">
             <div id="color_theme" class="c_s">
               <select id="cc" name="cc" class="c_s">
@@ -93,37 +112,51 @@
                 <li>blue</li>
                 <li>purple</li>
               </ul>
-              <img src="m3/images/themes/e8cbc0_636fa4.png" class="blue peach" id="">
-              <img src="m3/images/themes/ffafbd_ffc3a0.png" class="pink peach" id="">
-            </div>
-            <div id="wallpaper" class="c_s">
-              <select id="wc" name="wc">
-                <option value=""></option>
-              </select>
+              <div class="cgs">
+              </div>
             </div>
             <div id="custom_gradient" class="c_s">
-              <label for="gn" id="num_info"># of colors: </label>
-              <input type="range" min="2" max="5" name="gn" id="gn" value="2">
+              <table>
+                <tbody>
+                  <tr>
+                    <td><input type="color" name="cgc1" id="cgc1" value=""></td>
+                    <td>1st gradient color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="cgc2" id="cgc2" value=""></td>
+                    <td>2nd gradient color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="cgc" id="cgc" value=""></td>
+                    <td>Text color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="range" id="cga" min="-360" max="360" value="0"></td>
+                    <td>Angle</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div id="custom_color" class="c_s">
-              <div class="cc1">
-                <label for="text_color">Text color</label>
-                <input type="color" name="text_color" id="text_color" title="text color">
-              </div>
-              <div class="cc2">
-                <label for="background_color">Text color</label>
-                <input type="color" name="background_color" id="background_color" title="background color">
-              </div>
-            </div>
-            <div id="custom_wallpaper" class="c_s">
-              <input type="file" name="background_image" style="width:200px;">
-              <input type="color" name="text_color_comp">
+              <table>
+                <tbody>
+                  <tr>
+                    <td><input type="color" name="text_color" id="text_color" title="text color"></td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="background_color" id="background_color" title="background color"></td>
+                    <td>background</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="all_bulletpoint">
 
           </div>
-          <p id="ov_close"><strong>done</strong></p>
+          <i id="ov_close" class="fas fa-save"></i>
+          <i id="ov_onlyclose" class="fas fa-times-circle"></i>
         </div>
         <table>
           <tr>
@@ -143,13 +176,15 @@
         </table>
         <div id="os_cont" class="">
           <label for="spotify_info" id="csl">Customize Spotify Widget</label>
-          <div id="spot-opt">
+          <!--<div id="spot-opt">
             <em class="sm"><label for="show_spotify">Show the widget?</label>
             <input type="checkbox" name="show_spotify"></em>
-          </div>
-          <input type="text" id="spotify_info" name="spotify_info" value="" placeholder="paste the playlist URL here.">
+          </div>-->
+          <form id="spot-url">
+            <input type="text" id="spotify_info" name="spotify_info" placeholder="paste the playlist URL here.">
+            <input type="submit" style="display:none;">
+          </form>
         </div>
-
         <i class="far fa-times-circle" id="close-settings"></i>
     </div>
     <div class="cont">
@@ -158,66 +193,192 @@
           <img src="m3/images/logos/lightlogo_empty.png" id="logo">
         </div>
         <div class="c2 hc">
-          <h2 id="date">Tuesday, January 12th</h2>
-          <h2 id="time_h"><span id="time">11:00:00</span> <i class="fas fa-cogs" id="open-settings"></i></h2>
+          <h2 id="date"></h2>
+          <h2 id="time_h"><span id="time"></span> <i class="fas fa-cogs" id="open-settings"></i></h2>
           <h3></h3>
         </div>
         <div class="c3 hc">
-          <h1 id="cd">12:00</h1>
+          <h1 id="cd"></h1>
+          <!--
           <i class="fas fa-expand-arrows-alt" id="exp" class=""></i>
-          <i class="fas fa-compress-arrows-alt" id="comp" class=""></i>
+          <i class="fas fa-compress-arrows-alt" id="comp" class=""></i>-->
         </div>
-      </div>
+    </div>
       <div class="inl-cont">
-        <div class="links inl">
+        <!--<div class="links inl">
           <h2>Links</h2>
           <ul>
           </ul>
-        </div>
+        </div>-->
         <div class="schedule inl">
-          <h2>Schedule</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>Period</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>7:40 - 9:00</td>
-                <td>1st / 5th</td>
-              </tr>
-              <tr>
-                <td>9:05 - 10:25</td>
-                <td>1st / 5th</td>
-              </tr>
-              <tr>
-                <td>10:25 - 11:00</td>
-                <td>1st lunch</td>
-              </tr>
-              <tr>
-                <td>11:05 - 12:25</td>
-                <td>3rd / 7th</td>
-              </tr>
-              <tr>
-                <td>10:30 - 11:50</td>
-                <td>3rd / 7th</td>
-              </tr>
-              <tr>
-                <td>11:50 - 12:25</td>
-                <td>2nd lunch</td>
-              </tr>
-              <tr>
-                <td>12:30 - 1:50</td>
-                <td>4th / 8th</td>
-              </tr>
-            </tbody>
-          </table>
+          <h2 id="sched-head"><a href="https://weber.wsd.net" title="click here to see the school's version" target="_blank">Schedule</a></h2>
+          <select id="sched-opts">
+            <option name="normal-A">normal A</option>
+            <option name="normal-B">normal B</option>
+            <option name="early-A">early A</option>
+            <option name="early-B">early B</option>
+          </select>
+          <div class="schedule-cont">
+            <table id="normal-A" class="sct">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Period</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:40 - 9:00</td>
+                  <td>1st</td>
+                  <td>APLC</td>
+                </tr>
+                <tr>
+                  <td>9:05 - 10:25</td>
+                  <td>2nd</td>
+                  <td>AP Spanish</td>
+                </tr>
+                <tr>
+                  <td>10:25 - 11:00</td>
+                  <td></td>
+                  <td>Lunch</td>
+                </tr>
+                <tr>
+                  <td>11:05 - 12:25</td>
+                  <td>3rd</td>
+                  <td>Psychology</td>
+                </tr>
+                <tr>
+                  <td>12:30 - 1:50</td>
+                  <td>4th</td>
+                  <td>Foods</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="normal-B" class="sct">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Period</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:40 - 9:00</td>
+                  <td>5th</td>
+                  <td>US History</td>
+                </tr>
+                <tr>
+                  <td>9:05 - 10:25</td>
+                  <td>6th</td>
+                  <td>Math</td>
+                </tr>
+                <tr>
+                  <td>10:30 - 11:50</td>
+                  <td>7th</td>
+                  <td>Physics</td>
+                </tr>
+                <tr>
+                  <td>11:50 - 12:25</td>
+                  <td></td>
+                  <td>Lunch</td>
+                </tr>
+                <tr>
+                  <td>12:30 - 1:50</td>
+                  <td>8th</td>
+                  <td>Financial lit</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="early-A" class="sct">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Period</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:40 - 8:25</td>
+                  <td>1st</td>
+                  <td>APLC</td>
+                </tr>
+                <tr>
+                  <td>8:30 - 9:15</td>
+                  <td>2nd</td>
+                  <td>AP Spanish</td>
+                </tr>
+                <tr>
+                  <td>9:20 - 10:05</td>
+                  <td>3rd</td>
+                  <td>Psychology</td>
+                </tr>
+                <tr>
+                  <td>10:05 - 10:40</td>
+                  <td></td>
+                  <td>Lunch</td>
+                </tr>
+                <tr>
+                  <td>10:45 - 11:30</td>
+                  <td>4th</td>
+                  <td>Foods</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="early-B" class="sct">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Period</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:40 - 8:25</td>
+                  <td>5th</td>
+                  <td>US History</td>
+                </tr>
+                <tr>
+                  <td>8:30 - 9:15</td>
+                  <td>6th</td>
+                  <td>Math</td>
+                </tr>
+                <tr>
+                  <td>9:20 - 10:05</td>
+                  <td>7th</td>
+                  <td>Physics</td>
+                </tr>
+                <tr>
+                  <td>10:10 - 10:55</td>
+                  <td>8th</td>
+                  <td>Financial Lit</td>
+                </tr>
+                <tr>
+                  <td>10:55 - 11:30</td>
+                  <td></td>
+                  <td>Lunch</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="notes-cont inl">
+          <h2>Notes & Todos</h2>
+          <textarea id="notes" placeholder="Notes go here"></textarea>
+          <div class="todos_cont">
+            <form id="new_todo_form">
+              <input type="text" name="new_todo" value="" placeholder="New task" id="new_todo">
+            </form>
+            <form id="todos">
+            </form>
+          </div>
         </div>
         <div class="spotify inl">
           <h2>Music</h2>
-          <iframe src="https://open.spotify.com/embed/playlist/7ajgjjP9ygkTQIoU4Yg0Ms" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" id="spotify-iframe"></iframe>
         </div>
       </div>
     </div>

@@ -344,7 +344,7 @@ function countDown(day, month, year, hour, minute, second){
   var minutes = Math.floor(t%(1000*60*60)/(1000*60));
   var seconds = Math.floor(t%(1000*60)/1000);
 
-  if(seconds<0&&minutes<0&&hours<0){
+  if(seconds==='00'&&minutes==='00'&&hours==='00'){
     location.reload();
   }
 

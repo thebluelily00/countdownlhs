@@ -1,18 +1,30 @@
-*{
+@import url("https://use.typekit.net/uch6bxq.css");
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+
+body{
   font-family: sans-serif;
 }
 
 .set_form input{
 }
 
-.c_s input, .c_s label{
-  font-size: 0.8em;
-  height:16.5px;
-  vertical-align: bottom;
+.c_s table{
+  text-align: left;
+  margin:auto;
+}
+
+.c_s tr{
+  line-height: 170%;
 }
 
 .ov{
   text-align: center;
+  margin-top:30px;
 }
 
 h1, h2{
@@ -25,13 +37,15 @@ body, html{
 }
 
 html{
-  background: linear-gradient(#BEB3EB,#91A8D0);
+  background: #00b09b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color:white;
   background-size: cover;
   height:100vh;
 }
 
-.cont{
+.temp{
   display: none;
 }
 
@@ -39,8 +53,13 @@ html{
   display: block;
 }
 
+#custom_gradient input[type=range]{
+  width:50px;
+}
+
 .cc1, .cc2{
   display: inline-block;
+  padding:5px;
 }
 
 .temp{
@@ -74,23 +93,44 @@ html{
   font-weight: lighter;
 }
 
-.settings h1{
+#settings_header{
   font-weight: lighter;
   font-style: oblique;
+  margin-bottom:10px;
+}
+
+.settings input[type=text]{
+  border: none;
+  height:2em;
 }
 
 .contt{
   display: inline-block;
   vertical-align: top;
+  margin:0px 12.5px 5px;
+}
+
+.contt td{
+  text-align: left;
 }
 
 .cent{
   margin: auto;
   max-width:430px;
+  text-align: center;
+}
+
+.cent h2{
+  text-align: center;
 }
 
 #settings table{
   padding:10px;
+}
+
+#open-settings{
+  font-size: 0.75em;
+  margin-left: 10px;
 }
 
 #close-settings{
@@ -103,20 +143,33 @@ html{
 
 #ov_close:hover{
   cursor: pointer;
+  text-shadow: 2px 2px 2px grey;
 }
 
-.settings input[type=text]{
-  border: none;
+#ov_close{
+  margin-bottom:0px;
+  margin-top:12.5px;
+  width:45px;
+  margin-left:auto;
+  margin-right:auto;
+  transition-duration: 0.5s;
+}
+
+.test_theme{
+  width:100px;
+  margin:0px auto 15px;
+  padding-top:10px;
+  padding-bottom:10px;
+  vertical-align:middle;
 }
 
 #spotify_info{
-  width: 100%;
+  width: 99%;
   padding:3px;
 }
 
 #os_cont{
   margin: 0px auto 15px auto;
-  max-width:430px;
 }
 
 .settings h1{
@@ -133,10 +186,6 @@ html{
 
 .sm{
   font-size: 0.7em;
-}
-
-.sm input{
-  height:0.9em;
 }
 
 #color_gradient img{
@@ -176,12 +225,12 @@ html{
 
 .header{
   text-align: center;
+  margin-top:20px;
 }
 
 #cd{
   font-size: 4em;
-  margin-top:10px;
-  margin-bottom:10px;
+  margin:15px;
 }
 
 .schedule table{
@@ -191,6 +240,10 @@ html{
 
 .schedule table td{
   padding:5px;
+}
+
+#sched-opts{
+  margin-bottom:20px;
 }
 
 .inl{
@@ -205,20 +258,74 @@ html{
   text-align: center;
 }
 
-@media screen and (max-width:550px), screen and (max-device-width:550px){
+#new_todo{
+  border-top:none;
+  border-left: none;
+  border-right:none;
+  border-bottom:2px solid;
+  background:none;
+  width:90%;
+  padding:5px;
+  color:white;
+}
+
+#new_todo::placeholder {
+  color: white;
+}
+
+.todos_cont{
+  max-height: 200px;
+  overflow-y:scroll;
+}
+
+.todo_item{
+  display: block;
+  line-height: 175%;
+  text-align: left;
+}
+
+.notes-cont{
+  width:400px;
+  max-height:500px;
+  overflow-y: scroll;
+}
+
+#notes{
+  width:90%;
+  max-width:90%;
+  margin:0px auto 20px auto;
+  padding:5px;
+  border: none;
+  height:100px;
+  max-height:300px;
+}
+
+a{
+  color:white;
+  text-decoration: none;
+}
+
+@media screen and (orientation:portrait){
+  .inl, .hc{
+    display: block;
+    margin:auto;
+  }
+  .hc h1, .hc h2{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width:600px), screen and (max-device-width:600px){
   /*.settings{
     margin:60px;
     font-size: 2.5em;
   }*/
 
   .settings{
-    margin:20px;
+    margin:10vh 20px 0px 20px;
   }
-  .settings table, .settings div, .cent{
-    text-align: left;
-    margin-left: 0px;
-  }
-  .settings input{
+
+/*  .settings input{
     height:2em;
-  }
+  }*/
 }
