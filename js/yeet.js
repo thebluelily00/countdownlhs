@@ -414,7 +414,7 @@ var countDownTime = setInterval(function(){
     displayCount("");
   }
 
-  else if(day===4){ //CHANGE BACK TO THREE AFTER TODAY!!!
+  else if(day===3){
     console.log("it's wednesday my dude!!")
 
     if(hour<8){//countdown to 8/zero hour DONE
