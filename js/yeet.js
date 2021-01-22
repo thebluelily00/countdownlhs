@@ -386,7 +386,7 @@ if(d===0||d===6){
 }
 
 var yee = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[43,49],'13':[],'14':[9]};
-var tf = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43,49],'13':[],'14':[9]};
+//var tf = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43,49],'13':[],'14':[9]};
 var yee2 = {'8':[00,40,45],'9':[25,30],'10':[10,15,55],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]};
 
 var countDownTime = setInterval(function(){
@@ -460,7 +460,7 @@ var countDownTime = setInterval(function(){
       }
     }
   }
-  else if(day===2||day===5){ //schedule for tuesdays and fridays
+  /*else if(day===2||day===5){ //schedule for tuesdays and fridays
     if(tf[hour]===11||tf[hour]===13){
       displayCount(countDown(n,m,y,hour+1,yee[hour][0],0));
     }
@@ -484,7 +484,7 @@ var countDownTime = setInterval(function(){
     else{
         tings();
     }
-  }
+  } */
   else{ // not wednesdays
     if(yee[hour]){
       if(hour<8){ //right before school
@@ -537,4 +537,4 @@ var maint = function(a){
   $("body").hide();
   $("#heyo").text("come back on " + a);
   $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
-}
+} 
