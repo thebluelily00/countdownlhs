@@ -589,6 +589,7 @@ var countDownTime = setInterval(function(){
     else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
       displayCount("");
       $("#exp, .hh3").hide();
+      console.log("not a school day");
     }
   } //not affected by update
 
@@ -656,7 +657,7 @@ var countDownTime = setInterval(function(){
                 displayCount(countDown(n,m,y,hour,alls[hoy][hour][2],0));
               }
               else{
-                if(alls[hoy][hour+1][0].length!==0){
+                if(alls[hoy][hour+1][0]){
                   displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
                   console.log('there is something in the sched for next hour');
                 }
