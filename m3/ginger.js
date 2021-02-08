@@ -277,6 +277,7 @@ $(document).ready(function() {
 
   function countDown(day, month, year, hour, minute, second){
     var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+
     if(hour<10){
       hour = "0"+hour;
     }
@@ -312,6 +313,7 @@ $(document).ready(function() {
     if(hours==='00'){
       var dif = minutes+":"+seconds;
     }
+
     else{
       var dif = hours+":"+minutes+":"+seconds;
     }

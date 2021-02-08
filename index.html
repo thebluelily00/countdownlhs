@@ -18,72 +18,81 @@
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
   </head>
-  <body onload="startTime(), refreshEverything(), refreshCSS()">
-    <div class="tcontainer" id="crawler">
-      <div class="ticker-wrap">
-        <div class="ticker-move">
-          <div class="ticker-item">before 9:30 the countdown was not reflecting today's schedule, it has since been updated.</div>
-        </div>
-      </div>
-    </div>
-    <div id="header">
-      <div class="hh hh1">
-        <img src="images/logos/black.png" id="logo">
-      </div>
-      <div class="hh hh2">
-        <h2 id="date"></h2>
-        <h2 id="time_h"><span id="time"></span></h2>
-      </div>
-      <div class="hh hh3">
-        <h1 id="cd"></h1>
-        <i class="fas fa-expand-arrows-alt" id="exp" class="ehh"></i>
-        <i class="fas fa-compress-arrows-alt" id="comp" class="ehh"></i>
-      </div>
-    </div>
-    <div id="main">
-
-    <div class="mm mm3">
-      <h1>Resources</h1>
-      <ul id="resources">
-        <!--<li><span class="fas fa-video"></span><a href="javascript:
-          document.body.appendChild(document.createElement('script')).src ='/Users/mlc/Desktop/thebluelily00.github.io/js/plugin.js';
-          " title="Drag this to your bookmarks, then click on it once you're on a google meet."> Google Meet Plugin</a></li>-->
-        <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t" target="_blank">School calendar</a></li>
-        <li><span class="fas fa-calendar-week"></span> <a href="https://docs.google.com/spreadsheets/d/1Wi-FDVezAzwosp1Za6VuqO42vUNuhYxNJiiFqIVkkeU/edit?usp=sharing" target="_blank">Teacher schedules</a></li>
-        <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
-          <ul id="finalss" style="margin-left:0px; padding-left:0px;">
-            <form id="grades">
-              <input type="number" placeholder="have" min='0' max="110" id="act">
-              <input type="number" placeholder="want" min="0" max="110" id="goal">
-              <br>
-              <input type="submit" value="Calculate" id="sub">
-              <button type="button" name="button" id="mas" style="display:block;">More info</button>
+  <body onload="startTime()">
+    <div class="settings">
+      <h1 id="settings_header">Settings</h1>
+      <div id="os_cont" class="">
+        <h2 style="text-align:center;">Your info</h2><!--
+        <div id="lunch-change">
+          <span>I have lunch </span>
+          <form>
+            <input type="text" name="lun" placeholder="A/B" maxlength="1" width="30" id="lun">
+          </form>
+        </div>-->
+        <center>
+          <div class="trio">
+            <span class="bb" id="ba">Input my schedule</span>
+            <form class="">
+              <input type="text" name="class" id="classinput" placeholder='class for this period'>
+              <label class="radio-inline">
+                <input type="radio" name="pc" checked> 1
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 2
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 3
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 4
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 5
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 6
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 7
+              </label>
             </form>
-            <i class="far fa-times-circle" id="cf"></i>
-          </ul>
-        </li>
-      </ul>
-      <h1 id="set_header">Settings</h1>
-      <ul id="settings">
-        <li><i class="fas fa-sliders-h"></i> <span id="cb" class="pointb">Your info</span>
-          <ul id="customize">
-            <li class="red"><br>use this to keep track of all your classes!</li><br>
-            <li><span class="bb" id="ba">Input my schedule</span>
-              <div id="schh">
-                <ul id="sched-input">
-                  <li><button id="sched-1" class="ci">1</button></li>
-                  <li><button id="sched-2" class="ci">2</button></li>
-                  <li><button id="sched-3" class="ci">3</button></li>
-                  <li><button id="sched-4" class="ci">4</button></li>
-                  <li><button id="sched-5" class="ci">5</button></li>
-                  <li><button id="sched-6" class="ci">6</button></li>
-                  <li><button id="sched-7" class="ci">7</button></li>
-                </ul>
-                <i class="far fa-times-circle" id="csc"></i>
-              </div>
-            </li>
-            <li><span class="bb" id="bbb">Input my Google Classroom URLs</span>
-              <ul id="gclas-input">
+            <!--<ul id="sched-input">
+              <li><button id="sched-1" class="ci">1</button></li>
+              <li><button id="sched-2" class="ci">2</button></li>
+              <li><button id="sched-3" class="ci">3</button></li>
+              <li><button id="sched-4" class="ci">4</button></li>
+              <li><button id="sched-5" class="ci">5</button></li>
+              <li><button id="sched-6" class="ci">6</button></li>
+              <li><button id="sched-7" class="ci">7</button></li>
+            </ul>-->
+          </div>
+          <div class="trio">
+            <span class="bb" id="bbb">Input my Google Classroom URLs</span>
+            <form class="">
+              <input type="text" name="class" id="classinput" placeholder='classroom URL for this period'>
+              <label class="radio-inline">
+                <input type="radio" name="pc" checked> 1
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 2
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 3
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 4
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 5
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 6
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 7
+              </label>
+            </form>
+              <!--<ul id="gclas-input">
                 <li><button id="gclas-1" class="gc">1</button></li>
                 <li><button id="gclas-2" class="gc">2</button></li>
                 <li><button id="gclas-3" class="gc">3</button></li>
@@ -91,11 +100,35 @@
                 <li><button id="gclas-5" class="gc">5</button></li>
                 <li><button id="gclas-6" class="gc">6</button></li>
                 <li><button id="gclas-7" class="gc">7</button></li><br>
-                <i class="far fa-times-circle" id="cgc"></i>
-              </ul>
-            </li>
-            <li><span class='bb' id="bc">Input my Google Meet URLs</span>
-              <ul id="meet-input">
+              </ul>-->
+          </div>
+          <div class="trio">
+            <span class='bb' id="bc">Input my Google Meet URLs</span>
+            <form class="">
+              <input type="text" name="class" id="classinput" placeholder='google meet URL for this period'>
+              <label class="radio-inline">
+                <input type="radio" name="pc" checked> 1
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 2
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 3
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 4
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 5
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 6
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pc"> 7
+              </label>
+            </form>
+              <!--<ul id="meet-input">
                 <li><button id="meet-1" class="meet">1</button></li>
                 <li><button id="meet-2" class="meet">2</button></li>
                 <li><button id="meet-3" class="meet">3</button></li>
@@ -103,196 +136,378 @@
                 <li><button id="meet-5" class="meet">5</button></li>
                 <li><button id="meet-6" class="meet">6</button></li>
                 <li><button id="meet-7" class="meet">7</button></li><br>
-                <i class="far fa-times-circle" id="cgm"></i>
-              </ul>
-            </li>
-            <br><i class="far fa-times-circle" id="cc"></i><br><br>
-          </ul>
-        </li>
-        <li id="cs_change"><span class="fas fa-palette"></span> <span class="pointb" id="o_cs">Colors</span><br>
-          <div id="cs_images">
-            <img src="images/color_schemes/cd_cs_MIDNIGHT.png" id="_mi">
-            <img src="images/color_schemes/cd_cs_OCEAN.png" id="_oc">
-            <img src="images/color_schemes/cd_cs_PINKLEMONADE.png" id="_pl">
-            <img src="images/color_schemes/cd_cs_MAJESTICAL.png" id="_hl" alt="">
-            <img src="images/color_schemes/cd_cs_OG.png" id="_og">
-            <img src="images/color_schemes/cd_cs_ONYELIONS.png" id="_oy">
-            <img src="images/color_schemes/cd_cs_NEUTRAL.png" id="_ne">
-            <br><i class="far fa-times-circle" id="cscc"></i><br>
+              </ul>-->
           </div>
-        </li>
-      </ul>
-    </div>
-      <div class="mm mm2">
-        <h1 id="sched_header">Schedule</h1>
-        <div id="schedules">
-          <div id="s1">
-            <p>Not Wednesdays</p>
-            <table id="mttf">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>M/Th</th>
-                  <th>T/F</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>8:00 - 9:20</td>
-                  <td>1</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>9:26 - 10:46</td>
-                  <td>2</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>10:52 - 12:43</td>
-                  <td>3</td>
-                  <td>7*</td>
-                </tr>
-                <tr>
-                  <td>12:49 - 2:09</td>
-                  <td>4</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="width:206px;" class="sm" id="lcc">* on Tuesdays and Fridays, there is no lunch and 7th period is from 10:52 to 12:12.</p>
-            <table id="lunches">
-              <thead>
-                <tr>
-                  <th>a/b</th>
-                  <th>lunch</th>
-                  <th>class</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>a</td>
-                  <td>10:52-11:17</td>
-                  <td>11:23-12:43</td>
-                </tr>
-                <tr>
-                  <td>b</td>
-                  <td>12:18-12:43</td>
-                  <td>10:52-12:12</td>
-                </tr>
-              </tbody>
+        </center>
+      </div>
+        <div class="cent">
+          <div id="st_cont" class="contt">
+            <h2><i class="far fa-clock"></i></h2>
+            <table id="set_time">
+              <tr>
+                <td>Show date</td>
+                <td><input type="checkbox" id="show_date" name="sd"></td>
+              </tr>
+              <tr>
+                <td>Show time</td>
+                <td><input type="checkbox" id="show_time" name="st"></td>
+              </tr>
+              <tr>
+                <td>Military time</td>
+                <td><input type="checkbox" id="show_mtime" name="mt"></td>
+              </tr>
+              <tr>
+                <td>Show seconds</td>
+                <td><input type="checkbox" id="show_seconds" name="ss"></td>
+              </tr>
             </table>
           </div>
+          <div id="sv_cont" class="contt">
+            <h2><i class="fas fa-palette"></i></h2>
+            <div id="text">
+              <!--<p><em>Text</em></p>-->
+              <table>
+                <tr class='included'>
+                    <td>Font</td>
+                    <td>
+                      <select id="font" name="fc">
+                        <option value="sans-serif" style="font-family:sans-serif;">Sans serif</option>
+                        <option value="serif"  style="font-family:playfair-display;">Serif</option>
+                        <option value="monospace" style="font-family:source-code-pro;">Monospace</option>
+                      </select>
+                    </td>
+                  </tr>
+                <tr class='included'>
+                  <td>Color</td>
+                  <td><input type="color" name="text_color" id="text_color" title="text color"></td>
+                </tr>
+                  <tr class='included'>
+                    <td>Background <br> type</td>
+                    <td>
+                      <input type="checkbox" name="col" value="">
+                      <label for="col">1 color</label>
+                      <br>
+                      <input type="checkbox" name="grad" value="">
+                      <label for="grad">Gradient</label>
+                    </td>
+                  </tr>
+                  <tr class='included'>
+                    <td>Background <br>color/s</td>
+                    <td><input type="color" name="color1" value=""> <input type="color" name="color2" value=""></td>
+                  </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="ov">
+          <h2 id="ov_label"></h2>
+          <div class="test_theme">
+            <p>testing</p>
+          </div>
+          <div class="all_theme">
+            <div id="custom_gradient" class="c_s">
+              <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank">here</a> or <a href="https://uigradients.com/" target="_blank">here</a>, and copy the hex codes you like.</em>
 
-          <div id="s2">
-            <p>Wednesdays</p>
-            <table id="weds">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Period</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>8:00 - 8:40</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>8:45 - 9:25</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>9:30 - 10:10</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>10:15 - 10:55</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>11:00 - 11:30</td>
-                  <td>LUNCH</td>
-                </tr>
-                <tr>
-                  <td>11:35 - 12:15</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>12:20 - 1:00</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1:05 - 1:45</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <td>1:50 - 2:30</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
+              <table>
+                <tbody>
+                  <tr>
+                    <td><input type="color" name="cgc1" id="cgc1" value=""></td>
+                    <td>1st gradient color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="cgc2" id="cgc2" value=""></td>
+                    <td>2nd gradient color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="cgc" id="cgc" value=""></td>
+                    <td>Text color</td>
+                  </tr>
+                  <tr>
+                    <td><input type="range" id="cga" min="-360" max="360" value="0"></td>
+                    <td>Angle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="custom_color" class="c_s">
+              <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank">here</a> and copy the hex codes you like.</em>
+              <table>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td>text</td>
+                  </tr>
+                  <tr>
+                    <td><input type="color" name="background_color" id="background_color" title="background color"></td>
+                    <td>background</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="all_bulletpoint">
+
+          </div>
+          <i id="ov_close" class="fas fa-save"></i>
+          <i id="ov_onlyclose" class="fas fa-times-circle"></i>
+        </div>
+        <i class="far fa-times-circle" id="close-settings"></i>
+    </div>
+    <div class="cont">
+      <div id="crawler" class="tcontainer">
+        <div class="ticker-wrap">
+          <div class="ticker-move">
+            <div class="ticker-item">before 9:30 the countdown was not reflecting today's schedule, it has since been updated.</div>
           </div>
         </div>
       </div>
       <div class="mm mm1">
-          <div id="p1" class='textdiv'>
-            <textarea id="t1" class="notes"></textarea>
-            <div class="iconss">
-              <p>1</p>
-              <a id="vid1" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla1" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p1" class='textdiv'>
+              <textarea id="t1" class="notes"></textarea>
+              <div class="iconss">
+                <p>1</p>
+                <a id="vid1" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla1" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p2" class='textdiv'>
-            <textarea id="t2" class="notes"></textarea>
-            <div class="iconss">
-              <p>2</p>
-              <a id="vid2" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla2" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p2" class='textdiv'>
+              <textarea id="t2" class="notes"></textarea>
+              <div class="iconss">
+                <p>2</p>
+                <a id="vid2" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla2" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p3" class='textdiv'>
-            <textarea id="t3" class="notes"></textarea>
-            <div class="iconss">
-              <p>3</p>
-              <a id="vid3" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla3" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p3" class='textdiv'>
+              <textarea id="t3" class="notes"></textarea>
+              <div class="iconss">
+                <p>3</p>
+                <a id="vid3" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla3" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p4" class='textdiv'>
-            <textarea id="t4" class="notes"></textarea>
-            <div class="iconss">
-              <p>4</p>
-              <a id="vid4" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla4" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p4" class='textdiv'>
+              <textarea id="t4" class="notes"></textarea>
+              <div class="iconss">
+                <p>4</p>
+                <a id="vid4" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla4" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p5" class='textdiv'>
-            <textarea id="t5" class="notes"></textarea>
-            <div class="iconss">
-              <p>5</p>
-              <a id="vid5" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla5" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p5" class='textdiv'>
+              <textarea id="t5" class="notes"></textarea>
+              <div class="iconss">
+                <p>5</p>
+                <a id="vid5" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla5" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p6" class='textdiv'>
-            <textarea id="t6" class="notes"></textarea>
-            <div class="iconss">
-              <p>6</p>
-              <a id="vid6" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla6" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p6" class='textdiv'>
+              <textarea id="t6" class="notes"></textarea>
+              <div class="iconss">
+                <p>6</p>
+                <a id="vid6" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla6" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
-          </div>
-          <div id="p7" class='textdiv'>
-            <textarea id="t7" class="notes"></textarea>
-            <div class="iconss">
-              <p>7</p>
-              <a id="vid7" target="_blank"><i class="fas fa-video"></i></a>
-              <a id="cla7" target="_blank"><img src="images/gc.png" width="20px"></a>
+            <div id="p7" class='textdiv'>
+              <textarea id="t7" class="notes"></textarea>
+              <div class="iconss">
+                <p>7</p>
+                <a id="vid7" target="_blank"><i class="fas fa-video"></i></a>
+                <a id="cla7" target="_blank"><img src="images/gc.png" width="20px"></a>
+              </div>
             </div>
+      </div>
+      <div id="header">
+        <div class="hh hh1">
+          <img src="images/logos/black.png" id="logo">
+        </div>
+        <div class="hh hh2">
+          <h2 id="date"></h2>
+          <h2 id="time_h"><span id="time"></span> <i class="fas fa-cogs" id="open-settings"></i></h2>
+        </div>
+        <div class="hh hh3">
+          <h1 id="cd"></h1>
+          <i class="fas fa-expand-arrows-alt" id="exp" class="ehh"></i>
+          <i class="fas fa-compress-arrows-alt" id="comp" class="ehh"></i>
+        </div>
+      </div>
+      <div id="main">
+        <div class="mm mm3">
+          <h1>Resources</h1>
+          <ul id="resources">
+            <!--<li><span class="fas fa-video"></span><a href="javascript:
+              document.body.appendChild(document.createElement('script')).src ='/Users/mlc/Desktop/thebluelily00.github.io/js/plugin.js';
+              " title="Drag this to your bookmarks, then click on it once you're on a google meet."> Google Meet Plugin</a></li>-->
+            <li><span class="far fa-calendar"></span> <a href="PDFs/LHS_CALENDAR_2020-2021.pdf" id="cal-t" target="_blank">School calendar</a></li>
+            <li><span class="fas fa-calendar-week"></span> <a href="https://docs.google.com/spreadsheets/d/1Wi-FDVezAzwosp1Za6VuqO42vUNuhYxNJiiFqIVkkeU/edit?usp=sharing" target="_blank">Teacher schedules</a></li>
+            <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
+              <ul id="finalss" style="margin-left:0px; padding-left:0px;">
+                <form id="grades">
+                  <input type="number" placeholder="have" min='0' max="110" id="act">
+                  <input type="number" placeholder="want" min="0" max="110" id="goal">
+                  <br>
+                  <input type="submit" value="Calculate" id="sub">
+                  <button type="button" name="button" id="mas" style="display:block;">More info</button>
+                </form>
+                <i class="far fa-times-circle" id="cf"></i>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="mm mm2">
+          <h1 id="sched_header">Schedule</h1>
+          <div id="schedules">
+            <select id="sched-opts">
+              <option title="mondays & thursdays w/ lunch A">m/th A</option>
+              <option title="mondays & thursdays w/ lunch B">m/th B</option>
+              <option title="tuesdays & fridays for everyone (no difference between lunch A & B)">t/f</option>
+              <option title="wednesdays">wed</option>
+            </select>
+            <div class="sched-cont">
+                <table id="mtha" class='schedules'>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Period</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8:00 - 9:20</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>9:26 - 10:46</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>10:52 - 11:17</td>
+                      <td>Lunch</td>
+                    </tr>
+                    <tr>
+                      <td>11:23 - 12:43</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>12:49 - 2:09</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table id="tf" class='schedules'>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Period</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8:00 - 9:20</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>9:26 - 10:46</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td>10:52 - 12:12</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>11:18 - 12:43</td>
+                      <td><span class='sm'>0hr Lunch</span></td>
+                    </tr>
+                    <tr>
+                      <td>12:49 - 2:09</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table id="mthb" class='schedules'>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Period</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8:00 - 9:20</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>9:26 - 10:46</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>10:52 - 12:12</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>12:18 - 12:43</td>
+                      <td>Lunch</td>
+                    </tr>
+                    <tr>
+                      <td>12:49 - 2:09</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table id="wed" class='schedules'>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Period</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8:00 - 8:40</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>8:45 - 9:25</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>9:30 - 10:10</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>10:15 - 10:55</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>11:00 - 11:30</td>
+                      <td>LUNCH</td>
+                    </tr>
+                    <tr>
+                      <td>11:35 - 12:15</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>12:20 - 1:00</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td>1:05 - 1:45</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>1:50 - 2:30</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
           </div>
+        </div>
       </div>
     </div>
+
     <script src="js/yeet.js"></script>
   </body>
 </html>

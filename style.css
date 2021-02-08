@@ -70,7 +70,6 @@ html, body{
 
 .hh{
   display: inline-block;
-  height:90%;
   vertical-align: middle;
   padding:0px 20px 0px 20px;
   margin-top:10px;
@@ -81,7 +80,7 @@ html, body{
 }
 
 #cd{
-  font-size: 5em;
+  font-size: 4.5em;
   margin-top:0px;
   margin-bottom:0px;
   display: inline-block;
@@ -116,20 +115,182 @@ a{
 
 .mm1 textarea{
   width:23vw;
-  height:69px;
+  height:83%;
   margin-top:15px;
   resize:none;
+  background: #f3f3f3;
+  border-bottom:3px solid #e5e4e4;
+  /*border-right:3px solid #b5b4b4;*/
 }
 
 .mm{
   display: inline-block;
   vertical-align: top;
-    margin:20px;
+  margin:20px;
 }
 
 .mm1{
   text-align: center;
   width:30vw;
+  float:right;
+}
+.textdiv{
+  height:13.5vh;
+}
+#open-settings{
+  font-size: 0.75em;
+}
+
+.settings{
+
+  margin-left: auto;
+  margin-right:auto;
+  background:rgba(255,255,255,0.15);
+  padding:45px;
+  line-height: 160%;
+  font-weight: lighter;
+  text-align: center;
+}
+
+#os_cont{
+  float: right;
+}
+
+#settings_header{
+  font-weight: lighter;
+  font-style: oblique;
+  margin-bottom:10px;
+}
+
+.settings input[type=text]{
+  border: none;
+  height:2em;
+}
+
+.contt{
+  display: inline-block;
+  vertical-align: top;
+  padding:0px 25px 5px;
+}
+
+#lun{
+  width:30px;
+}
+
+.contt p{
+  margin: 0px;
+}
+
+.contt td{
+  text-align: left;
+  line-height: 180%;
+}
+
+.trio{
+  display:block;
+  width:450px;
+  vertical-align:middle;
+}
+.cent{
+  margin: auto;
+  text-align: center;
+}
+
+.cent h2{
+  text-align: center;
+}
+
+#classinput{
+  display: inline-block;
+  width:100%;
+}
+
+#settings table{
+  padding:10px;
+}
+
+#open-settings{
+  font-size: 0.75em;
+  margin-left: 10px;
+}
+
+#close-settings{
+  text-align: center;
+  display: block;
+  margin-top:10px;
+}
+
+#text, #wall{
+  display: inline-block;
+}
+
+#ov_close:hover{
+  cursor: pointer;
+  text-shadow: 2px 2px 2px grey;
+}
+
+#ov_close, #ov_onlyclose{
+  margin-bottom:0px;
+  margin-top:12.5px;
+  width:35px;
+  margin-left:auto;
+  margin-right:auto;
+  transition-duration: 0.5s;
+}
+
+.test_theme{
+  width:100px;
+  margin:0px auto 15px;
+  padding-top:10px;
+  padding-bottom:10px;
+  vertical-align:middle;
+}
+
+#spotify_info{
+  width: 99%;
+  padding:3px;
+}
+
+#os_cont{
+  margin: 0px auto 15px auto;
+  line-height: 200%;
+  vertical-align: center;
+}
+
+#lunch-change span, #lunch-change button{
+  display: inline-block;
+  vertical-align: middle;
+}
+/*
+#lunch-change{
+  height:96px;
+}
+*/
+.settings h1{
+  text-align: center;
+}
+
+#spot-opt, #csl{
+  display: inline-block;
+}
+
+#spot-opt{
+  margin-left: 5px;
+}
+
+
+.c_s table{
+  text-align: left;
+  margin:auto;
+}
+
+.c_s tr{
+  line-height: 170%;
+}
+
+.ov{
+  text-align: center;
+  margin-top:30px;
 }
 
 .mm2{
@@ -186,10 +347,9 @@ a{
   font-style: italic;
 }
 
-.bb:hover{
-  font-weight: normal;
-  text-decoration: underline;
-  cursor: pointer;
+.bb{
+  margin-top: 15px;
+  display: block;
 }
 
 .pointb:hover{

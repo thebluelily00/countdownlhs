@@ -1,5 +1,19 @@
 //hide things
-$('#finalss, #schh, #gclas-input, #meet-input, #customize, #studyhallform, #cs_images, #comp, #wallpapers').hide();
+$('#exp,#sv_cont, #os_cont, #finalss, #cs_images, .ov,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
+function rU(a){ //remove underscore
+  return neww = a.replace("_", " ");
+}
+function addDash(b){
+  return b.replace(/\s/, '-');
+}
+if(!localStorage.getItem('sched-type')){
+  console.log('nothing saved for schedule type');
+  var sAns = prompt('do you have lunch A or B?').toLowerCase();
+  localStorage.setItem('sched-type',sAns);
+} // add something in settings to change this if someone's schedule changes
+else{
+  console.log('your schedule type is '+localStorage.getItem('sched-type'));
+}
 
 function ending(datee){ //make it like english + not like a robot
   if(datee===1||datee===21){
@@ -23,10 +37,54 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
+var tr = {'1':'mth', '2':'tf','4':'mth','5':'tf'};
+var hoy = tr[d]+localStorage.getItem('sched-type');
+
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 var today = days[d] + ", " + months[m] + " " + n + ending(n); // the text that actually shows for the date
+
+switch (d) {
+  case 0:
+  case 6:
+    $(".schedules").hide();
+    break;
+  case 3:
+    $(".schedules:not(#wed)").hide();
+    $("#wed").show();
+    $("#sched-opts").prop('selectedIndex',3);
+    break;
+  case 2:
+  case 5:
+    $(".schedules:not(#tf)").hide();
+    $("#tf").show();
+    $("#sched-opts").prop('selectedIndex',2);
+    break;
+  default:
+    $(".schedules:not(#"+hoy+")").hide();
+    $("#"+hoy).show();
+    if(hoy==='mthb'){
+      $("#sched-opts").prop('selectedIndex',1);
+    }
+    else{
+      $("#sched-opts").prop('selectedIndex',0);
+    }
+}
+
+function fixOpt(p){
+  var re = p.replace(/\s/g, '').replace(/\//g, '').toLowerCase();
+  return re;
+}
+
+$("#sched-opts").change(function(){
+  var thingy = fixOpt($(this).val());
+  console.log(thingy);
+
+  $("#"+ thingy).show();
+  $(".schedules:not(#"+thingy+")").hide();
+  $("#sched-opts").show();
+});
 
 $("#date").text(today); // send it
 
@@ -41,7 +99,6 @@ function startTime() {
   s = checkTime(s);
 
   var finalt = h + ":" + m + ":" + s;
-  $("#time").html(finalt);
 
   var t = setTimeout(startTime, 500);
 }
@@ -171,131 +228,252 @@ $('.notes').on('change keyup paste', function(){
   localStorage.setItem($(this).attr('id'),$(this).val());
 });
 
-$("#bbb").click(function(){
-  $('#gclas-input').slideDown();
-  $('#meet-input').slideUp();
-  $("#schh").slideUp();
-});
-$("#cgc").click(function(){$('#gclas-input').slideUp();});
 
-$("#bc").click(function(){
-  $('#meet-input').slideDown();
-  $('#gclas-input').slideUp();
-  $("#schh").slideUp();
-});
-$("#cgm").click(function(){$('#meet-input').slideUp();});
-
-$("#ba").click(function(){
-  $("#schh").slideDown();
-  $('#meet-input').slideUp();
-  $('#gclas-input').slideUp();
-});
-$("#csc").click(function(){$("#schh").slideUp();});
-
-$("#bd").click(function(){
-  $("#studyhallform").slideDown();
-  $("#schh").slideUp();
-  $('#meet-input').slideUp();
-  $('#gclas-input').slideUp();
-});
-$("#cshf").click(function(){
-  $("#studyhallform").slideUp();
+$("#open-settings").click(function(){
+  $(".cont").hide();
+  $(".settings").fadeIn();
 });
 
-$("#cb").click(function(){
-  $("#customize").slideDown();
-  $("#cs_images").slideUp();
-});
-$("#cc").click(function(){ $("#customize").slideUp(); });
-
-$("#o_cs").click(function(){
-  $("#cs_images").slideDown();
-  $("#customize").slideUp();
-  $("#wallpapers").slideUp();
-});
-$("#cscc").click(function(){
-  $("#cs_images").slideUp();
+$("#close-settings").click(function(){
+  $(".settings").hide();
+  $(".cont").fadeIn();
 });
 
-function changeCSS(a,b,c,d,e,f,g){
-  if(localStorage.getItem("designType")==="colors"){
-    $("textarea").css("border","none");
-    $("textarea").css("color",'black');
-    $("#header, #main, #main a").css("color",a);
-    $("body").css("background",b);
-    $(".tcontainer").css("background",c);
-    $("textarea").css("background",d);
-    $("#logo").attr("src","images/logos/"+e+".png");
-    $(".tcontainer, .tcontainer a").css("color",g);
-    $(".tcontainer, .tcontainer a").css("text-decoration-color",g);
-    if(e==="transparent"){
-      if(f==='True'){
-        $("#logo").css("background",a);
-        console.log("needy transparent background");
-      }
-      else{
-        $("#logo").css("background",b);
-      }
+$("#tc, #tcc").change(function(){
+  $(".cent, #os_cont, #close-settings, #settings_header").fadeOut();
+  $(".ov").fadeIn();
+
+  $("#ov_label").text("change "+rU($(this).val()));
+  $("#"+$(this).val()).show();
+  $(".c_s:not(#"+$(this).val()+")").hide();
+});
+
+var timesettings = {'show_date':true,'show_time':true,'show_mtime':false,'show_seconds':true};
+var csssettings = {'font':'monospace'};
+
+// get defaults set for time settings, and fill in the checkboxes that correspond when appropriate
+if(!localStorage.getItem('show_date')){ localStorage.setItem('show_date',timesettings.show_date); }
+else{ if(localStorage.getItem('show_date')==='true'){ $("#show_date").prop('checked', true); } }
+if(!localStorage.getItem('show_time')){ localStorage.setItem('show_time',timesettings.show_time); }
+else{ if(localStorage.getItem('show_time')==='true'){ $("#show_time").prop('checked', true); } }
+if(!localStorage.getItem('show_mtime')){ localStorage.setItem('show_mtime',timesettings.show_mtime); }
+else{ if(localStorage.getItem('show_mtime')==='true'){ $("#show_mtime").prop('checked', true); } }
+if(!localStorage.getItem('show_seconds')){ localStorage.setItem('show_seconds',timesettings.show_seconds); }
+else{ if(localStorage.getItem('show_seconds')==='true'){ $("#show_seconds").prop('checked', true); } }
+
+// css settings defaults + filling in the form with that data
+if(!localStorage.getItem('font')){ localStorage.setItem('font',csssettings.font); }
+else{  }
+
+//time display
+
+function tellTime() { // if toggled, not millitary time. if secondss, show seconds
+  var nd = new Date();
+  var hour = nd.getHours();
+  var minutes = nd.getMinutes();
+  var seconds = nd.getSeconds();
+
+  var mtime = localStorage.getItem('show_mtime');
+  var showsec = localStorage.getItem('show_seconds');
+
+  if(mtime==='true'){
+    minutes = checkTime(minutes);
+    seconds = checkTime(seconds);
+
+    if(showsec==='true'){
+      var finalt = hour + ":" + minutes + ":" + seconds;
+      //console.log('Military time, showing seconds.');
+      $("#time").html(finalt);
     }
-    var tema = localStorage.getItem("cs");
-    if(tema==="_og"){
-      $("textarea").css("background",'white');
-      $("textarea").css("border","1px solid black");
-    }
-    else if(tema==="_oy"){
-      $("textarea").css("color",'white');
-    }
-    if(tema==="_xm"){
-      $("textarea").css("color",'white');
-      console.log("should trigger takeOff() now 🎄");
-      takeOff();
+    else{
+      var finalt = hour + ":" + minutes;
+      //console.log('Military time, not showing seconds.');
+      $("#time").html(finalt);
     }
   }
-  else if(localStorage.getItem("designType"==="image")){
-    console.log('yeet');
-    $("body").css("background","url("+localStorage.getItem("wu")+")");
-    $("body").css("background-position","center");
-    $("body").css("background-size","cover");
-    $("body").css("background-attachment", "fixed");
+  else{ // military time
+    hour = makeNormal(hour);
+    minutes = checkTime(minutes);
+    seconds = checkTime(seconds);
+
+    if(showsec==='true'){
+      var finalt = hour + ":" + minutes + ":" + seconds;
+      //console.log('NOT military time, showing seconds.');
+      $("#time").html(finalt);
+    }
+    else{
+      var finalt = hour + ":" + minutes;
+      //console.log('NOT military time, not showing seconds.');
+      $("#time").html(finalt);
+    }
+  }
+
+  var t = setTimeout(tellTime, 1000);
+}
+
+tellTime();
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+function makeNormal(i){
+  if (i>12){ i = i - 12;}
+  return i;
+}
+
+function reloadTS(){ //sync screen w/ settings from localStorage
+  if(localStorage.getItem('show_date')==='true'){
+    $("#date").show();
+  }
+  else{
+    $("#date").hide();
+  }
+
+  if(localStorage.getItem('show_time')==='true'){
+    $("#time").show();
+  }
+  else{
+    $("#time").hide();
   }
 }
 
-function refreshCSS(){
-// text color, background color, border + scroll bar background color, input background color, variety of logo, needs the logo text to be same as text color NOT background, scroll bar color
-  var wh = "white";
-  var bl = "black";
+var parseFonts = {'papyrus':'papyrus, cursive','sans-serif':'San Fransisco, sans-serif','serif':'playfair-display, serif','monospace':'source-code-pro, monospace'};
 
-  $("#lcc").width($("#mttf").width()+"px");
-  // gradients + color themes
-  var choices = {
-    _mi:[wh,bl,bl,wh,bl,'false',wh],
-    _og:[bl,wh,bl,bl,bl,'false',wh],
-    _ne:["#2a211d","#faf6f4","#937465",wh,'transparent', 'True',wh],
-    _oc:[wh,"linear-gradient(#a0cee5,#5b96b4)",'rgba(0,0,0,0)','rgba(255,255,255,0.85)', "transparent",'false',wh],
-    _oy:["#004060","white","#004060","#004060","transparent",'True',wh],
-    _pl:[wh,"linear-gradient(#Ffce9f,#ff849c)","rgba(0,0,0,0)",'rgba(255,255,255,0.8)',"transparent",'false',wh],
-    _hl:[wh,"linear-gradient(#b8564b,#6c307c)",'rgba(0,0,0,0)','rgba(255,255,255,0.8)',"transparent",'false',wh],
-    _bl:[wh,"linear-gradient(#9f4f0c,#f2c59f)","rgba(0,0,0,0)",'rgba(255,255,255,0.6)',"transparent",'false',wh],
-    _fi:[wh,"linear-gradient(#a88678,black)","rgba(0,0,0,0)", wh, 'transparent','false',wh],
-    _xm:[bl,,"rgba(0,0,0,0)","#924040",'transparent', 'True','#b4452d'],
-    _ny:[bl,"url(https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1)"],
-    // image wallpapers below this
-    _wi:[bl,"url(images/wallpapers/adam-chang-IWenq-4JHqo-unsplash.jpg)",'rgba(0,0,0,0)','rgba(255,255,255,0.8)']
-  };
+function reloadCSS(){
+  var font = parseFonts[localStorage.getItem('font')];
+  var background = 'white';
+  var color = 'black';
+  //var background = localStorage.getItem('background');
+  //var color = localStorage.getItem('color');
 
-  var tcs = localStorage.getItem("cs");
-  changeCSS(choices[tcs][0],choices[tcs][1],choices[tcs][2],choices[tcs][3],choices[tcs][4],choices[tcs][5],choices[tcs][6]);
+  $("body").css('font-family', font);
+  $("html").css('background', background);
+  $("html, a, #new_todo").css('color', color);
 }
 
-$("#cs_images img").click(function(){
-  //localStorage.setItem("designType","colors");
-  localStorage.setItem("cs",$(this).attr("id"));
-  console.log(localStorage.getItem("cs"));
-  refreshCSS();
+function loadCSSset(){
+  if(localStorage.getItem('font')){
+    $('#font').prop('selectedIndex', localStorage.getItem('font-num'));
+  }
+  if(localStorage.getItem('theme')){
+    $('#theme').prop('selectedIndex', localStorage.getItem('theme-num'));
+  }
+  if(localStorage.getItem('t-spec')){
+    $('#tcc, #tc').prop('selectedIndex', localStorage.getItem('t-spec-num'));
+  }
+
+  if(localStorage.getItem('theme')==='t-pre'){
+    $('#pre-op').slideDown();
+    $('#cus-op').hide();
+  }
+  else{
+    $('#cus-op').slideDown();
+    $('#pre-op').hide();
+  }
+}
+
+reloadTS();
+reloadCSS();
+loadCSSset();
+
+
+$("#set_time input").change(function(event){
+  event.preventDefault();
+  localStorage.setItem($(this).attr('id'), $(this).is(':checked'));
+  reloadTS();
 });
 
-window.addEventListener("resize", function () {
-    refreshCSS();
+$(".included select").change(function(event){
+  event.preventDefault();
+  localStorage.setItem($(this).attr('id'), $(this).val());
+  reloadCSS();
+});
+
+$("#font").change(function(event){
+  event.preventDefault();
+  console.log($(this).prop('selectedIndex'));
+  localStorage.setItem('font-num',$(this).prop('selectedIndex'));
+});
+
+$("#theme").change(function(event){
+  localStorage.setItem('theme-num',$(this).prop('selectedIndex'));
+
+  event.preventDefault();
+  if($(this).val()==='t-pre'){
+    $('#pre-op').slideDown();
+    $('#cus-op').hide();
+  }
+  else{
+    $('#cus-op').slideDown();
+    $('#pre-op').hide();
+  }
+});
+
+$(".t_ops select").change(function(event){
+  event.preventDefault();
+  localStorage.setItem('t-spec', $(this).val());
+  localStorage.setItem('t-spec-num',$(this).prop('selectedIndex'));
+});
+
+$("#spot-url").on('submit',function(event){
+  event.preventDefault();
+
+  var sURL = $("#spotify_info").val();
+
+  $("#spotify_info").val('');
+
+  var remove = sURL.indexOf('?');
+  var fURL = sURL.substring(0, remove);
+  var ffURL = fURL.replace(/com/g,'com/embed');
+
+  console.log(sURL);
+  console.log(fURL);
+  console.log(ffURL);
+
+  localStorage.setItem('spotify_url',ffURL);
+
+  console.log(localStorage.getItem('spotify_url'));
+
+  $("#spotify-iframe").attr('src',localStorage.getItem('spotify_url'));
+
+  alert('Success!');
+});
+
+if(localStorage.getItem('spotify_url')){
+  $("#spotify-iframe").attr('src',localStorage.getItem('spotify_url'));
+}
+
+$("#custom_gradient input").change(function(){
+  $(".test_theme").css('color',$("#cgc").val());
+  $(".test_theme").css('background','linear-gradient('+ $("#cga").val() +"deg," +$("#cgc1").val() + ',' + $("#cgc2").val()+")");
+});
+
+$("#custom_color input").change(function(){
+  $(".test_theme").css('color',$("#text_color").val());
+  $(".test_theme").css('background',$("#background_color").val());
+});
+
+$("#ov_close").click(function(){
+  switch (localStorage.getItem('t-spec')) {
+    case 'custom_gradient':
+      localStorage.setItem('color', $("#cgc").val());
+      localStorage.setItem('background', 'linear-gradient('+ $("#cga").val() +"deg," +$("#cgc1").val() + ',' + $("#cgc2").val()+")");
+      break;
+    case 'custom_color':
+      localStorage.setItem('color', $("#text_color").val());
+      localStorage.setItem('background', $("#background_color").val());
+      break;
+  }
+  reloadCSS();
+  $(".ov").fadeOut();
+  $(".cent, #os_cont, #close-settings, #settings_header").fadeIn();
+});
+
+$("#ov_onlyclose").click(function(){
+  $(".ov").fadeOut();
+  $(".cent, #os_cont, #close-settings, #settings_header").fadeIn();
 });
 
 $("#exp").click(function(){
@@ -324,17 +502,17 @@ $("#comp").click(function(){
 
 function countDown(day, month, year, hour, minute, second){
   var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+
   if(hour<10){
     hour = "0"+hour;
   }
-
   if(minute===0){
     minute = "00";
   }
-
   if(second===0){
     second = "00";
   }
+
   var thenn = months[month]+" "+day+", "+year+" "+ hour+":"+minute+":"+second;
   var then = new Date(thenn).getTime();
 
@@ -344,7 +522,7 @@ function countDown(day, month, year, hour, minute, second){
   var minutes = Math.floor(t%(1000*60*60)/(1000*60));
   var seconds = Math.floor(t%(1000*60)/1000);
 
-  if(seconds==='00'&&minutes==='00'){
+  if(seconds==='00'&&minutes==='00'&&hours==='00'){
     location.reload();
   }
 
@@ -380,20 +558,23 @@ function displayCount(num){
   }
 }
 
-if(d===0||d===6){
-  console.log("It's the weekend, enjoy! The countdown will show Monday @ 12.");
-  $("#exp, .hh3").hide();
-}
+if(d===0||d===6){ $("#exp, .hh3").hide(); }
 
-var yee = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[43,49],'13':[],'14':[9]};
-//var tf = {'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43,49],'13':[],'14':[9]};
-var yee2 = {'8':[00,40,45],'9':[25,30],'10':[10,15,55],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]};
+var wed = {'8':[00,40,45],'9':[25,30],'10':[10,15,55],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]}; //all wednesdays
+var alls = {
+  'mtha':{'8':[00],'9':[20,26],'10':[46,52],'11':[17,23],'12':[43,49],'13':[],'14':[9]},
+  'tfa':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
+  'mthb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
+  'tfb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]}
+};
+//lunch A mt//tf scheds, then lunch B mt//tf scheds
 
 var countDownTime = setInterval(function(){
+  var dx = new Date();
   var day = d;
-  var hour = dd.getHours();
-  var minutes = dd.getMinutes();
-  var seconds = dd.getSeconds();
+  var hour = dx.getHours();
+  var minutes = dx.getMinutes();
+  var seconds = dx.getSeconds();
   var daysin = [31,28,31,30,31,30,31,31,30,31,30,31]; // how many days are in each month. don't forget like april did - https://www.youtube.com/watch?v=jpwelTxlcQs
 
   var tings = function(){
@@ -407,47 +588,37 @@ var countDownTime = setInterval(function(){
     }
     else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
       displayCount("");
-      $("#exp").hide();
+      $("#exp, .hh3").hide();
     }
-  }
+  } //not affected by update
 
   if(day===0||day===6){ //sunday & saturday
     displayCount("");
   }
-
-  else if(day===3){
-    console.log("it's wednesday my dude!!")
-
+  else if(day===3){ //if it's a wednesday
     if(hour<8){//countdown to 8/zero hour DONE
       displayCount(countDown(n,m,y,8,0,0));
-      console.log('layer 1');
     }
     else if(hour >= 8 && hour < 15){
-      if(minutes < yee2[hour][0]){
-        displayCount(countDown(n,m,y,hour,yee2[hour][0],0));
-        console.log('layer 2');
+      if(minutes < wed[hour][0]){
+        displayCount(countDown(n,m,y,hour,wed[hour][0],0));
       }
       else{
-        if(minutes<yee2[hour][1]){
-          displayCount(countDown(n,m,y,hour,yee2[hour][1],0));
-          console.log('layer 3');
+        if(minutes<wed[hour][1]){
+          displayCount(countDown(n,m,y,hour,wed[hour][1],0));
         }
         else{
-          if(minutes<yee2[hour][2]){
-            displayCount(countDown(n,m,y,hour,yee2[hour][2],0));
-            console.log('layer 4');
+          if(minutes<wed[hour][2]){
+            displayCount(countDown(n,m,y,hour,wed[hour][2],0));
           }
           else{
-            if(minutes<yee2[hour][3]){
-              displayCount(countDown(n,m,y,hour,yee2[hour][3],0));
-              console.log('layer 5');
+            if(minutes<wed[hour][3]){
+              displayCount(countDown(n,m,y,hour,wed[hour][3],0));
             }
-            else if(yee2.hasOwnProperty(hour+1)){
-            console.log('layer 6');
-              displayCount(countDown(n,m,y,hour+1,yee2[hour+1][0],0));
+            else if(wed.hasOwnProperty(hour+1)){
+              displayCount(countDown(n,m,y,hour+1,wed[hour+1][0],0));
             }
             else{
-              console.log('last layer');
               if(n+1<=daysin[m]){
                 displayCount(countDown(n+1,m,y,8,0,0));
               }
@@ -460,68 +631,42 @@ var countDownTime = setInterval(function(){
       }
     }
   }
-  /*else if(day===2||day===5){ //schedule for tuesdays and fridays
-    if(tf[hour]===11||tf[hour]===13){
-      displayCount(countDown(n,m,y,hour+1,yee[hour][0],0));
-    }
-    else if(hour>=8 || hour<14){
-      if(minutes<tf[hour][0]){
-        displayCount(countDown(n,m,y,hour,tf[hour][0],0));
-      }
-      else if(minutes>=tf[hour][0]&&minutes<tf[hour][1]){
-        displayCount(countDown(n,m,y,hour,tf[hour][1],0));
-      } 
-      else if(minutes>=tf[hour][1]&&minutes<tf[hour][2]){
-        displayCount(countDown(n,m,y,hour,tf[hour][2],0));
-      }
-      else if(minutes>=tf[hour][2]&&minutes<tf[hour][3]){
-        displayCount(countDown(n,m,y,hour,tf[hour][3],0));
-      }
-    }
-    else if(hour===14&&minutes<9){
-        displayCount(countDown(n,m,y,14,09,0));
-    }
-    else{
-        tings();
-    }
-  } */
   else{ // not wednesdays
-    if(yee[hour]){
+    if(alls[hoy][hour]){
       if(hour<8){ //right before school
         displayCount(countDown(n,m,y,8,00,0));
       }
-      else if(hour===8){
-        displayCount(countDown(n,m,y,9,20,0));
-      }
-      else if(hour===11){
-        displayCount(countDown(n,m,y,12,43,0));
-      }
-      else if(hour===12&&minutes>=49){
-        displayCount(countDown(n,m,y,14,09,0));
-      }
-      else if(yee[hour].length===2){
-        if(minutes<yee[hour][0]){
-          displayCount(countDown(n,m,y,hour,yee[hour][0],0)); // if it's the first countdown of the hr
-        }
-        else if(minutes>=yee[hour][0]&&minutes<yee[hour][1]){ // count to passing period
-          displayCount(countDown(n,m,y,hour,yee[hour][1],0));
-        }
-        else if(hour===10&&minutes>=52){
-          displayCount(countDown(n,m,y,12,yee[hour][0],0));
-        }
-        else{
-          displayCount(countDown(n,m,y,hour+1,yee[hour + 1][0],0)); // count to first item of next array
-        }
-      }
-      else{
-        if(hour===14&&minutes<9){
-          displayCount(countDown(n,m,y,14,09,0));
-        }
-        if(hour===13){
-          displayCount(countDown(n,m,y,14,09,0));
-        }
-        else{
+      else if(hour>8&&hour<15){
+        if(hour===14&&minutes>=9){ //if it's after 2:09
           tings();
+        }
+        else{
+          if(minutes < alls[hoy][hour][0]){
+            console.log('layer 1');
+            displayCount(countDown(n,m,y,hour,alls[hoy][hour][0],0));
+          }
+          else{
+            if(minutes < alls[hoy][hour][1]){
+              console.log('layer 2');
+              displayCount(countDown(n,m,y,hour,alls[hoy][hour][1],0));
+            }
+            else{
+              if(minutes < alls[hoy][hour][2]){
+                console.log('layer 3');
+                displayCount(countDown(n,m,y,hour,alls[hoy][hour][2],0));
+              }
+              else{
+                if(alls[hoy][hour+1][0].length!==0){
+                  displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
+                  console.log('there is something in the sched for next hour');
+                }
+                else{
+                  displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
+                  console.log('there is not something in the sched for next hour');
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -533,8 +678,9 @@ var countDownTime = setInterval(function(){
   // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
 }, 1000);
 
+
 var maint = function(a){
   $("body").hide();
   $("#heyo").text("come back on " + a);
   $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
-} 
+}
