@@ -37,7 +37,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'mth', '2':'tf','4':'mth','5':'tf'};
+var tr = {'1':'mth', '2':'tf','3':'mth','4':'tf'};
 var hoy = tr[d]+localStorage.getItem('sched-type');
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
