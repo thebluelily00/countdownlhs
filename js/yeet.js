@@ -50,11 +50,11 @@ switch (d) {
   case 6:
     $(".schedules").hide();
     break;
-  case 3:
+  /*case 3:
     $(".schedules:not(#wed)").hide();
     $("#wed").show();
     $("#sched-opts").prop('selectedIndex',3);
-    break;
+    break;*/
   case 2:
   case 5:
     $(".schedules:not(#tf)").hide();
