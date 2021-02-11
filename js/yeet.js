@@ -56,7 +56,7 @@ switch (d) {
     $("#sched-opts").prop('selectedIndex',3);
     break;*/
   case 2:
-  case 5:
+  case 4:
     $(".schedules:not(#tf)").hide();
     $("#tf").show();
     $("#sched-opts").prop('selectedIndex',2);
@@ -640,6 +640,9 @@ var countDownTime = setInterval(function(){
       else if(hour>8&&hour<15){
         if(hour===14&&minutes>=9){ //if it's after 2:09
           tings();
+        }
+        if(hour===8){
+           displayCount(countDown(n,m,y,hour,alls[hoy][hour+1][0],0));
         }
         else{
           if(minutes < alls[hoy][hour][0]){
