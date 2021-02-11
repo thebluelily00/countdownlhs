@@ -1,4 +1,4 @@
-//hide things
+c//hide things
 $('#exp,#sv_cont, #os_cont, #finalss, #cs_images, .ov,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
 function rU(a){ //remove underscore
   return neww = a.replace("_", " ");
@@ -56,7 +56,7 @@ switch (d) {
     $("#sched-opts").prop('selectedIndex',3);
     break;*/
   case 2:
-  case 5:
+  case 4:
     $(".schedules:not(#tf)").hide();
     $("#tf").show();
     $("#sched-opts").prop('selectedIndex',2);
