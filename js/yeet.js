@@ -637,12 +637,12 @@ var countDownTime = setInterval(function(){
       if(hour<8){ //right before school
         displayCount(countDown(n,m,y,8,00,0));
       }
+      else if(hour===8){
+        displayCount(countDown(n,m,y,hour,alls[hoy][hour+1][0],0));
+      }
       else if(hour>8&&hour<15){
         if(hour===14&&minutes>=9){ //if it's after 2:09
           tings();
-        }
-        if(hour===8){
-           displayCount(countDown(n,m,y,hour,alls[hoy][hour+1][0],0));
         }
         else{
           if(minutes < alls[hoy][hour][0]){
