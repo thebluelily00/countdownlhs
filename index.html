@@ -18,7 +18,7 @@
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
   </head>
-  <body onload="startTime()">
+  <body>
     <div class="settings">
       <h1 id="settings_header">Settings</h1>
       <div id="os_cont" class="">
@@ -184,72 +184,38 @@
                   <tr class='included'>
                     <td>Background <br> type</td>
                     <td>
-                      <input type="checkbox" name="col" value="">
-                      <label for="col">1 color</label>
-                      <br>
-                      <input type="checkbox" name="grad" value="">
-                      <label for="grad">Gradient</label>
-                    </td>
+                      <form id="back-type">
+                        <div>
+                          <input type="radio" name="bac" value="color" id="uno" checked>
+                          <label for="col">Color</label>
+                        </div>
+                        <div class="">
+                          <input type="radio" name="bac" value="gradient" id="dos">
+                          <label for="grad">Gradient</label>
+                        </div>
+                      </form></td>
                   </tr>
                   <tr class='included'>
                     <td>Background <br>color/s</td>
-                    <td><input type="color" name="color1" value=""> <input type="color" name="color2" value=""></td>
+                    <td><input type="color" name="color1" id="bc-1" value="">
+                      <br> <input type="color" name="color2" id="bc-2" value=""></td>
                   </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="ov">
-          <h2 id="ov_label"></h2>
-          <div class="test_theme">
-            <p>testing</p>
-          </div>
-          <div class="all_theme">
-            <div id="custom_gradient" class="c_s">
-              <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank">here</a> or <a href="https://uigradients.com/" target="_blank">here</a>, and copy the hex codes you like.</em>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td><input type="color" name="cgc1" id="cgc1" value=""></td>
-                    <td>1st gradient color</td>
-                  </tr>
-                  <tr>
-                    <td><input type="color" name="cgc2" id="cgc2" value=""></td>
-                    <td>2nd gradient color</td>
-                  </tr>
-                  <tr>
-                    <td><input type="color" name="cgc" id="cgc" value=""></td>
-                    <td>Text color</td>
-                  </tr>
-                  <tr>
-                    <td><input type="range" id="cga" min="-360" max="360" value="0"></td>
+                  <tr id="angle">
                     <td>Angle</td>
+                    <td><input type="range" id="cga" min="-360" max="360" value="0"></td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
-            <div id="custom_color" class="c_s">
-              <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank">here</a> and copy the hex codes you like.</em>
-              <table>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td>text</td>
-                  </tr>
-                  <tr>
-                    <td><input type="color" name="background_color" id="background_color" title="background color"></td>
-                    <td>background</td>
-                  </tr>
-                </tbody>
               </table>
             </div>
           </div>
-          <div class="all_bulletpoint">
-
+          <div class="ov contt">
+            <h2 id="ov_label"></h2>
+            <div class="test_theme">
+              <p>testing</p>
+            </div>
+            <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>
+            <br> <i id="ov_close" class="fas fa-save"></i>
+            <i id="ov_onlyclose" class="fas fa-times-circle"></i>
           </div>
-          <i id="ov_close" class="fas fa-save"></i>
-          <i id="ov_onlyclose" class="fas fa-times-circle"></i>
         </div>
         <i class="far fa-times-circle" id="close-settings"></i>
     </div>
@@ -417,7 +383,7 @@
                       <td>7</td>
                     </tr>
                     <tr>
-                      <td>11:18 - 12:43</td>
+                      <td>12:18 - 12:43</td>
                       <td><span class='sm'>0hr Lunch</span></td>
                     </tr>
                     <tr>

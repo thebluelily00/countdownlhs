@@ -1,19 +1,30 @@
 //hide things
-$('#exp,#sv_cont, #os_cont, #finalss, #cs_images, .ov,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
+$('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
+
+// first thing it does, ensures proper schedule display
+if(!localStorage.getItem('sched-type')){ //if you haven't told the website what your lunch period is
+  console.log('nothing saved for schedule type');
+  var sAns = prompt('do you have lunch A or B?').toLowerCase();
+  localStorage.setItem('sched-type',sAns);
+} // add something in settings to change this if someone's schedule changes
+else{ //if you open the site and you've already inputted, it'll just be printed to the log
+  console.log('your schedule type is '+localStorage.getItem('sched-type'));
+}
+
+
+// FUNCTIONS TO PROCESS TEXT
 function rU(a){ //remove underscore
   return neww = a.replace("_", " ");
 }
 function addDash(b){
   return b.replace(/\s/, '-');
 }
-if(!localStorage.getItem('sched-type')){
-  console.log('nothing saved for schedule type');
-  var sAns = prompt('do you have lunch A or B?').toLowerCase();
-  localStorage.setItem('sched-type',sAns);
-} // add something in settings to change this if someone's schedule changes
-else{
-  console.log('your schedule type is '+localStorage.getItem('sched-type'));
+function fixOpt(p){
+  var re = p.replace(/\s/g, '').replace(/\//g, '').toLowerCase();
+  return re;
 }
+// END OF TEXT PROCESSING FUNCTIONS
+
 
 function ending(datee){ //make it like english + not like a robot
   if(datee===1||datee===21){
@@ -30,25 +41,39 @@ function ending(datee){ //make it like english + not like a robot
   }
 }
 
-//date display
+// DATE VARIABLES AND INFO TO BE USED + DISPLAYED
 var dd = new Date();
 var d = dd.getDay();
 var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'mth', '2':'tf','3':'mth','4':'tf'};
-var hoy = tr[d]+localStorage.getItem('sched-type');
+var tr = {'1':'mth', '2':'tf','3':'mth','4':'tf'};  //assigns a schedule type to each day. sunday is 0.
+var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
 var today = days[d] + ", " + months[m] + " " + n + ending(n); // the text that actually shows for the date
+// END DATE INFO
 
+
+/*
+after these weeks:
+make case 4 be case 5
+make tr 3&4 be 4&5 for normal thursday & friday schedule
+uncomment case 3 for wednesdays
+*/
+
+// display proper schedule based on what day it is. choose that option on the select element.
 switch (d) {
   case 0:
   case 6:
     $(".schedules").hide();
+    break;
+  case 5:
+    $(".schedules:not(#tf)").hide();
+    $("#tf").show();
+    $("#sched-opts").prop('selectedIndex',2);
     break;
   /*case 3:
     $(".schedules:not(#wed)").hide();
@@ -57,11 +82,13 @@ switch (d) {
     break;*/
   case 2:
   case 4:
+    console.log(d);
     $(".schedules:not(#tf)").hide();
     $("#tf").show();
     $("#sched-opts").prop('selectedIndex',2);
     break;
   default:
+    console.log("#"+hoy);
     $(".schedules:not(#"+hoy+")").hide();
     $("#"+hoy).show();
     if(hoy==='mthb'){
@@ -70,11 +97,6 @@ switch (d) {
     else{
       $("#sched-opts").prop('selectedIndex',0);
     }
-}
-
-function fixOpt(p){
-  var re = p.replace(/\s/g, '').replace(/\//g, '').toLowerCase();
-  return re;
 }
 
 $("#sched-opts").change(function(){
@@ -86,44 +108,18 @@ $("#sched-opts").change(function(){
   $("#sched-opts").show();
 });
 
-$("#date").text(today); // send it
+//time + date display
+$("#date").text(today); // actually makes the date text show what today is. this should eventually be updated so that it reflects what day it is if there's a day change
 
-//time display
-function startTime() {
-  var today = new Date();
-  var h = today.getHours();
-  var m = today.getMinutes();
-  var s = today.getSeconds();
-  h = makeNormal(h);
-  m = checkTime(m);
-  s = checkTime(s);
+$("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
 
-  var finalt = h + ":" + m + ":" + s;
-
-  var t = setTimeout(startTime, 500);
-}
-
-
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
-}
-function makeNormal(i){
-  if (i>12){ i = i - 12;}
-  return i;
-}
-
-// make the favicon show the number for the date on the calendar
-$("#fav").attr('href','images/daily_icons/'+n+'.png');
 
 //finals calculator
-
 $('#hehe').click(function(){ //open finals calcs
   $('#heheh, #hehe').css('display','block');
   $('#allfinalss').css('padding','10px');
   $("#finalss").slideDown();
-});
-
+}); //RENAME THIS ELEMENT IN THE HTML
 
 $("#grades").submit(function(event){ //calculate final grades
   event.preventDefault();
@@ -154,16 +150,16 @@ $("#grades").submit(function(event){ //calculate final grades
   });
 });
 
-
 $('#cf').click(function(){ // close finals info
   $('#finalss').slideUp();
   $('#heheh, #hehe').css('display','inline');
   $('#heheh, #hehe').css('text-align','left');
   $('#allfinalss').css('padding','0px');
 });
+// END OF FINALS STUFF
 
-// lets get a crazy amount of input + hope cookies can store it all bc honestly im not Resources
 
+// STORE INFO ON CLASS SCHEDULE, GOOGLE CLASSROOM URLs, GOOGLE MEETS CODES, AND NOTES
 $('.ci').click(function(){
   var answer = prompt("What class do you have this period?");
   localStorage.setItem($(this).attr("id"),answer);
@@ -201,21 +197,19 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
   while(p<8){
     if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
       $("#t"+p).attr("placeholder",localStorage.getItem('sched-'+p)+" notes");
+      // ADD SOMETHING SO IT ADDS <TD>s TO EACH TABLE WITH YOUR SCHEDULE INFO HERE
 
       if((localStorage.getItem('sched-'+p)+" notes").includes("study hall")){
         console.log("there's a study hall period "+ p +" so no notes here");
         $("#p"+p).hide();
-      }
+      } // get rid of study hall text box that DOESN'T NEED TO EXIST
     }
-
     if(localStorage.getItem('gclas-'+p)){ // if google classroom links have been added, put them as the href for the a's
       $("#cla"+p).attr("href", localStorage.getItem('gclas-'+p));
     }
-
     if(localStorage.getItem('meet-'+p)){ // if the google meet links have been added, use them
       $("#vid"+p).attr("href", localStorage.getItem('meet-'+p));
     }
-
     if(localStorage.getItem('t'+p)){ // if there are notes written, put them in the textareas
       console.log('there are notes for period '+p);
       $("#t"+p).val(localStorage.getItem('t'+p));
@@ -227,8 +221,9 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
 $('.notes').on('change keyup paste', function(){
   localStorage.setItem($(this).attr('id'),$(this).val());
 });
+// END DATA ENTRY INFO
 
-
+// BUTTONS TO OPEN & CLOSE SETTINGS
 $("#open-settings").click(function(){
   $(".cont").hide();
   $(".settings").fadeIn();
@@ -239,17 +234,22 @@ $("#close-settings").click(function(){
   $(".cont").fadeIn();
 });
 
-$("#tc, #tcc").change(function(){
-  $(".cent, #os_cont, #close-settings, #settings_header").fadeOut();
-  $(".ov").fadeIn();
 
-  $("#ov_label").text("change "+rU($(this).val()));
-  $("#"+$(this).val()).show();
-  $(".c_s:not(#"+$(this).val()+")").hide();
-});
+/*
 
+ALL OF THE
+SETTINGS CODE
+
+IMPORTANTE
+
+*/
+
+// set defaults for settings. show date, show time (not in military), and show seconds. make font be monospace
 var timesettings = {'show_date':true,'show_time':true,'show_mtime':false,'show_seconds':true};
 var csssettings = {'font':'monospace'};
+var parseFonts = {'sans-serif':'San Fransisco, sans-serif',
+                  'serif':'playfair-display, serif',
+                  'monospace':'source-code-pro, monospace'};
 
 // get defaults set for time settings, and fill in the checkboxes that correspond when appropriate
 if(!localStorage.getItem('show_date')){ localStorage.setItem('show_date',timesettings.show_date); }
@@ -261,12 +261,25 @@ else{ if(localStorage.getItem('show_mtime')==='true'){ $("#show_mtime").prop('ch
 if(!localStorage.getItem('show_seconds')){ localStorage.setItem('show_seconds',timesettings.show_seconds); }
 else{ if(localStorage.getItem('show_seconds')==='true'){ $("#show_seconds").prop('checked', true); } }
 
-// css settings defaults + filling in the form with that data
-if(!localStorage.getItem('font')){ localStorage.setItem('font',csssettings.font); }
-else{  }
+// if font is saved, use font
+if(!localStorage.getItem('font')){ localStorage.setItem('font',csssettings.font);}
+
+switch (localStorage.getItem('btype')){
+  case 'gradient':
+    console.log("a gradient was saved. make it show this.");
+    $("#dos").checked = true;
+    $("#bc-2").show();
+    $("#angle").show();
+    break;
+  case 'color':
+    console.log("a color was saved. make it show this.");
+    $("#uno").checked = true;
+    $("#bc-2").hide();
+    $("#angle").hide();
+    break;
+}
 
 //time display
-
 function tellTime() { // if toggled, not millitary time. if secondss, show seconds
   var nd = new Date();
   var hour = nd.getHours();
@@ -275,6 +288,16 @@ function tellTime() { // if toggled, not millitary time. if secondss, show secon
 
   var mtime = localStorage.getItem('show_mtime');
   var showsec = localStorage.getItem('show_seconds');
+
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+
+  function makeNormal(i){
+    if (i>12){ i = i - 12;}
+    return i;
+  }
 
   if(mtime==='true'){
     minutes = checkTime(minutes);
@@ -311,49 +334,29 @@ function tellTime() { // if toggled, not millitary time. if secondss, show secon
   var t = setTimeout(tellTime, 1000);
 }
 
-tellTime();
+function reloadTS(){ //sync time + date settings w/ settings from localStorage
+  if(localStorage.getItem('show_date')==='true'){ $("#date").show();}
+  else{$("#date").hide();}
 
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
+  if(localStorage.getItem('show_time')==='true'){ $("#time").show();}
+  else{$("#time").hide();}
 }
 
-function makeNormal(i){
-  if (i>12){ i = i - 12;}
-  return i;
-}
-
-function reloadTS(){ //sync screen w/ settings from localStorage
-  if(localStorage.getItem('show_date')==='true'){
-    $("#date").show();
-  }
-  else{
-    $("#date").hide();
-  }
-
-  if(localStorage.getItem('show_time')==='true'){
-    $("#time").show();
-  }
-  else{
-    $("#time").hide();
-  }
-}
-
-var parseFonts = {'papyrus':'papyrus, cursive','sans-serif':'San Fransisco, sans-serif','serif':'playfair-display, serif','monospace':'source-code-pro, monospace'};
-
-function reloadCSS(){
+function reloadCSS(){ // put the settings from localStorage into the actual CSS
   var font = parseFonts[localStorage.getItem('font')];
-  var background = 'white';
-  var color = 'black';
-  //var background = localStorage.getItem('background');
-  //var color = localStorage.getItem('color');
+  console.log('parsed font is '+font);
+
+  var background = localStorage.getItem('background');
+  var color = localStorage.getItem('color');
+  console.log('background is '+background);
+  console.log('color is '+color);
 
   $("body").css('font-family', font);
   $("html").css('background', background);
   $("html, a, #new_todo").css('color', color);
 }
 
-function loadCSSset(){
+function loadCSSset(){ // change var values to be the values from localStorage
   if(localStorage.getItem('font')){
     $('#font').prop('selectedIndex', localStorage.getItem('font-num'));
   }
@@ -374,107 +377,86 @@ function loadCSSset(){
   }
 }
 
+tellTime();
 reloadTS();
 reloadCSS();
 loadCSSset();
 
-
+// SAVE THE TIME + DATE SETTINGS WHEN CHANGES ARE MADE
 $("#set_time input").change(function(event){
   event.preventDefault();
   localStorage.setItem($(this).attr('id'), $(this).is(':checked'));
   reloadTS();
 });
-
-$(".included select").change(function(event){
-  event.preventDefault();
-  localStorage.setItem($(this).attr('id'), $(this).val());
-  reloadCSS();
-});
-
 $("#font").change(function(event){
   event.preventDefault();
   console.log($(this).prop('selectedIndex'));
+  console.log($(this).val());
+  localStorage.setItem($(this).attr('id'), $(this).val());
   localStorage.setItem('font-num',$(this).prop('selectedIndex'));
+  reloadCSS();
 });
+$("#text_color").css('width','90px');
 
-$("#theme").change(function(event){
-  localStorage.setItem('theme-num',$(this).prop('selectedIndex'));
+var btype = '';
 
-  event.preventDefault();
-  if($(this).val()==='t-pre'){
-    $('#pre-op').slideDown();
-    $('#cus-op').hide();
+$("#text_color").change(function(){
+  $(".test_theme").css('color',$("#text_color").val());
+}); // make the example reflect whatever's in the input box
+
+console.log($("input[name=bac]:checked").val());
+btype = $("input[name=bac]:checked").val();
+
+$("#back-type input").change(function(event){
+  btype = $(this).val();
+  console.log(btype);
+  if($(this).val()==='color'){ //if they want a color
+    $("#bc-2").hide();
+    $("#angle").hide();
   }
   else{
-    $('#cus-op').slideDown();
-    $('#pre-op').hide();
+    $("#bc-2").show();
+    $("#angle").show();
   }
 });
 
-$(".t_ops select").change(function(event){
-  event.preventDefault();
-  localStorage.setItem('t-spec', $(this).val());
-  localStorage.setItem('t-spec-num',$(this).prop('selectedIndex'));
+$("#bc-1").change(function(event){
+  if(btype==='color'){
+    $(".test_theme").css('background',$("#bc-1").val());
+  }
+  else{ //put gradient in example box
+    $(".test_theme").css('background',"linear-gradient("+$("#cga").val() +"deg,"+$("#bc-1").val()+","+$("#bc-2").val()+")");
+  }
 });
-
-$("#spot-url").on('submit',function(event){
-  event.preventDefault();
-
-  var sURL = $("#spotify_info").val();
-
-  $("#spotify_info").val('');
-
-  var remove = sURL.indexOf('?');
-  var fURL = sURL.substring(0, remove);
-  var ffURL = fURL.replace(/com/g,'com/embed');
-
-  console.log(sURL);
-  console.log(fURL);
-  console.log(ffURL);
-
-  localStorage.setItem('spotify_url',ffURL);
-
-  console.log(localStorage.getItem('spotify_url'));
-
-  $("#spotify-iframe").attr('src',localStorage.getItem('spotify_url'));
-
-  alert('Success!');
+$("#bc-2").change(function(event){
+  $(".test_theme").css('background',"linear-gradient("+$("#cga").val() +"deg,"+$("#bc-1").val()+","+$("#bc-2").val()+")");
 });
-
-if(localStorage.getItem('spotify_url')){
-  $("#spotify-iframe").attr('src',localStorage.getItem('spotify_url'));
-}
-
-$("#custom_gradient input").change(function(){
-  $(".test_theme").css('color',$("#cgc").val());
-  $(".test_theme").css('background','linear-gradient('+ $("#cga").val() +"deg," +$("#cgc1").val() + ',' + $("#cgc2").val()+")");
-});
-
-$("#custom_color input").change(function(){
-  $(".test_theme").css('color',$("#text_color").val());
-  $(".test_theme").css('background',$("#background_color").val());
+$("#cga").change(function(event){
+  $(".test_theme").css('background',"linear-gradient("+$("#cga").val() +"deg,"+$("#bc-1").val()+","+$("#bc-2").val()+")");
 });
 
 $("#ov_close").click(function(){
-  switch (localStorage.getItem('t-spec')) {
-    case 'custom_gradient':
-      localStorage.setItem('color', $("#cgc").val());
-      localStorage.setItem('background', 'linear-gradient('+ $("#cga").val() +"deg," +$("#cgc1").val() + ',' + $("#cgc2").val()+")");
-      break;
-    case 'custom_color':
+  switch (btype) {
+    case 'gradient':
+      localStorage.setItem('btype',btype);
+      console.log('USING TWO COLORS');
       localStorage.setItem('color', $("#text_color").val());
-      localStorage.setItem('background', $("#background_color").val());
+      localStorage.setItem('background', 'linear-gradient('+ $("#cga").val() +"deg," +$("#bc-1").val() + ',' + $("#bc-2").val()+")");
+      break;
+    case 'color':
+      localStorage.setItem('btype',btype);
+      console.log('USING ONE COLOR');
+      localStorage.setItem('color', $("#text_color").val());
+      localStorage.setItem('background', $("#bc-1").val());
       break;
   }
   reloadCSS();
-  $(".ov").fadeOut();
-  $(".cent, #os_cont, #close-settings, #settings_header").fadeIn();
 });
 
-$("#ov_onlyclose").click(function(){
+/*$("#ov_onlyclose").click(function(){
   $(".ov").fadeOut();
   $(".cent, #os_cont, #close-settings, #settings_header").fadeIn();
-});
+});*/
 
 $("#exp").click(function(){
   $("#main, #exp").hide();
@@ -662,11 +644,9 @@ var countDownTime = setInterval(function(){
               else{
                 if(alls[hoy][hour+1][0]){
                   displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
-                  console.log('there is something in the sched for next hour');
                 }
                 else{
                   displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
-                  console.log('there is not something in the sched for next hour');
                 }
               }
             }
