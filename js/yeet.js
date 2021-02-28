@@ -48,7 +48,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'mth', '2':'tf','3':'mth','4':'tf'};  //assigns a schedule type to each day. sunday is 0.
+var tr = {'1':'mth', '2':'tf','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
 var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -70,18 +70,13 @@ switch (d) {
   case 6:
     $(".schedules").hide();
     break;
-  case 5:
-    $(".schedules:not(#tf)").hide();
-    $("#tf").show();
-    $("#sched-opts").prop('selectedIndex',2);
-    break;
-  /*case 3:
+  case 3:
     $(".schedules:not(#wed)").hide();
     $("#wed").show();
     $("#sched-opts").prop('selectedIndex',3);
-    break;*/
+    break;
   case 2:
-  case 4:
+  case 5:
     console.log(d);
     $(".schedules:not(#tf)").hide();
     $("#tf").show();
