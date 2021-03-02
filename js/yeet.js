@@ -105,7 +105,7 @@ $("#sched-opts").change(function(){
 
 //time + date display
 $("#date").text(today); // actually makes the date text show what today is. this should eventually be updated so that it reflects what day it is if there's a day change
-
+console.log("today's date is "+n);
 $("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
 
 
