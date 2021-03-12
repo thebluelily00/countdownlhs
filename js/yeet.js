@@ -1,14 +1,16 @@
 //hide things
 $('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
-
+$("body").hide();
 // first thing it does, ensures proper schedule display
 if(!localStorage.getItem('sched-type')){ //if you haven't told the website what your lunch period is
   console.log('nothing saved for schedule type');
   var sAns = prompt('do you have lunch A or B?').toLowerCase();
   localStorage.setItem('sched-type',sAns);
+  $("body").show();
 } // add something in settings to change this if someone's schedule changes
 else{ //if you open the site and you've already inputted, it'll just be printed to the log
   console.log('your schedule type is '+localStorage.getItem('sched-type'));
+  $("body").show();
 }
 
 
@@ -199,12 +201,19 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
         $("#p"+p).hide();
       } // get rid of study hall text box that DOESN'T NEED TO EXIST
     }
+
     if(localStorage.getItem('gclas-'+p)){ // if google classroom links have been added, put them as the href for the a's
       $("#cla"+p).attr("href", localStorage.getItem('gclas-'+p));
+      console.log("there IS a gclas link here");
     }
+    else{ $("#cla"+p).hide(); console.log("no google classroom link here"); }
+
     if(localStorage.getItem('meet-'+p)){ // if the google meet links have been added, use them
       $("#vid"+p).attr("href", localStorage.getItem('meet-'+p));
+      console.log("there IS a gclas meet link here");
     }
+    else{ $("#vid"+p).hide(); console.log("no meet link here");}
+
     if(localStorage.getItem('t'+p)){ // if there are notes written, put them in the textareas
       console.log('there are notes for period '+p);
       $("#t"+p).val(localStorage.getItem('t'+p));
