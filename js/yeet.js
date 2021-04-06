@@ -50,7 +50,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'mth', '2':'tf','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
+var tr = {'2':'mth', '3':'tf','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
 var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -72,12 +72,12 @@ switch (d) {
   case 6:
     $(".schedules").hide();
     break;
-  case 3:
+  /*case 3:
     $(".schedules:not(#wed)").hide();
     $("#wed").show();
     $("#sched-opts").prop('selectedIndex',3);
-    break;
-  case 2:
+    break;*/
+  case 3:
   case 5:
     console.log(d);
     $(".schedules:not(#tf)").hide();
@@ -546,7 +546,7 @@ function displayCount(num){
 
 if(d===0||d===6){ $("#exp, .hh3").hide(); }
 
-var wed = {'8':[00,40,45],'9':[25,30],'10':[10,15,55],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]}; //all wednesdays
+var wed = {'8':[00,40,46],'9':[26,32],'10':[12,18],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]}; //FIX IMMEDIATELY - ADD TWO VERSIONS FOR EACH LUNCH TO ALLS
 var alls = {
   'mtha':{'8':[00],'9':[20,26],'10':[46,52],'11':[17,23],'12':[43,49],'13':[],'14':[9]},
   'tfa':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
