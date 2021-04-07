@@ -582,7 +582,7 @@ var countDownTime = setInterval(function(){
   if(day===0||day===6){ //sunday & saturday
     displayCount("");
   }
-  else if(day===3){ //if it's a wednesday
+  else if(day===2){ //if it's a wednesday FIX THIS AFTER THIS WEEK, MAKE IT GO BACK TO 3
     if(hour<8){//countdown to 8/zero hour DONE
       displayCount(countDown(n,m,y,8,0,0));
     }
