@@ -22,7 +22,7 @@ function addDash(b){
   return b.replace(/\s/, '-');
 }
 function fixOpt(p){
-  var re = p.replace(/\s/g, '').replace(/\//g, '').toLowerCase();
+  var re = p.replace(/\s/g, '').replace(/ed/g, '').replace(/\//g, '').toLowerCase();
   return re;
 }
 // END OF TEXT PROCESSING FUNCTIONS
@@ -50,7 +50,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'2':'mth', '3':'tf','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
+var tr = {'1':'mth', '2':'tf','3':'w','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
 var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -107,8 +107,8 @@ $("#sched-opts").change(function(){
 
 //time + date display
 $("#date").text(today); // actually makes the date text show what today is. this should eventually be updated so that it reflects what day it is if there's a day change
-//console.log("today's date is "+n);
-//$("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
+console.log("today's date is "+n);
+$("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
 
 
 //finals calculator
@@ -546,12 +546,13 @@ function displayCount(num){
 
 if(d===0||d===6){ $("#exp, .hh3").hide(); }
 
-var wed = {'8':[00,40,46],'9':[26,32],'10':[12,18],'11':[00,30,35],'12':[15,20],'13':[00,05,45,50],'14':[30]}; //FIX IMMEDIATELY - ADD TWO VERSIONS FOR EACH LUNCH TO ALLS
 var alls = {
   'mtha':{'8':[00],'9':[20,26],'10':[46,52],'11':[17,23],'12':[43,49],'13':[],'14':[9]},
   'tfa':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
   'mthb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
-  'tfb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]}
+  'tfb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
+  'wa':{'8':[00,40,46],'9':[26,32],'10':[12,18,43,49],'11':[29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]},
+  'wb':{'8':[00,40,46],'9':[26,32],'10':[12,18,58],'11':[04,29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]}
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
@@ -582,7 +583,7 @@ var countDownTime = setInterval(function(){
   if(day===0||day===6){ //sunday & saturday
     displayCount("");
   }
-  else if(day===2){ //if it's a wednesday FIX THIS AFTER THIS WEEK, MAKE IT GO BACK TO 3
+  /*else if(day===2){ //if it's a wednesday FIX THIS AFTER THIS WEEK, MAKE IT GO BACK TO 3
     if(hour<8){//countdown to 8/zero hour DONE
       displayCount(countDown(n,m,y,8,0,0));
     }
@@ -617,8 +618,8 @@ var countDownTime = setInterval(function(){
         }
       }
     }
-  }
-  else{ // not wednesdays
+  }*/
+  else{ // every day
     if(alls[hoy][hour]){
       if(hour<8){ //right before school
         displayCount(countDown(n,m,y,8,00,0));
@@ -627,7 +628,10 @@ var countDownTime = setInterval(function(){
         displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
       }
       else if(hour>8&&hour<15){
-        if(hour===14&&minutes>=9){ //if it's after 2:09
+        if((hour===14&&minutes>=9)&&day!=3){ //if it's after 2:09
+          tings();
+        }
+        else if((hour===14&&minutes>=33)&&day===3){ //if it's after 2:33
           tings();
         }
         else{
