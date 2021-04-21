@@ -77,7 +77,7 @@ switch (d) {
     $("#wed").show();
     $("#sched-opts").prop('selectedIndex',3);
     break;*/
-  case 3:
+  case 2:
   case 5:
     console.log(d);
     $(".schedules:not(#tf)").hide();
