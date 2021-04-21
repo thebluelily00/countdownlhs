@@ -88,12 +88,8 @@ switch (d) {
     console.log("#"+hoy);
     $(".schedules:not(#"+hoy+")").hide();
     $("#"+hoy).show();
-    if(hoy==='mthb'){
-      $("#sched-opts").prop('selectedIndex',1);
-    }
-    else{
-      $("#sched-opts").prop('selectedIndex',0);
-    }
+    var ind = {'mtha':0,'mthb':1,'tf':2,'wa':3,'wb':4};
+    $("#sched-opts").prop('selectedIndex',ind[hoy]);
 }
 
 $("#sched-opts").change(function(){
