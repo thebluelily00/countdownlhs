@@ -50,7 +50,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'mth', '2':'tf','3':'w','4':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0.
+var tr = {'2':'mth', '3':'tf','4':'w','0':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
 var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -77,8 +77,7 @@ switch (d) {
     $("#wed").show();
     $("#sched-opts").prop('selectedIndex',3);
     break;*/
-  case 2:
-  case 5:
+  case 5: // THIS SHOULD ALSO HAVE 2 for TUESDAY
     console.log(d);
     $(".schedules:not(#tf)").hide();
     $("#tf").show();
