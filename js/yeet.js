@@ -235,12 +235,9 @@ $("#close-settings").click(function(){
 
 
 /*
-
 ALL OF THE
 SETTINGS CODE
-
 IMPORTANTE
-
 */
 
 // set defaults for settings. show date, show time (not in military), and show seconds. make font be monospace
@@ -546,10 +543,8 @@ var alls = {
   'tfa':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
   'mthb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
   'tfb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
-  'wa':{'8':[00,27,33],'9':[00,06,33,39],'10':[06,12,39,45],'11':[12,18,45],
-  'wb':{'8':[00,27,33],'9':[00,06,33,39],'10':[06,12,39,45],'11':[12,18,45]
-  /*'wa':{'8':[00,40,46],'9':[26,32],'10':[12,18,43,49],'11':[29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]},
-  'wb':{'8':[00,40,46],'9':[26,32],'10':[12,18,58],'11':[04,29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]}*/
+  'wa':{'8':[00,40,46],'9':[26,32],'10':[12,18,43,49],'11':[29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]},
+  'wb':{'8':[00,40,46],'9':[26,32],'10':[12,18,58],'11':[04,29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]}
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
@@ -625,13 +620,10 @@ var countDownTime = setInterval(function(){
         displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
       }
       else if(hour>8&&hour<15){
-        /*if((hour===14&&minutes>=9)&&day!=3){ //if it's after 2:09
+        if((hour===14&&minutes>=9)&&day!=3){ //if it's after 2:09
           tings();
         }
         else if((hour===14&&minutes>=33)&&day===3){ //if it's after 2:33
-          tings();
-        }*/
-        if(hour===11&&minutes>=45){
           tings();
         }
         else{
@@ -650,17 +642,11 @@ var countDownTime = setInterval(function(){
                 displayCount(countDown(n,m,y,hour,alls[hoy][hour][2],0));
               }
               else{
-                if(minutes < alls[hoy][hour][3]){
-                  console.log('layer 4');
-                  displayCount(countDown(n,m,y,hour,alls[hoy][hour][3],0));
+                if(alls[hoy][hour+1][0]){
+                  displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
                 }
                 else{
-                  if(alls[hoy][hour+1][0]){
-                    displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
-                  }
-                   else{
-                    displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
-                  }
+                  displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
                 }
               }
             }
