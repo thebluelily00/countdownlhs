@@ -663,8 +663,10 @@ var countDownTime = setInterval(function(){
 }, 1000);
 
 
-var maint = function(a){
+var maint = function(){
   $("body").hide();
-  $("#heyo").text("come back on " + a);
-  $("html").append("<br> <h1 style='text-align:center;'> countdown will be back up on "+a+" for the start of 2nd semester. </h1>");
+  $("#heyo").text("have a great summer!");
+  $("html").append("<br> <h1 style='text-align:center;'> have a great summer! </h1>");
 }
+
+maint();
