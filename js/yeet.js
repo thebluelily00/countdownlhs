@@ -2,14 +2,15 @@
 $('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
 $("body").hide();
 // first thing it does, ensures proper schedule display
-if(!localStorage.getItem('sched-type')){ //if you haven't told the website what your lunch period is
+if(!localStorage.getItem('sc-t')){ //if you haven't told the website what your lunch period is
   console.log('nothing saved for schedule type');
-  var sAns = prompt('do you have lunch A or B?').toLowerCase();
-  localStorage.setItem('sched-type',sAns);
+  $('body').hide();
+  var sAns = prompt('do you have lunch A, B, or C?').toLowerCase();
+  localStorage.setItem('sc-t',sAns);
   $("body").show();
 } // add something in settings to change this if someone's schedule changes
 else{ //if you open the site and you've already inputted, it'll just be printed to the log
-  console.log('your schedule type is '+localStorage.getItem('sched-type'));
+  console.log('your schedule type is '+localStorage.getItem('sc-t'));
   $("body").show();
 }
 
@@ -50,8 +51,8 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'2':'mth', '3':'tf','4':'w','0':'mth','5':'tf'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
-var hoy = tr[d]+localStorage.getItem('sched-type'); //establishes what schedule should be used this day
+var tr = {'1':'normal', '2':'normal','3':'normal','4':'normal','5':'normal'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
+var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -539,12 +540,12 @@ function displayCount(num){
 if(d===0||d===6){ $("#exp, .hh3").hide(); }
 
 var alls = {
-  'mtha':{'8':[00],'9':[20,26],'10':[46,52],'11':[17,23],'12':[43,49],'13':[],'14':[9]},
-  'tfa':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
-  'mthb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
-  'tfb':{'8':[00],'9':[20,26],'10':[46,52],'11':[],'12':[12,18,43],'13':[],'14':[9]},
-  'wa':{'8':[00,40,46],'9':[26,32],'10':[12,18,43,49],'11':[29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]},
-  'wb':{'8':[00,40,46],'9':[26,32],'10':[12,18,58],'11':[04,29,35],'12':[15,21],'13':[01,07,47,53],'14':[33]}
+  'normala':{'6':[55], '7':[45,50], '8':[40,44],'9':[34,38],'10':[28,32],'11':[22,26,51,55],'12':[49,53],'13':[43,47],'14':[37]},
+  'normalb':{'6':[55], '7':[45,50], '8':[40,44],'9':[34,38],'10':[28,32],'11':[22,26,51,55],'12':[20,24,49,53],'13':[43,47],'14':[37]},
+  'normalc':{'6':[55], '7':[45,50], '8':[40,44],'9':[34,38],'10':[28,32],'11':[22,26],'12':[20,24,49,53],'13':[43,47],'14':[37]},
+  /*'plca':{'6':[55], '7':[38,50], '8':[33,37],'9':[20,24],'10':[7,11,54,58],'11':[],'12':[21,25],'13':[8,12],'14':[55]},
+  'plcb':{'6':[55], '7':[38,50], '8':[33,37],'9':[20,24],'10':[7,11,54,58],'11':[],'12':[21,25],'13':[8,12],'14':[55]},
+  'plcc':{'6':[55], '7':[38,50], '8':[33,37],'9':[20,24],'10':[7,11,54,58],'11':[],'12':[21,25],'13':[8,12],'14':[55]},*/
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
@@ -559,10 +560,10 @@ var countDownTime = setInterval(function(){
   var tings = function(){
     if(day!=5){// for everyday except friday, countdown to tomorrow @ 8:00
       if(n+1<=daysin[m]){
-        displayCount(countDown(n+1,m,y,8,00,0));
+        displayCount(countDown(n+1,m,y,7,50,0));
       }
       else{
-        displayCount(countDown(1,m+1,y,8,00,0));
+        displayCount(countDown(1,m+1,y,7,50,0));
       }
     }
     else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
@@ -613,17 +614,11 @@ var countDownTime = setInterval(function(){
   }*/
   else{ // every day
     if(alls[hoy][hour]){
-      if(hour<8){ //right before school
-        displayCount(countDown(n,m,y,8,00,0));
+      if(hour<6){ //right before school
+        displayCount(countDown(n,m,y,6,55,0));
       }
-      else if(hour===8){
-        displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
-      }
-      else if(hour>8&&hour<15){
-        if((hour===14&&minutes>=9)&&day!=3){ //if it's after 2:09
-          tings();
-        }
-        else if((hour===14&&minutes>=33)&&day===3){ //if it's after 2:33
+      else if(hour>6&&hour<15){
+        if((hour===14&&minutes>=37)&&day===3){ //if it's after 2:33
           tings();
         }
         else{
@@ -669,4 +664,4 @@ var maint = function(){
   $("html").append("<br> <h1 style='text-align:center;'> have a great summer! </h1>");
 }
 
-maint();
+//maint();

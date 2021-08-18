@@ -399,6 +399,16 @@ body{
   width:90px;
 }
 
+.wacc{
+  text-decoration: underline;
+  text-decoration-style:dotted;
+}
+
+.help{
+  display: block;
+  width:160px;
+}
+
 @media screen and (max-width: 772px) and (orientation:portrait){ /*smallest for phones*/
   .mm1{
     display: none;
