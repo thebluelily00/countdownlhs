@@ -51,7 +51,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
+var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'half'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
