@@ -51,7 +51,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
+var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'assembly'};  //assigns a schedule type to each day. sunday is 0. FIX THIS AFTER SCHOOL ENDS
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -549,6 +549,9 @@ var alls = {
   'halfa':{'6':[55], '7':[45,50], '8':[17,21,48,52], '9':[19,23,50,54], '10':[21,25,52,56], '11':[22]},
   'halfb':{'6':[55], '7':[45,50], '8':[17,21,48,52], '9':[19,23,50,54], '10':[21,25,52,56], '11':[22]},
   'halfc':{'6':[55], '7':[45,50], '8':[17,21,48,52], '9':[19,23,50,54], '10':[21,25,52,56], '11':[22]},
+  'assemblya':{'6':[55], '7':[45,50], '8':[30,34],'9':[14,58],'10':[02,42,44],'11':[09,13],'12':[07,11,51,55],'13':[35,39],'14':[37]},
+  'assemblyb':{'6':[55], '7':[45,50], '8':[30,34],'9':[14,58],'10':[02,42,44],'11':[09,13,38,42],'12':[07,11,51,55],'13':[35,39],'14':[37]},
+  'assemblyc':{'6':[55], '7':[45,50], '8':[30,34],'9':[14,58],'10':[02,42,44],'11':[38,42],'12':[07,11,51,55],'13':[35,39],'14':[37]},
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
