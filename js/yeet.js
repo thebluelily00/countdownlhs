@@ -646,12 +646,24 @@ var countDownTime = setInterval(function(){
                 displayCount(countDown(n,m,y,hour,alls[hoy][hour][2],0));
               }
               else{
-                if(alls[hoy][hour+1][0]){
-                  displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
+              if(minutes < alls[hoy][hour][3]){
+                console.log('layer 4');
+                displayCount(countDown(n,m,y,hour,alls[hoy][hour][3],0));
+              }
+              else{
+                if(minutes < alls[hoy][hour][4]){
+                  console.log('layer 5');
+                  displayCount(countDown(n,m,y,hour,alls[hoy][hour][4],0));
                 }
                 else{
-                  displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
+                  if(alls[hoy][hour+1][0]){
+                    displayCount(countDown(n,m,y,hour+1,alls[hoy][hour+1][0],0));
+                  }
+                  else{
+                    displayCount(countDown(n,m,y,hour+2,alls[hoy][hour+2][0],0));
+                  }
                 }
+              }
               }
             }
           }
