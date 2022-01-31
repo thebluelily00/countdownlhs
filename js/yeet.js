@@ -51,7 +51,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day
+var tr = {'1':'normal', '2':'normal','3':'plc','4':'fes','5':'normal'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -558,6 +558,9 @@ var alls = {
   'finalsa':{'8':[00],'9':[30,45],'10':[],'11':[15,30],'12':[],'13':[00]},
   'finalsb':{'8':[00],'9':[30,45],'10':[],'11':[15,30],'12':[],'13':[00]},
   'finalsc':{'8':[00],'9':[30,45],'10':[],'11':[15,30],'12':[],'13':[00]},
+  'fesa':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[01,05,59],'13':[03,48,52],'14':[37]}, // 5 essentials survey for a-c
+  'fesb':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[01,05,30,34,59],'13':[03,48,52],'14':[37]},
+  'fesc':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[30,34,59],'13':[03,48,52],'14':[37]},
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
@@ -684,8 +687,8 @@ var countDownTime = setInterval(function(){
 
 var maint = function(){
   $("body").hide();
-  $("#heyo").text("have a great summer!");
-  $("html").append("<br> <h1 style='text-align:center;'> have a great summer! </h1>");
+  $("#heyo").text("countdownLHS");
+  $("html").append("<br> <h1 style='text-align:center;'>countdownLHS is having unexpected issues, sorry! Everything will be back up soon.</h1>");
 }
 
 //maint();
