@@ -52,6 +52,7 @@ var n = dd.getDate();
 var y = dd.getFullYear();
 
 // 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday 
+// thanks meg :)
 var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
