@@ -53,7 +53,7 @@ var y = dd.getFullYear();
 
 // 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday 
 // thanks meg :)
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'half'};  //assigns a schedule type to each day
+var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'chalf'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -563,6 +563,9 @@ var alls = {
   'fesa':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[01,05,59],'13':[03,48,52],'14':[37]}, // 5 essentials survey for a-c
   'fesb':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[01,05,30,34,59],'13':[03,48,52],'14':[37]},
   'fesc':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[30,34,59],'13':[03,48,52],'14':[37]},
+  'chalfa':{'7':[45,50], '8':[17,21],'9':[48,52],'10'[19,23,50,54],'11':[21,25],'12':[52,56,22]},
+  'chalfb':{'7':[45,50], '8':[17,21],'9':[48,52],'10'[19,23,50,54],'11':[21,25],'12':[52,56,22]},
+  'chalfc':{'7':[45,50], '8':[17,21],'9':[48,52],'10'[19,23,50,54],'11':[21,25],'12':[52,56,22]},
 };
 //lunch A mt//tf scheds, then lunch B mt//tf scheds
 
