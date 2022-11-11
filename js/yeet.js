@@ -10,7 +10,7 @@ if(!localStorage.getItem('sc-t')){ //if you haven't told the website what your l
   $("body").show();
 } // add something in settings to change this if someone's schedule changes
 else{ //if you open the site and you've already inputted, it'll just be printed to the log
-  console.log('your schedule type is '+localStorage.getItem('sc-t'));
+  console.log('The countdown is down today, sorry. '+localStorage.getItem('sc-t'));
   $("body").show();
 }
 
