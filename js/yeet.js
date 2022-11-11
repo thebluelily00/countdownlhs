@@ -5,12 +5,12 @@ $("body").hide();
 if(!localStorage.getItem('sc-t')){ //if you haven't told the website what your lunch period is
   console.log('nothing saved for schedule type');
   $('body').hide();
-  var sAns = prompt('do you have lunch A, B, or C?').toLowerCase();
+  var sAns = prompt('Countdown is down today, sorry.').toLowerCase();
   localStorage.setItem('sc-t',sAns);
   $("body").show();
 } // add something in settings to change this if someone's schedule changes
 else{ //if you open the site and you've already inputted, it'll just be printed to the log
-  console.log('The countdown is down today, sorry. '+localStorage.getItem('sc-t'));
+  console.log('Enter your schedule type '+localStorage.getItem('sc-t'));
   $("body").show();
 }
 
