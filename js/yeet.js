@@ -5,7 +5,7 @@ $("body").hide();
 if(!localStorage.getItem('sc-t')){ //if you haven't told the website what your lunch period is
   console.log('nothing saved for schedule type');
   $('body').hide();
-  var sAns = prompt('Countdown is down today, sorry.').toLowerCase();
+  var sAns = prompt('Do you have lunch A, or C').toLowerCase();
   localStorage.setItem('sc-t',sAns);
   $("body").show();
 } // add something in settings to change this if someone's schedule changes
@@ -53,7 +53,7 @@ var y = dd.getFullYear();
 
 // 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday 
 // thanks meg :)
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'vet'};  //assigns a schedule type to each day
+var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
