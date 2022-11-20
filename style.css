@@ -146,14 +146,13 @@ a{
 }
 
 .settings{
-
   margin-left: auto;
   margin-right:auto;
   background:rgba(255,255,255,0.15);
-  padding:45px;
   line-height: 160%;
   font-weight: lighter;
   text-align: center;
+  height:100vh;
 }
 
 #os_cont{
@@ -272,6 +271,8 @@ a{
 */
 .settings h1{
   text-align: center;
+  margin-top:0px;
+
 }
 
 #spot-opt, #csl{
@@ -553,6 +554,10 @@ body{
   #schedules table, #schedules p{
     margin:10px auto 10px auto;
   }
+
+  .settings h1{
+    padding-top:20vh;
+  }
 }
 @media screen and (min-width:1000px) and (max-width:1271px){
     .mm1{
@@ -570,4 +575,25 @@ body{
       width:40vw;
       height:90px;
     }
+
+    .settings h1{
+      padding-top:20vh;
+    }
+}
+@media screen and (min-width:1272px){
+    .settings h1{
+      padding-top:20vh;
+    }
+}
+
+.test_theme{
+  border:3px solid;
+}
+
+#tab-sched th, #tab-sched td{
+  padding:5px;
+}
+
+input[type="range"],#bc-1, #bc-2{
+  width:90px;
 }

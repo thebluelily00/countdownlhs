@@ -51,7 +51,7 @@ var m = dd.getMonth();
 var n = dd.getDate();
 var y = dd.getFullYear();
 
-// 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday 
+// 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday
 // thanks meg :)
 var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
@@ -227,13 +227,13 @@ $('.notes').on('change keyup paste', function(){
 
 // BUTTONS TO OPEN & CLOSE SETTINGS
 $("#open-settings").click(function(){
-  $(".cont").hide();
-  $(".settings").fadeIn();
+  $(".cont").slideUp();
+  $(".settings").slideDown();
 });
 
 $("#close-settings").click(function(){
-  $(".settings").hide();
-  $(".cont").fadeIn();
+  $(".settings").slideUp();
+  $(".cont").slideDown();
 });
 
 
@@ -401,6 +401,7 @@ var btype = '';
 
 $("#text_color").change(function(){
   $(".test_theme").css('color',$("#text_color").val());
+  $(".test_theme").css('border-color',$("#text_color").val());
 }); // make the example reflect whatever's in the input box
 
 console.log($("input[name=bac]:checked").val());

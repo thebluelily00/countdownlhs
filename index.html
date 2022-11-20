@@ -5,7 +5,8 @@
     <title id="heyo"></title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/683c0ce9ca.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="images/logos/cd-icon.png" id="fav">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NMK5KK9J8"></script> <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -161,7 +162,7 @@
                 <td><input type="checkbox" id="show_seconds" name="ss"></td>
               </tr>
             </table>
-            <br> <span class="help"><em>having problems with the site?  <a href="mailto: mc22219@student.lisle202.org" class="wacc">email me</a></em></span>
+            <!--<span class="help"><em>having problems with the site?  <a href="mailto: mc22219@student.lisle202.org" class="wacc">email me</a></em></span>-->
 
           </div>
           <div id="sv_cont" class="contt">
@@ -214,8 +215,8 @@
             <div class="test_theme">
               <p>testing</p>
             </div>
-            <em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>
-            <br> <i id="ov_close" class="fas fa-save"></i>
+            <!--<em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>-->
+            <i id="ov_close" class="fas fa-save"></i>
             <i id="ov_onlyclose" class="fas fa-times-circle"></i>
           </div>
         </div>
@@ -305,25 +306,90 @@
         <div class="mm mm3">
           <h1>Resources</h1>
           <ul id="resources">
-            <!--<li><span class="fas fa-video"></span><a href="javascript:
-              document.body.appendChild(document.createElement('script')).src ='/Users/mlc/Desktop/thebluelily00.github.io/js/plugin.js';
-              " title="Drag this to your bookmarks, then click on it once you're on a google meet."> Google Meet Plugin</a></li>-->
+            <li><span class="fa-solid fa-book"></span> <a href="https://lislecusd202.powerschool.com/public/home.html" target="_blank"> Powerschool</a></li>
             <li><span class="far fa-calendar"></span> <a href="PDFs/2022_2023_calendar.pdf" id="cal-t" target="_blank">School calendar</a></li>
-            <li><span class="fas fa-calendar-week"></span> <a href="PDFs/schedule.png" target="_blank">Weekly schedule</a></li>
-            <!--<li><span class="fas fa-book-open"></span> <a href="PDFs/finals_december2021.png" target="_blank">Finals schedule</a></li>
             <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
               <ul id="finalss" style="margin-left:0px; padding-left:0px;">
                 <form id="grades">
-                  <input type="number" placeholder="have" min='0' max="110" id="act">
-                  <input type="number" placeholder="want" min="0" max="110" id="goal">
+                  <input type="number" placeholder="Grade you have" min='0' max="110" id="act">
+                  <input type="number" placeholder="Grade you want" min="0" max="110" id="goal">
                   <br>
                   <input type="submit" value="Calculate" id="sub">
                   <button type="button" name="button" id="mas" style="display:block;">More info</button>
                 </form>
                 <i class="far fa-times-circle" id="cf"></i>
               </ul>
-            </li>-->
+            </li>
           </ul>
+        </div>
+        <div class="mm mm2">
+          <h1>Schedule</h1>
+          <table id="tab-sched">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Regular</th>
+                <th>PLC</th>
+                <th>Early</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>&nbsp; 7:50 - 8:40</td>
+                <td>&nbsp;7:50 - 8:33</td>
+                <td>&nbsp;7:50 - 8:17</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>&nbsp;8:44 - 9:34</td>
+                <td>&nbsp;8:37 - 9:20</td>
+                <td>&nbsp;8:21 - 8:48</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>&nbsp;9:38 - 10:28</td>
+                <td>&nbsp;9:24 - 10:07</td>
+                <td>&nbsp;8:52 - 9:19</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>10:32 - 11:22</td>
+                <td>10:11 - 10:54</td>
+                <td>&nbsp;9:23 - 9:50</td>
+              </tr>
+              <tr>
+                <td>5a</td>
+                <td>11:26 - 11:51</td>
+                <td>10:58 - 11:23</td>
+                <td>&nbsp;9:54 - </td>
+              </tr>
+              <tr>
+                <td>5b</td>
+                <td>11:55 - 12:20</td>
+                <td>11:27 - 11:52</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>5c</td>
+                <td>12:24 - 12:49</td>
+                <td>11:56 - 12:21</td>
+                <td> - 10:21</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>12:53 - 1:43</td>
+                <td>12:25 - 1:07</td>
+                <td>10:25 - 10:52</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>1:47 - 2:37</td>
+                <td>1:11 - 1:53</td>
+                <td>10:56 - 11:22</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <!--<div class="mm mm2">
           <h1 id="sched_header">Schedule</h1>
