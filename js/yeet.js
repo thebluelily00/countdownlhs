@@ -588,7 +588,6 @@ var countDownTime = setInterval(function(){
     else{ //for fridays, NO COUNTDOWN BC IT'S THE WEEKEND NOW
       displayCount("");
       $("#exp, .hh3").hide();
-      console.log("not a school day");
     }
   } //not affected by update
 
@@ -682,7 +681,6 @@ var countDownTime = setInterval(function(){
     }
     else{ // after school!
       tings();
-      console.log('school is DONE for the day')
     }
   }
   // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
