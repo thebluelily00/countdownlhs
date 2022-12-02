@@ -29,7 +29,7 @@
           <form>
             <input type="text" name="lun" placeholder="A/B" maxlength="1" width="30" id="lun">
           </form>
-        </div>-->
+        </div> !! -->
         <center>
           <div class="trio">
             <span class="bb" id="ba">Input my schedule</span>
@@ -101,42 +101,6 @@
                 <li><button id="gclas-5" class="gc">5</button></li>
                 <li><button id="gclas-6" class="gc">6</button></li>
                 <li><button id="gclas-7" class="gc">7</button></li><br>
-              </ul>-->
-          </div>
-          <div class="trio">
-            <span class='bb' id="bc">Input my Google Meet URLs</span>
-            <form class="">
-              <input type="text" name="class" id="classinput" placeholder='google meet URL for this period'>
-              <label class="radio-inline">
-                <input type="radio" name="pc" checked> 1
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 2
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 3
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 4
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 5
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 6
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 7
-              </label>
-            </form>
-              <!--<ul id="meet-input">
-                <li><button id="meet-1" class="meet">1</button></li>
-                <li><button id="meet-2" class="meet">2</button></li>
-                <li><button id="meet-3" class="meet">3</button></li>
-                <li><button id="meet-4" class="meet">4</button></li>
-                <li><button id="meet-5" class="meet">5</button></li>
-                <li><button id="meet-6" class="meet">6</button></li>
-                <li><button id="meet-7" class="meet">7</button></li><br>
               </ul>-->
           </div>
         </center>
@@ -217,7 +181,6 @@
             </div>
             <!--<em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>-->
             <i id="ov_close" class="fas fa-save"></i>
-            <i id="ov_onlyclose" class="fas fa-times-circle"></i>
           </div>
         </div>
         <i class="far fa-times-circle" id="close-settings"></i>
@@ -235,7 +198,6 @@
               <textarea id="t1" class="notes"></textarea>
               <div class="iconss">
                 <p>1</p>
-                <a id="vid1" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla1" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -243,7 +205,6 @@
               <textarea id="t2" class="notes"></textarea>
               <div class="iconss">
                 <p>2</p>
-                <a id="vid2" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla2" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -251,7 +212,6 @@
               <textarea id="t3" class="notes"></textarea>
               <div class="iconss">
                 <p>3</p>
-                <a id="vid3" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla3" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -259,7 +219,6 @@
               <textarea id="t4" class="notes"></textarea>
               <div class="iconss">
                 <p>4</p>
-                <a id="vid4" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla4" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -267,7 +226,6 @@
               <textarea id="t5" class="notes"></textarea>
               <div class="iconss">
                 <p>5</p>
-                <a id="vid5" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla5" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -275,7 +233,6 @@
               <textarea id="t6" class="notes"></textarea>
               <div class="iconss">
                 <p>6</p>
-                <a id="vid6" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla6" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -283,7 +240,6 @@
               <textarea id="t7" class="notes"></textarea>
               <div class="iconss">
                 <p>7</p>
-                <a id="vid7" target="_blank"><i class="fas fa-video"></i></a>
                 <a id="cla7" target="_blank"><img src="images/gc.png" width="20px"></a>
               </div>
             </div>
@@ -308,7 +264,7 @@
           <ul id="resources">
             <li><span class="fa-solid fa-book"></span> <a href="https://lislecusd202.powerschool.com/public/home.html" target="_blank"> Powerschool</a></li>
             <li><span class="far fa-calendar"></span> <a href="PDFs/2022_2023_calendar.pdf" id="cal-t" target="_blank">School calendar</a></li>
-            <li><div id="hehe"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
+            <li><div id="opencalc"> <span class="fas fa-calculator"></span> <span id="fin-t"></span><span class="pointb">Finals calculator</span></div>
               <ul id="finalss" style="margin-left:0px; padding-left:0px;">
                 <form id="grades">
                   <input type="number" placeholder="Grade you have" min='0' max="110" id="act">
@@ -391,203 +347,6 @@
             </tbody>
           </table>
         </div>
-        <!--<div class="mm mm2">
-          <h1 id="sched_header">Schedule</h1>
-          <div id="schedules">
-            <select id="sched-opts">
-              <option title="mondays & thursdays w/ lunch A">m/th A</option>
-              <option title="mondays & thursdays w/ lunch B">m/th B</option>
-              <option title="tuesdays & fridays for everyone (no difference between lunch A & B)">t/f</option>
-              <option title="wednesday w/ lunch A">wed A</option>
-              <option title="wednesday w/ lunch B">wed B</option>
-            </select>
-            <div class="sched-cont">
-                <table id="mtha" class='schedules'>
-                  <thead>
-                    <tr>
-                      <th>Time</th>
-                      <th>Period</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>8:00 - 9:20</td>
-                      <td>1</td>
-                    </tr>
-                    <tr>
-                      <td>9:26 - 10:46</td>
-                      <td>2</td>
-                    </tr>
-                    <tr>
-                      <td>10:52 - 11:17</td>
-                      <td>Lunch</td>
-                    </tr>
-                    <tr>
-                      <td>11:23 - 12:43</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>12:49 - 2:09</td>
-                      <td>4</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table id="tf" class='schedules'>
-                  <thead>
-                    <tr>
-                      <th>Time</th>
-                      <th>Period</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>8:00 - 9:20</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td>9:26 - 10:46</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>10:52 - 12:12</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>12:18 - 12:43</td>
-                      <td><span class='sm'>0hr Lunch</span></td>
-                    </tr>
-                    <tr>
-                      <td>12:49 - 2:09</td>
-                      <td>0</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table id="mthb" class='schedules'>
-                  <thead>
-                    <tr>
-                      <th>Time</th>
-                      <th>Period</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>8:00 - 9:20</td>
-                      <td>1</td>
-                    </tr>
-                    <tr>
-                      <td>9:26 - 10:46</td>
-                      <td>2</td>
-                    </tr>
-                    <tr>
-                      <td>10:52 - 12:12</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>12:18 - 12:43</td>
-                      <td>Lunch</td>
-                    </tr>
-                    <tr>
-                      <td>12:49 - 2:09</td>
-                      <td>4</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table id="wa" class='schedules'>
-                  <thead>
-                    <tr>
-                      <th>Time</th>
-                      <th>Period</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>8:00 - 8:40</td>
-                      <td>1</td>
-                    </tr>
-                    <tr>
-                      <td>8:46 - 9:26</td>
-                      <td>2</td>
-                    </tr>
-                    <tr>
-                      <td>9:32 - 10:12</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>10:18 - 10:43</td>
-                      <td>LUNCH</td>
-                    </tr>
-                    <tr>
-                      <td>10:49 - 11:29</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td>11:35 - 12:15</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td>12:21 - 1:01</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>1:07 - 1:47</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>1:53 - 2:33</td>
-                      <td>0</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table id="wb" class='schedules'>
-
-                    <thead>
-                      <tr>
-                        <th>Time</th>
-                        <th>Period</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>8:00 - 8:40</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>8:46 - 9:26</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>9:32 - 10:12</td>
-                        <td>3</td>
-                      </tr>
-                      <tr>
-                        <td>10:18 - 10:58</td>
-                        <td>4</td>
-                      </tr>
-                      <tr>
-                        <td>11:04 - 11:29</td>
-                        <td>LUNCH</td>
-                      </tr>
-                      <tr>
-                        <td>11:35 - 12:15</td>
-                        <td>5</td>
-                      </tr>
-                      <tr>
-                        <td>12:21 - 1:01</td>
-                        <td>6</td>
-                      </tr>
-                      <tr>
-                        <td>1:07 - 1:47</td>
-                        <td>7</td>
-                      </tr>
-                      <tr>
-                        <td>1:53 - 2:33</td>
-                        <td>0</td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-          </div>
-        </div>-->
       </div>
     </div>
 

@@ -1,19 +1,23 @@
 //hide things
 $('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
 $("body").hide();
+
 // first thing it does, ensures proper schedule display
-if(!localStorage.getItem('sc-t')){ //if you haven't told the website what your lunch period is
-  console.log('nothing saved for schedule type');
+if(!localStorage.getItem('sc-t')){
+  //if you haven't told the website what your lunch period is
+  console.log('Nothing is saved for schedule type.');
   $('body').hide();
+
   var sAns = prompt('Do you have lunch A, or C').toLowerCase();
   localStorage.setItem('sc-t',sAns);
-  $("body").show();
-} // add something in settings to change this if someone's schedule changes
-else{ //if you open the site and you've already inputted, it'll just be printed to the log
-  console.log('Enter your schedule type '+localStorage.getItem('sc-t'));
+
   $("body").show();
 }
-
+// add something in settings to change this if someone's schedule changes!!
+else{
+  console.log('Schedule type: '+localStorage.getItem('sc-t'));
+  $("body").show();
+}
 
 // FUNCTIONS TO PROCESS TEXT
 function rU(a){ //remove underscore
@@ -28,9 +32,8 @@ function fixOpt(p){
 }
 // END OF TEXT PROCESSING FUNCTIONS
 
-
 function ending(datee){ //make it like english + not like a robot
-  if(datee===1||datee===21){
+  if(datee===1||datee===21||datee===31){
     return "st";
   }
   else if(datee===2||datee===22){
@@ -61,57 +64,15 @@ var months = ['January','February','March','April','May','June','July','August',
 var today = days[d] + ", " + months[m] + " " + n + ending(n); // the text that actually shows for the date
 // END DATE INFO
 
-
-/*
-after these weeks:
-make case 4 be case 5
-make tr 3&4 be 4&5 for normal thursday & friday schedule
-uncomment case 3 for wednesdays
-*/
-
-// display proper schedule based on what day it is. choose that option on the select element.
-switch (d) {
-  case 0:
-  case 6:
-    $(".schedules").hide();
-    break;
-  /*case 3:
-    $(".schedules:not(#wed)").hide();
-    $("#wed").show();
-    $("#sched-opts").prop('selectedIndex',3);
-    break;*/
-  case 5: // THIS SHOULD ALSO HAVE 2 for TUESDAY
-    console.log(d);
-    $(".schedules:not(#tf)").hide();
-    $("#tf").show();
-    $("#sched-opts").prop('selectedIndex',2);
-    break;
-  default:
-    console.log("#"+hoy);
-    $(".schedules:not(#"+hoy+")").hide();
-    $("#"+hoy).show();
-    var ind = {'mtha':0,'mthb':1,'tf':2,'wa':3,'wb':4};
-    $("#sched-opts").prop('selectedIndex',ind[hoy]);
-}
-
-$("#sched-opts").change(function(){
-  var thingy = fixOpt($(this).val());
-  console.log(thingy);
-
-  $("#"+ thingy).show();
-  $(".schedules:not(#"+thingy+")").hide();
-  $("#sched-opts").show();
-});
-
 //time + date display
 $("#date").text(today); // actually makes the date text show what today is. this should eventually be updated so that it reflects what day it is if there's a day change
-console.log("today's date is "+n);
 $("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
+console.log("today's date is "+n+" so the favicon should say that number.");
 
+// FINALS CALCULATOR
 
-//finals calculator
-$('#hehe').click(function(){ //open finals calcs
-  $('#heheh, #hehe').css('display','block');
+$('#opencalc').click(function(){ //open finals calcs
+  $('#heheh, #opencalc').css('display','block');
   $('#allfinalss').css('padding','10px');
   $("#finalss").slideDown();
 }); //RENAME THIS ELEMENT IN THE HTML
@@ -147,11 +108,12 @@ $("#grades").submit(function(event){ //calculate final grades
 
 $('#cf').click(function(){ // close finals info
   $('#finalss').slideUp();
-  $('#heheh, #hehe').css('display','inline');
-  $('#heheh, #hehe').css('text-align','left');
+  $('#heheh, #opencalc').css('display','inline');
+  $('#heheh, #opencalc').css('text-align','left');
   $('#allfinalss').css('padding','0px');
 });
-// END OF FINALS STUFF
+
+// END OF FINALS CALCULATOR
 
 
 // STORE INFO ON CLASS SCHEDULE, GOOGLE CLASSROOM URLs, GOOGLE MEETS CODES, AND NOTES
@@ -169,19 +131,6 @@ $('.gc').click(function(){
   else{
     answer = "https://"+answer;
     console.log('the url for this google classroom is now '+answer);
-    localStorage.setItem($(this).attr("id"),answer);
-  }
-  refreshEverything();
-});
-
-$('.meet').click(function(){
-  var answer = prompt("What's the Google Meet URL for this class?");
-  if(answer.includes("https://")||answer.includes("http://"||answer.includes("https//")||answer.includes("http//"))){
-    localStorage.setItem($(this).attr("id"),answer);
-  }
-  else{
-    answer = "https://"+answer;
-    console.log('the url for '+ $(this).attr("id") +' is now '+answer);
     localStorage.setItem($(this).attr("id"),answer);
   }
   refreshEverything();
@@ -205,12 +154,6 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
       console.log("there IS a gclas link here");
     }
     else{ $("#cla"+p).hide(); console.log("no google classroom link here"); }
-
-    if(localStorage.getItem('meet-'+p)){ // if the google meet links have been added, use them
-      $("#vid"+p).attr("href", localStorage.getItem('meet-'+p));
-      console.log("there IS a gclas meet link here");
-    }
-    else{ $("#vid"+p).hide(); console.log("no meet link here");}
 
     if(localStorage.getItem('t'+p)){ // if there are notes written, put them in the textareas
       console.log('there are notes for period '+p);
@@ -453,11 +396,6 @@ $("#ov_close").click(function(){
   reloadCSS();
 });
 
-/*$("#ov_onlyclose").click(function(){
-  $(".ov").fadeOut();
-  $(".cent, #os_cont, #close-settings, #settings_header").fadeIn();
-});*/
-
 $("#exp").click(function(){
   $("#main, #exp").hide();
   $("#cd").css("font-size","11em");
@@ -566,7 +504,6 @@ var alls = {
   'fesc':{'6':[55], '7':[45,50], '8':[35,39],'9':[24,28],'10':[13,15,43,47],'11':[32,36],'12':[30,34,59],'13':[03,48,52],'14':[37]},
 
 };
-//lunch A mt//tf scheds, then lunch B mt//tf scheds
 
 var countDownTime = setInterval(function(){
   var dx = new Date();
@@ -594,42 +531,6 @@ var countDownTime = setInterval(function(){
   if(day===0||day===6){ //sunday & saturday
     displayCount("");
   }
-  /*else if(day===2){ //if it's a wednesday FIX THIS AFTER THIS WEEK, MAKE IT GO BACK TO 3
-    if(hour<8){//countdown to 8/zero hour DONE
-      displayCount(countDown(n,m,y,8,0,0));
-    }
-    else if(hour >= 8 && hour < 15){
-      if(minutes < wed[hour][0]){
-        displayCount(countDown(n,m,y,hour,wed[hour][0],0));
-      }
-      else{
-        if(minutes<wed[hour][1]){
-          displayCount(countDown(n,m,y,hour,wed[hour][1],0));
-        }
-        else{
-          if(minutes<wed[hour][2]){
-            displayCount(countDown(n,m,y,hour,wed[hour][2],0));
-          }
-          else{
-            if(minutes<wed[hour][3]){
-              displayCount(countDown(n,m,y,hour,wed[hour][3],0));
-            }
-            else if(wed.hasOwnProperty(hour+1)){
-              displayCount(countDown(n,m,y,hour+1,wed[hour+1][0],0));
-            }
-            else{
-              if(n+1<=daysin[m]){
-                displayCount(countDown(n+1,m,y,8,0,0));
-              }
-              else{
-                displayCount(countDown(1,m+1,y,8,0,0));
-              }
-            }
-          }
-        }
-      }
-    }
-  }*/
   else{ // every day
     if(alls[hoy][hour]){
       if(hour<6){ //right before school
@@ -685,7 +586,6 @@ var countDownTime = setInterval(function(){
   }
   // 0 sunday 1 monday 2 tuesday 3 wednesday 4 thursday 5 friday
 }, 1000);
-
 
 var maint = function(){
   $("body").hide();
