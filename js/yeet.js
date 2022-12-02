@@ -189,7 +189,7 @@ IMPORTANTE
 // set defaults for settings. show date, show time (not in military), and show seconds. make font be monospace
 var timesettings = {'show_date':true,'show_time':true,'show_mtime':false,'show_seconds':true};
 var csssettings = {'font':'monospace'};
-var parseFonts = {'sans-serif':'San Fransisco, sans-serif',
+var parseFonts = {'sans-serif':'elza, sans-serif',
                   'serif':'playfair-display, serif',
                   'monospace':'source-code-pro, monospace'};
 

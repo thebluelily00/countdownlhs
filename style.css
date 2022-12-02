@@ -6,18 +6,8 @@ html, body{
   min-height: 100%;
 }
 
-::-moz-selection {
-  background-color: #CEEAF2;
-  color: #181514;
-}
-
-::selection {
-  background-color: #CEEAF2;
-  color: #181514;
-}
-
 body{
-  font-family: source-code-pro, monospace;
+  font-family: monospace;
   font-weight: 200;
 }
 
@@ -26,7 +16,6 @@ body{
   overflow: hidden;
   background: black;
   color:white;
-  display:none;
 }
 
 .tcontainer a{
