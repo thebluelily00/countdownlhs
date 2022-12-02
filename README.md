@@ -1,2 +1,2 @@
 # this is COUNTDOWNLHS
-check it out [here](countdownlhs.com)
+check it out [here](https://www.countdownlhs.com)
