@@ -320,7 +320,7 @@ function reloadCSS(){ // put the settings from localStorage into the actual CSS
 
   $("body").css('font-family', font);
   $("html").css('background', background);
-  $("html, a, #new_todo").css('color', color);
+  $("html, a, #new_todo, #mm2").css('color', color);
 }
 
 function loadCSSset(){ // change var values to be the values from localStorage
