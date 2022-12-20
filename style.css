@@ -183,6 +183,7 @@ a{
   width:450px;
   vertical-align:middle;
 }
+
 .cent{
   margin: auto;
   text-align: center;
@@ -192,9 +193,33 @@ a{
   text-align: center;
 }
 
-#classinput{
-  display: inline-block;
-  width:100%;
+#set_time{
+  margin:0px auto 5px auto;
+
+}
+
+#lun{
+  text-align:center;
+  width:45px;
+}
+
+#class_form input, #links_form input{
+  width:200px;
+  display: block;
+  margin-bottom:10px;
+  padding:5px;
+  background: none;
+  border:none;
+  border-bottom: 3px solid white;
+  text-align: center;
+}
+
+#cl_cont p, #li_cont p{
+  margin-top:15px;
+}
+
+#op_c, #op_l{
+  cursor:pointer;
 }
 
 #settings table{
@@ -284,11 +309,11 @@ a{
 
 .ov{
   text-align: center;
-  margin-top:30px;
 }
 
 .mm2{
   text-align: center;
+  color:white;
 }
 
 #lunches{
@@ -312,13 +337,42 @@ a{
   overflow:scroll;
 }
 
-#resources, #settings{
+#todo_h1{
+  margin-bottom:15px;
+}
+
+#new_todo{
+  padding:10px;
+  width:200px;
+  border:none;
+  border-bottom:3px solid white;
+  background:none;
+}
+
+#todo_cont{
   text-align: left;
-  margin:0px;
+  width:200px;
+  padding:10px;
+  margin:auto;
+}
+
+.done{
+  display:inline-block;
+  padding:0px 5px 0px 5px;
+}
+
+.done:hover{
+  cursor:pointer;
+}
+
+#resources{
+  text-align: left;
   line-height: 250%;
   list-style-type: none;
   text-indent:0px;
   padding:0px;
+  width:220px;
+  margin:auto;
 }
 
 #customize, #sched-input, #gclas-input, #meet-input{
@@ -419,7 +473,6 @@ body{
     margin:0px;
     padding:0px;
     background: black;
-    color:white;
   }
 
   .hh3{

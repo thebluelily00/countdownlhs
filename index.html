@@ -22,113 +22,7 @@
   <body onload="refreshEverything()">
     <div class="settings">
       <h1 id="settings_header">Settings</h1>
-      <div id="os_cont" class="">
-        <h2 style="text-align:center;">Your info</h2><!--
-        <div id="lunch-change">
-          <span>I have lunch </span>
-          <form>
-            <input type="text" name="lun" placeholder="A/B" maxlength="1" width="30" id="lun">
-          </form>
-        </div> !! -->
-        <center>
-          <div class="trio">
-            <span class="bb" id="ba">Input my schedule</span>
-            <form class="">
-              <input type="text" name="class" id="classinput" placeholder='class for this period'>
-              <label class="radio-inline">
-                <input type="radio" name="pc" checked> 1
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 2
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 3
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 4
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 5
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 6
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 7
-              </label>
-            </form>
-            <!--<ul id="sched-input">
-              <li><button id="sched-1" class="ci">1</button></li>
-              <li><button id="sched-2" class="ci">2</button></li>
-              <li><button id="sched-3" class="ci">3</button></li>
-              <li><button id="sched-4" class="ci">4</button></li>
-              <li><button id="sched-5" class="ci">5</button></li>
-              <li><button id="sched-6" class="ci">6</button></li>
-              <li><button id="sched-7" class="ci">7</button></li>
-            </ul>-->
-          </div>
-          <div class="trio">
-            <span class="bb" id="bbb">Input my Google Classroom URLs</span>
-            <form class="">
-              <input type="text" name="class" id="classinput" placeholder='classroom URL for this period'>
-              <label class="radio-inline">
-                <input type="radio" name="pc" checked> 1
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 2
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 3
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 4
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 5
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 6
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pc"> 7
-              </label>
-            </form>
-              <!--<ul id="gclas-input">
-                <li><button id="gclas-1" class="gc">1</button></li>
-                <li><button id="gclas-2" class="gc">2</button></li>
-                <li><button id="gclas-3" class="gc">3</button></li>
-                <li><button id="gclas-4" class="gc">4</button></li>
-                <li><button id="gclas-5" class="gc">5</button></li>
-                <li><button id="gclas-6" class="gc">6</button></li>
-                <li><button id="gclas-7" class="gc">7</button></li><br>
-              </ul>-->
-          </div>
-        </center>
-      </div>
         <div class="cent">
-          <div id="st_cont" class="contt">
-            <h2><i class="far fa-clock"></i></h2>
-            <table id="set_time">
-              <tr>
-                <td>Show date</td>
-                <td><input type="checkbox" id="show_date" name="sd"></td>
-              </tr>
-              <tr>
-                <td>Show time</td>
-                <td><input type="checkbox" id="show_time" name="st"></td>
-              </tr>
-              <tr>
-                <td>Military time</td>
-                <td><input type="checkbox" id="show_mtime" name="mt"></td>
-              </tr>
-              <tr>
-                <td>Show seconds</td>
-                <td><input type="checkbox" id="show_seconds" name="ss"></td>
-              </tr>
-            </table>
-            <span class="help"><em>having problems with the site?  <a href="mailto: jr23119@student.lisle202.org" class="wacc">email me</a></em></span>
-
-          </div>
           <div id="sv_cont" class="contt">
             <h2><i class="fas fa-palette"></i></h2>
             <div id="text">
@@ -174,14 +68,75 @@
               </table>
             </div>
           </div>
-          <div class="ov contt">
-            <h2 id="ov_label"></h2>
-            <div class="test_theme">
-              <p>testing</p>
+          <div id="st_cont" class="contt">
+            <h2><i class="fa-solid fa-clock"></i></h2>
+            <table id="set_time">
+              <tr>
+                <td>Show date</td>
+                <td><input type="checkbox" id="show_date" name="sd"></td>
+              </tr>
+              <tr>
+                <td>Show time</td>
+                <td><input type="checkbox" id="show_time" name="st"></td>
+              </tr>
+              <tr>
+                <td>Military time</td>
+                <td><input type="checkbox" id="show_mtime" name="mt"></td>
+              </tr>
+              <tr>
+                <td>Show seconds</td>
+                <td><input type="checkbox" id="show_seconds" name="ss"></td>
+              </tr>
+            </table>
+            <span class="help"><em>having problems with the site?  <a href="mailto: jr23119@student.lisle202.org" class="wacc">email me</a></em></span>
+            <div class="ov contt">
+              <h2 id="ov_label"></h2>
+              <div class="test_theme">
+                <p>testing</p>
+              </div>
+              <!--<em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>-->
+              <i id="ov_close" class="fas fa-save"></i>
             </div>
-            <!--<em class='sm'>find colors <a href="https://www.color-hex.com" target="_blank" style="text-decoration:underline">here</a> or <a href="https://uigradients.com/" target="_blank" style="text-decoration:underline">here</a></em>-->
-            <i id="ov_close" class="fas fa-save"></i>
           </div>
+          <div id="sc_cont" class="contt">
+            <h2><i class="fa-solid fa-gear"></i></h2>
+            <div id="lunch-change">
+              <form onsubmit="return false">
+                <label for="lun">I have lunch &nbsp;</label>
+                <input type="text" name="lun" placeholder="A/B/C" maxlength="1" id="lun">
+              </form>
+            </div><!--
+            <div id="cl_cont">
+              <p id="op_c">Change Classes</p>
+              <div id="change_classes">
+                <form id="class_form" action="index.html" method="post">
+                  <input type="text" id="c_t1" placeholder="1st period class">
+                  <input type="text" id="c_t2" placeholder="2nd period class">
+                  <input type="text" id="c_t3" placeholder="3rd period class">
+                  <input type="text" id="c_t4" placeholder="4th period class">
+                  <input type="text" id="c_t5" placeholder="5th period class">
+                  <input type="text" id="c_t6" placeholder="6th period class">
+                  <input type="text" id="c_t7" placeholder="7th period class">
+                </form>
+                <i class="fa-solid fa-xmark" id="close_classes"></i>
+              </div>
+            </div>
+            <div id="li_cont">
+              <p id="op_l">Google Classroom<br> Links</p>
+              <div id="change_links">
+                <form id="links_form" action="index.html" method="post">
+                  <input type="text" id="l_t1" placeholder="1 - Classroom URL">
+                  <input type="text" id="l_t2" placeholder="2 - Classroom URL">
+                  <input type="text" id="l_t3" placeholder="3 - Classroom URL">
+                  <input type="text" id="l_t4" placeholder="4 - Classroom URL">
+                  <input type="text" id="l_t5" placeholder="5 - Classroom URL">
+                  <input type="text" id="l_t6" placeholder="6 - Classroom URL">
+                  <input type="text" id="l_t7" placeholder="7 - Classroom URL">
+                </form>
+                <i class="fa-solid fa-xmark" id="close_links"></i>
+              </div>
+            </div>
+          --></div>
         </div>
         <i class="far fa-times-circle" id="close-settings"></i>
     </div>
@@ -277,9 +232,16 @@
               </ul>
             </li>
           </ul>
+          <h1 id="todo_h1" title="Refresh the page if a 'todo' isn't deleting">To Do:</h1>
+          <form id="new_td_cont" action="index.html" method="post">
+            <input id="new_todo" type="text" placeholder="New todo">
+          </form>
+          <div id="todo_cont">
+
+          </div>
         </div>
         <div class="mm mm2">
-          <h1>Schedule</h1>
+          <!--<h1>Schedule</h1>
           <table id="tab-sched">
             <thead>
               <tr>
@@ -345,13 +307,12 @@
                 <td>10:56 - 11:22</td>
               </tr>
             </tbody>
-          </table>
-
-          <!--<h1>Finals Schedule</h1>
+          </table>-->
+          <h1>Finals Schedule</h1>
           <table id="tab-finals">
             <tr>
               <th>Time</th>
-              <th>Wednesday</th>
+              <th>Wednesday&nbsp;</th>
               <th>Thursday</th>
               <th>Friday</th>
             </tr>
@@ -373,7 +334,7 @@
               <td>5</td>
               <td>Make-up</td>
             </tr>
-          </table>-->
+          </table>
         </div>
       </div>
     </div>

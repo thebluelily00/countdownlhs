@@ -1,21 +1,21 @@
 //hide things
-$('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings').hide();
+$('#mtha, #tf, #mthb, #wed, #ov_onlyclose, #exp, #angle,#bc-2, #os_cont, #finalss, #cs_images,.c_s, #comp, #color_theme, #wallpaper, #custom_theme, #custom_wallpaper, #custom_bulletpoint, #bulletpoints, #custom_gradient, .settings, #change_classes, #change_links').hide();
 $("body").hide();
 
 // first thing it does, ensures proper schedule display
 if(!localStorage.getItem('sc-t')){
   //if you haven't told the website what your lunch period is
-  console.log('Nothing is saved for schedule type.');
+  //console.log('Nothing is saved for schedule type.');
   $('body').hide();
 
-  var sAns = prompt('Do you have lunch A, or C').toLowerCase();
+  var sAns = prompt('Do you have lunch A, B, or C?').toLowerCase();
   localStorage.setItem('sc-t',sAns);
 
   $("body").show();
 }
 // add something in settings to change this if someone's schedule changes!!
 else{
-  console.log('Schedule type: '+localStorage.getItem('sc-t'));
+  //console.log('Schedule type: '+localStorage.getItem('sc-t'));
   $("body").show();
 }
 
@@ -56,7 +56,7 @@ var y = dd.getFullYear();
 
 // 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday
 // thanks meg :)
-var tr = {'1':'normal', '2':'normal','3':'plc','4':'normal','5':'normal'};  //assigns a schedule type to each day
+var tr = {'1':'normal', '2':'normal','3':'finals','4':'finals','5':'finals'};  //assigns a schedule type to each day
 var hoy = tr[d]+localStorage.getItem('sc-t'); //establishes what schedule should be used this day
 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -67,7 +67,7 @@ var today = days[d] + ", " + months[m] + " " + n + ending(n); // the text that a
 //time + date display
 $("#date").text(today); // actually makes the date text show what today is. this should eventually be updated so that it reflects what day it is if there's a day change
 $("#fav").attr('href','images/daily_icons/'+n+'.png');  // make the favicon show the number for the date on the calendar
-console.log("today's date is "+n+" so the favicon should say that number.");
+//console.log("today's date is "+n+" so the favicon should say that number.");
 
 // FINALS CALCULATOR
 
@@ -139,7 +139,7 @@ $('.gc').click(function(){
 function refreshEverything(){ //keep all the data ppl have put in actually visible
   let p = 1;
   while(p<8){
-    if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
+  if(localStorage.getItem('sched-'+p)){ // if schedule is set up, show that it is
       $("#t"+p).attr("placeholder",localStorage.getItem('sched-'+p)+" notes");
       // ADD SOMETHING SO IT ADDS <TD>s TO EACH TABLE WITH YOUR SCHEDULE INFO HERE
 
@@ -153,7 +153,10 @@ function refreshEverything(){ //keep all the data ppl have put in actually visib
       $("#cla"+p).attr("href", localStorage.getItem('gclas-'+p));
       console.log("there IS a gclas link here");
     }
-    else{ $("#cla"+p).hide(); console.log("no google classroom link here"); }
+    else{
+      $("#cla"+p).hide();
+      //console.log("no google classroom link here");
+    }
 
     if(localStorage.getItem('t'+p)){ // if there are notes written, put them in the textareas
       console.log('there are notes for period '+p);
@@ -206,15 +209,37 @@ else{ if(localStorage.getItem('show_seconds')==='true'){ $("#show_seconds").prop
 // if font is saved, use font
 if(!localStorage.getItem('font')){ localStorage.setItem('font',csssettings.font);}
 
+$("#lun").val(localStorage.getItem('sc-t'));
+$("#lun").change(function(event){
+  event.preventDefault()
+  var l = $(this).val();
+  if(l === 'a' || l === 'A'){
+    localStorage.setItem('sc-t','a');
+  }
+  else if(l === 'b' || l === 'B'){
+    localStorage.setItem('sc-t','b');
+  }
+  else if(l === 'c' || l === 'C'){
+    localStorage.setItem('sc-t','c');
+  }
+  console.log(localStorage.getItem('sc-t'));
+});
+$("#lun").keypress( function(e) {
+    var chr = String.fromCharCode(e.which);
+    if ("abc".indexOf(chr) < 0)
+        return false;
+});
+
+
 switch (localStorage.getItem('btype')){
   case 'gradient':
-    console.log("a gradient was saved. make it show this.");
+    //console.log("a gradient was saved. make it show this.");
     $("#dos").checked = true;
     $("#bc-2").show();
     $("#angle").show();
     break;
   case 'color':
-    console.log("a color was saved. make it show this.");
+    //console.log("a color was saved. make it show this.");
     $("#uno").checked = true;
     $("#bc-2").hide();
     $("#angle").hide();
@@ -286,12 +311,12 @@ function reloadTS(){ //sync time + date settings w/ settings from localStorage
 
 function reloadCSS(){ // put the settings from localStorage into the actual CSS
   var font = parseFonts[localStorage.getItem('font')];
-  console.log('parsed font is '+font);
+  //console.log('parsed font is '+font);
 
   var background = localStorage.getItem('background');
   var color = localStorage.getItem('color');
-  console.log('background is '+background);
-  console.log('color is '+color);
+  //console.log('background is '+background);
+  //console.log('color is '+color);
 
   $("body").css('font-family', font);
   $("html").css('background', background);
@@ -347,7 +372,7 @@ $("#text_color").change(function(){
   $(".test_theme").css('border-color',$("#text_color").val());
 }); // make the example reflect whatever's in the input box
 
-console.log($("input[name=bac]:checked").val());
+//console.log($("input[name=bac]:checked").val());
 btype = $("input[name=bac]:checked").val();
 
 $("#back-type input").change(function(event){
@@ -412,6 +437,87 @@ $("#comp").click(function(){
   $("#comp").hide();
 });
 
+var todos = [];
+
+/*function refreshTodos(){
+  if(localStorage.getItem('todos')){
+    console.log("there is a todo list!");
+    todos = JSON.parse(localStorage.getItem('todos'));
+  }
+  else{
+    console.log("there is no todo list yet");
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+  var tdrs = []
+
+  var i = 0;
+  while(i<todos.length){
+    tdrs.push("<p><i class='fa-solid fa-check done'></i> "+todos[i]+" <i class='fa-solid fa-xmark remove'></i></p>");
+    i ++;
+  }
+  $("#todo_cont").html(tdrs);
+}
+refreshTodos();
+$("#new_td_cont").submit(function(event){
+  event.preventDefault();
+  var nt = $("#new_todo").val();
+  todos.push(nt);
+  console.log("New todo is "+nt+" and the list of todos is "+todos);
+  refreshTodos();
+});*/
+function refreshTodos(){
+  if(localStorage.getItem('todos') === null || JSON.parse(localStorage.getItem('todos')).length === 0){
+    localStorage.setItem('todos', JSON.stringify(todos));
+    console.log('Nothing saved in storage, make it equal to todos var');
+  }
+  todos = JSON.parse(localStorage.getItem('todos'));
+  console.log('local storage says '+JSON.parse(localStorage.getItem('todos'))+ " and website says "+todos);
+
+  var tdrs = []
+  var i = 0;
+  while(i<todos.length){
+    tdrs.push("<p><i class='fa-solid fa-check done' id='check"+i+"' title='Refresh the page if a todo is not deleting'></i> "+todos[i]+"</p>");
+    i ++;
+  }
+  $("#todo_cont").html(tdrs);
+}
+refreshTodos();
+
+$("#new_td_cont").submit(function(event){
+  event.preventDefault();
+
+  todos.push($("#new_todo").val());
+  localStorage.setItem('todos',JSON.stringify(todos));
+  console.log("Todos var is "+todos);
+  $("#new_todo").val('');
+  refreshTodos();
+});
+
+$(".done").on("click",function(event){
+  event.preventDefault();
+  var idd = $(this).attr('id');
+  var num = idd.slice(-1);
+  todos.splice(num,1);
+  localStorage.setItem('todos',JSON.stringify(todos))
+  refreshTodos();
+});
+
+$("#op_c").click(function(){
+  $("#change_classes").slideDown();
+  $("#li_cont, #lunch-change").slideUp();
+});
+$("#op_l").click(function(){
+  $("#change_links").slideDown();
+  $("#cl_cont, #lunch-change").slideUp();
+});
+$("#close_links").click(function(){
+  $("#change_links").slideUp();
+  $("#cl_cont, #lunch-change").slideDown();
+});
+$("#close_classes").click(function(){
+  $("#change_classes").slideUp();
+  $("#li_cont, #lunch-change").slideDown();
+});
 //                                  |
 //                                  |
 //                                  |
